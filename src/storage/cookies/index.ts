@@ -1,1 +1,1 @@
-export type CookieKey = 'test';
+export type CookieKey = 's-p-guard-admin:token';
