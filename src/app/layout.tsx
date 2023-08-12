@@ -1,3 +1,4 @@
+import React from 'react';
 import { AppContextProvider } from '@/contexts';
 import '../styles/globals.css';
 import type { Metadata } from 'next';

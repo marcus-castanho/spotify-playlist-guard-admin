@@ -1,3 +1,4 @@
+import React from 'react';
 import { NextPage } from 'next';
 import Link from 'next/link';
 
@@ -6,7 +7,7 @@ const SignIn: NextPage = () => {
         <>
             <h1>Sign In</h1>
             <Link href="/">Index</Link>
-            <br/>
+            <br />
             <Link href="/home">Sign in</Link>
         </>
     );
