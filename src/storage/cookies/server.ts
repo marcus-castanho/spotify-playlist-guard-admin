@@ -10,7 +10,7 @@ import { CookieKey } from '.';
  */
 export function getPageCookie(key: CookieKey) {
     const cookieStore = cookies();
-    return cookieStore.get(key);
+    return cookieStore.get(key)?.value;
 }
 
 /**
@@ -39,7 +39,7 @@ export function getPageCookies() {
  * @param req Request instance.
  */
 export function getRequestCookie(key: CookieKey, req: NextRequest) {
-    return req.cookies.get(key);
+    return req.cookies.get(key)?.value;
 }
 
 /**
@@ -70,7 +70,7 @@ export function getRequestCookies(req: NextRequest) {
  * @param res Response instance.
  */
 export function getResponseCookie(key: CookieKey, res: NextResponse) {
-    return res.cookies.get(key);
+    return res.cookies.get(key)?.value;
 }
 
 /**

@@ -1,7 +1,10 @@
 import { getCookie } from '@/storage/cookies/client';
-import { getRequestCookie } from '@/storage/cookies/server';
+import { getPageCookie, getRequestCookie } from '@/storage/cookies/server';
 import { NextRequest } from 'next/server';
 
+/**
+ * Request function can be called from within a handler/middleware, client component or server component. If function is called from a route handler, the request instance must be passed down.
+ */
 export function request({
     path,
     authenticated = true,
@@ -17,7 +20,8 @@ export function request({
     const headers = options?.headers;
     const token = req
         ? getRequestCookie('s-p-guard-admin:token', req)
-        : getCookie('s-p-guard-admin:token');
+        : getCookie('s-p-guard-admin:token') ||
+          getPageCookie('s-p-guard-admin:token');
 
     if (!authenticated) {
         return fetch(`${apiUrl}${path}`, {
