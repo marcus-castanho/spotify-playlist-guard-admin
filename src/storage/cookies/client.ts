@@ -32,7 +32,7 @@ export function getCookies() {
 export function setCookie(
     key: CookieKey,
     value: string,
-    options: Parameters<typeof defineCookie>[3],
+    options?: Parameters<typeof defineCookie>[3],
 ) {
     defineCookie(undefined, key, value, options);
 }
