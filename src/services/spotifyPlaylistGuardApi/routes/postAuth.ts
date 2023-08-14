@@ -2,7 +2,6 @@ import { z } from 'zod';
 import { SpotifyPlaylistGuardApiReturn } from '../.';
 import { InvalidResponseDataError } from '@/errors';
 import { request } from '../httpClient';
-import { NextRequest } from 'next/server';
 
 export type User = z.infer<typeof userSchema>;
 
@@ -27,22 +26,17 @@ function validateUserSchema(payload: unknown) {
     return validation.data;
 }
 
-export async function postAuth(
-    credentials: {
-        email: string;
-        password: string;
-    },
-    req?: NextRequest,
-): Promise<SpotifyPlaylistGuardApiReturn<User>> {
+export async function postAuth(credentials: {
+    email: string;
+    password: string;
+}): Promise<SpotifyPlaylistGuardApiReturn<User>> {
     const response = await request({
         path: `/auth/login/admin`,
-        authenticated: false,
         options: {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(credentials),
         },
-        req,
     });
     const { status } = response;
     const resBody = await response.json().catch(() => ({}));
