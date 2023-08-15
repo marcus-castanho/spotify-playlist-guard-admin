@@ -1,21 +1,14 @@
-import { z } from 'zod';
 import { SpotifyPlaylistGuardApiReturn } from '../.';
 import { InvalidResponseDataError } from '@/errors';
 import { request } from '../httpClient';
+import { z } from 'zod';
 
-export type User = z.infer<typeof userSchema>;
-
-const userSchema = z.object({
-    id: z.string(),
-    name: z.string(),
-    email: z.string(),
-    roles: z.array(z.string()),
-    createdAt: z.string().datetime(),
-    updatedAt: z.string().datetime(),
+const authSchema = z.object({
+    token: z.string(),
 });
 
-function validateUserSchema(payload: unknown) {
-    const validation = userSchema.safeParse(payload);
+function validateAuthSchema(payload: unknown) {
+    const validation = authSchema.safeParse(payload);
     const { success } = validation;
 
     if (!success)
@@ -29,7 +22,7 @@ function validateUserSchema(payload: unknown) {
 export async function postAuth(credentials: {
     email: string;
     password: string;
-}): Promise<SpotifyPlaylistGuardApiReturn<{ token: string; userData: User }>> {
+}): Promise<SpotifyPlaylistGuardApiReturn<string>> {
     const response = await request({
         path: `/auth/login/admin`,
         options: {
@@ -40,16 +33,14 @@ export async function postAuth(credentials: {
     });
     const { status } = response;
     const resBody = await response.json().catch(() => ({}));
-    const token = response.headers.get('Authorization')?.split(' ')[1];
 
     if (status !== 200) return { success: false, status, data: null };
-    if (!token) throw new InvalidResponseDataError('Invalid token received');
 
-    const user = validateUserSchema(resBody);
+    const { token } = validateAuthSchema(resBody);
 
     return {
         success: true,
         status,
-        data: { token, userData: user },
+        data: token,
     };
 }
