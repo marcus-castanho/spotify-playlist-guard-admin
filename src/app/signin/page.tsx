@@ -1,6 +1,7 @@
 import React from 'react';
 import { NextPage } from 'next';
 import Link from 'next/link';
+import { SignInForm } from '@/components/SignInForm';
 
 const SignIn: NextPage = () => {
     return (
@@ -8,7 +9,7 @@ const SignIn: NextPage = () => {
             <h1>Sign In</h1>
             <Link href="/">Index</Link>
             <br />
-            <Link href="/home">Sign in</Link>
+            <SignInForm />
         </>
     );
 };
