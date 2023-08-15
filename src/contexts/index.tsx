@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { AuthProvider } from './AuthContext';
 
 type ComposedContextsProps = {
     components: Array<
@@ -22,5 +23,9 @@ function ComposedContexts(props: ComposedContextsProps) {
 export type AppContextProviderProps = { children: ReactNode };
 
 export function AppContextProvider({ children }: AppContextProviderProps) {
-    return <ComposedContexts components={[]}>{children}</ComposedContexts>;
+    return (
+        <ComposedContexts components={[AuthProvider]}>
+            {children}
+        </ComposedContexts>
+    );
 }
