@@ -1,5 +1,6 @@
 'use client';
 
+import { log } from '@/logger';
 import React, { useEffect } from 'react';
 
 export default function Error({
@@ -10,7 +11,13 @@ export default function Error({
     reset: () => void;
 }) {
     useEffect(() => {
-        console.error(error);
+        log({
+            message: 'Uncaught error',
+            payload: {
+                message: error.message,
+                stack: error.stack,
+            },
+        });
     }, [error]);
 
     return (

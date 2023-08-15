@@ -13,8 +13,10 @@
     "dependencies": {
         "next": "13.4.13",
         "nookies": "^2.5.2",
+        "pino": "^8.15.0",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "ts-pattern": "^5.0.5",
         "zod": "^3.21.4"
     },
     "devDependencies": {
