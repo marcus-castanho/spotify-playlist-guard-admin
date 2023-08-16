@@ -1,11 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, ComponentType, PropsWithChildren } from 'react';
 import { AuthProvider } from './AuthContext';
 
 type ComposedContextsProps = {
-    components: Array<
-        React.JSXElementConstructor<React.PropsWithChildren<unknown>>
-    >;
-    children: React.ReactNode;
+    components: ComponentType<PropsWithChildren<unknown>>[];
+    children: ReactNode;
 };
 
 function ComposedContexts(props: ComposedContextsProps) {
