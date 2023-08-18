@@ -1,6 +1,6 @@
 'use client';
 
-import { log } from '@/logger';
+import { useClientErrorHandler } from '@/errors/useClientErrorHandler';
 import React, { useEffect } from 'react';
 
 export default function GlobalError({
@@ -10,15 +10,12 @@ export default function GlobalError({
     error: Error;
     reset: () => void;
 }) {
+    const { handleUncaughtClientError } = useClientErrorHandler();
+
     useEffect(() => {
-        log({
-            message: 'Uncaught error',
-            payload: {
-                message: error.message,
-                stack: error.stack,
-            },
-        });
-    }, [error]);
+        if (!error) return;
+        handleUncaughtClientError(error);
+    }, [error, handleUncaughtClientError]);
 
     return (
         <html>
