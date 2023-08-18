@@ -1,11 +1,15 @@
 import { NextResponse, NextRequest } from 'next/server';
-import { sessionIsActive } from './useCases/auth';
+import { handleServerErrorResponse } from './errors/handleServerErrorResponse';
+import { validateSession } from './middlewares/validateSession';
 
-export function middleware(request: NextRequest) {
-    if (!sessionIsActive(request))
-        return NextResponse.redirect(new URL('/signin', request.url));
-
-    return NextResponse.next();
+export async function middleware(request: NextRequest) {
+    try {
+        validateSession(request);
+        return NextResponse.next();
+    } catch (error) {
+        const response = NextResponse.next();
+        return handleServerErrorResponse(error, request, response);
+    }
 }
 
 export const config = {
