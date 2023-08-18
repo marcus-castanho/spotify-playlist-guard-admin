@@ -1,4 +1,4 @@
-import { SpotifyPlaylistGuardApiReturn } from '../.';
+import { Fetch } from '../.';
 import { InvalidResponseDataError } from '@/errors';
 import { request } from '../httpClient';
 import { z } from 'zod';
@@ -19,17 +19,23 @@ function validateAuthSchema(payload: unknown) {
     return validation.data;
 }
 
-export async function postAuth(credentials: {
+type PostAuthPayload = {
     email: string;
     password: string;
-}): Promise<SpotifyPlaylistGuardApiReturn<string>> {
+};
+
+export const postAuth: Fetch<string, PostAuthPayload> = async (
+    payload,
+    fetchType = { type: 'SSG' },
+) => {
     const response = await request({
         path: `/auth/login/admin`,
         options: {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(credentials),
+            body: JSON.stringify(payload),
         },
+        fetchType,
     });
     const { status } = response;
     const resBody = await response.json().catch(() => ({}));
@@ -43,4 +49,4 @@ export async function postAuth(credentials: {
         status,
         data: token,
     };
-}
+};

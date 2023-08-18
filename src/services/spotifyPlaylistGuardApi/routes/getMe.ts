@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { SpotifyPlaylistGuardApiReturn } from '..';
+import { Fetch } from '..';
 import { InvalidResponseDataError } from '@/errors';
 import { request } from '../httpClient';
 
@@ -26,9 +26,9 @@ function validateUserSchema(payload: unknown) {
     return validation.data;
 }
 
-export async function getMe(
-    authToken: string,
-): Promise<SpotifyPlaylistGuardApiReturn<User>> {
+type GetMePayload = string;
+
+export const getMe: Fetch<User, GetMePayload> = async (authToken) => {
     const response = await request({
         path: `/admin-users/me`,
         options: { method: 'GET' },
@@ -46,4 +46,4 @@ export async function getMe(
         status,
         data: user,
     };
-}
+};

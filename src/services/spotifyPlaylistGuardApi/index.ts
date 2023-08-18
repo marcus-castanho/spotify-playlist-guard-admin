@@ -1,6 +1,6 @@
 export * from './routes';
 
-export type SpotifyPlaylistGuardApiReturn<T = never> =
+export type ReturnValue<T = never> =
     | {
           success: true;
           status: number;
@@ -9,5 +9,18 @@ export type SpotifyPlaylistGuardApiReturn<T = never> =
     | {
           success: false;
           status: number;
-          data?: null;
+          data: null;
       };
+
+export type FetchType =
+    | {
+          type: 'SSR';
+      }
+    | {
+          type: 'SSG';
+          revalidate?: number;
+      };
+
+export type Fetch<R, T = never> = [T] extends [never]
+    ? (fetchType?: FetchType) => Promise<ReturnValue<R>>
+    : (payload: T, fetchType?: FetchType) => Promise<ReturnValue<R>>;
