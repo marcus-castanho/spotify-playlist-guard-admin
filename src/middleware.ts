@@ -2,6 +2,13 @@ import { NextResponse, NextRequest } from 'next/server';
 import { handleServerErrorResponse } from './errors/handleServerErrorResponse';
 import { validateSession } from './middlewares/validateSession';
 
+/**
+ * middleware runs only on private routes
+ */
+export const config = {
+    matcher: ['/home/:path*', '/profile/:path*'],
+};
+
 export async function middleware(request: NextRequest) {
     try {
         validateSession(request);
@@ -11,7 +18,3 @@ export async function middleware(request: NextRequest) {
         return handleServerErrorResponse(error, request, response);
     }
 }
-
-export const config = {
-    matcher: ['/home', '/profile'],
-};
