@@ -7,7 +7,6 @@ import {
 import { deleteResponseCookie } from '../storage/cookies/server';
 import { log } from '../logger';
 import { NextRequest, NextResponse } from 'next/server';
-import { notFound } from 'next/navigation';
 
 export function handleServerErrorResponse(
     error,
@@ -23,7 +22,7 @@ export function handleServerErrorResponse(
             },
         });
 
-        return NextResponse.redirect(new URL('/unexpected-error', req.url));
+        return NextResponse.redirect(new URL('/500', req.url));
     }
 
     const { name, message, stack } = error;
@@ -45,7 +44,7 @@ export function handleServerErrorResponse(
     }
 
     if (error instanceof InvalidResponseDataError) {
-        return NextResponse.redirect(new URL('/unexpected-error', req.url));
+        return NextResponse.redirect(new URL('/500', req.url));
     }
 
     if (error instanceof UnauthorizedError) {
@@ -60,8 +59,8 @@ export function handleServerErrorResponse(
     }
 
     if (error instanceof NotFoundError) {
-        return notFound();
+        return NextResponse.redirect(new URL('/400', req.url));
     }
 
-    return NextResponse.redirect(new URL('/unexpected-error', req.url));
+    return NextResponse.redirect(new URL('/500', req.url));
 }
