@@ -1,13 +1,6 @@
 import React from 'react';
-import { NextPage } from 'next';
-import Link from 'next/link';
+import { Index as IndexPage } from '@/views/Index';
 
-const Index: NextPage = () => {
-    return (
-        <>
-            <Link href="/signin">Sign in</Link>
-        </>
-    );
-};
-
-export default Index;
+export default function Index() {
+    return <IndexPage />;
+}

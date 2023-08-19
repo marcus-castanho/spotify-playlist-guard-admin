@@ -1,27 +1,18 @@
 'use client';
 
-import { useClientErrorHandler } from '@/errors/useClientErrorHandler';
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Error } from '@/views/Error';
 
-export default function GlobalError({
-    error,
-    reset,
-}: {
+export type GlobalErrorProps = {
     error: Error;
     reset: () => void;
-}) {
-    const { handleUncaughtClientError } = useClientErrorHandler();
+};
 
-    useEffect(() => {
-        if (!error) return;
-        handleUncaughtClientError(error);
-    }, [error, handleUncaughtClientError]);
-
+export default function GlobalError({ error, reset }: GlobalErrorProps) {
     return (
         <html>
             <body>
-                <h2>Some unexpcted error happened!</h2>
-                <button onClick={() => reset()}>Try again</button>
+                <Error error={error} reset={reset} />
             </body>
         </html>
     );

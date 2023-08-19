@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-export function NotFound() {
+export const NotFound = () => {
     return (
         <div>
             <h2>Not Found</h2>
@@ -9,4 +9,4 @@ export function NotFound() {
             <Link href="/">Return Home</Link>
         </div>
     );
-}
+};
