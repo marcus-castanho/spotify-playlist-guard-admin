@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server';
-import { handleMiddlewareErrorResponse } from './errors/handleServerErrors';
+import { handleMiddlewareErrorResponse } from './errors/serverErrorHandlers';
 import { validateSession } from './middlewares/validateSession';
 
 /**

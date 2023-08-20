@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, FC } from 'react';
-import { useClientErrorHandler } from '@/errors/useClientErrorHandler';
+import { useClientErrorHandler } from '@/errors/clientErrorHandlers';
 
 export type ErrorProps = {
     error: Error;
