@@ -15,6 +15,11 @@ export async function middleware(request: NextRequest) {
         return NextResponse.next();
     } catch (error) {
         const response = NextResponse.next();
-        return handleServerErrorResponse(error, request, response);
+        return handleServerErrorResponse(
+            error,
+            request,
+            response,
+            'middleware',
+        );
     }
 }
