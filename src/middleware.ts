@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server';
-import { handleServerErrorResponse } from './errors/handleServerErrorResponse';
+import { handleMiddlewareErrorResponse } from './errors/handleServerErrors';
 import { validateSession } from './middlewares/validateSession';
 
 /**
@@ -15,11 +15,6 @@ export async function middleware(request: NextRequest) {
         return NextResponse.next();
     } catch (error) {
         const response = NextResponse.next();
-        return handleServerErrorResponse(
-            error,
-            request,
-            response,
-            'middleware',
-        );
+        return handleMiddlewareErrorResponse(error, request, response);
     }
 }
