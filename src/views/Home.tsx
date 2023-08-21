@@ -6,8 +6,13 @@ export const Home = () => {
     return (
         <>
             <h1>Home</h1>
-            <Link href="/profile">Profile</Link>
             <SignOutButton />
+            <br />
+            <Link href="/profile">Profile</Link>
+            <br />
+            <Link href="/users">Users</Link>
+            <br />
+            <Link href="/external-apps">External Apps</Link>
         </>
     );
 };
