@@ -3,7 +3,7 @@
 import React, { ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-export type QueryKey = never;
+export type QueryKey = 'external-apps';
 
 export type QueryProviderProps = {
     children?: ReactNode;
