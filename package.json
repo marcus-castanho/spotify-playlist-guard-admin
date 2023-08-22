@@ -11,6 +11,7 @@
         "disable-hooks": "husky uninstall"
     },
     "dependencies": {
+        "@tanstack/react-query": "^4.33.0",
         "next": "13.4.13",
         "nookies": "^2.5.2",
         "pino": "^8.15.0",
