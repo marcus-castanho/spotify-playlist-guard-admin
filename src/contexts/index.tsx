@@ -1,5 +1,6 @@
 import React, { ReactNode, ComponentType, PropsWithChildren } from 'react';
 import { AuthProvider } from './AuthContext';
+import { ModalProvider } from './ModalContext';
 
 type ComposedContextsProps = {
     components: ComponentType<PropsWithChildren<unknown>>[];
@@ -22,7 +23,7 @@ export type AppContextProviderProps = { children: ReactNode };
 
 export function AppContextProvider({ children }: AppContextProviderProps) {
     return (
-        <ComposedContexts components={[AuthProvider]}>
+        <ComposedContexts components={[AuthProvider, ModalProvider]}>
             {children}
         </ComposedContexts>
     );
