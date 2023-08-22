@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, FC } from 'react';
-import { useClientErrorHandler } from '@/errors/clientErrorHandlers';
+import { handleUncaughtClientError } from '@/errors/clientErrorHandlers';
 
 export type ErrorProps = {
     error: Error;
@@ -9,12 +9,10 @@ export type ErrorProps = {
 };
 
 export const Error: FC<ErrorProps> = ({ error, reset }) => {
-    const { handleUncaughtClientError } = useClientErrorHandler();
-
     useEffect(() => {
         if (!error) return;
         handleUncaughtClientError(error);
-    }, [error, handleUncaughtClientError]);
+    }, [error]);
 
     return (
         <>
