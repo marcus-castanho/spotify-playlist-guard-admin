@@ -11,7 +11,9 @@ export type ExternalAppsListProps = {
 export const ExternalAppsList: FC<ExternalAppsListProps> = ({
     externalApps: initialExternalApps,
 }) => {
-    const { externalApps } = useExternalApps(initialExternalApps);
+    const { externalApps, page, changePage, getPagesIndexes } =
+        useExternalApps(initialExternalApps);
+    const { indexesArr: pagesIndexes } = getPagesIndexes(20, 5);
 
     return (
         <>
@@ -35,6 +37,31 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
                     </div>
                 );
             })}
+            <button onClick={() => changePage('previous')}>
+                previous page
+            </button>
+            {pagesIndexes.map((pageIndex) => {
+                if (pageIndex === null) return '...';
+                return (
+                    <button
+                        key={pageIndex}
+                        onClick={() => changePage(pageIndex)}
+                        style={{
+                            border: page === pageIndex ? '1px red solid' : '',
+                        }}
+                    >
+                        {pageIndex}
+                    </button>
+                );
+            })}
+            <button
+                onClick={() => {
+                    if (page === pagesIndexes[pagesIndexes.length - 1]) return;
+                    return changePage('next');
+                }}
+            >
+                next page
+            </button>
         </>
     );
 };
