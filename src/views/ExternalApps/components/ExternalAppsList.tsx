@@ -1,11 +1,11 @@
 'use client';
 
 import React, { FC } from 'react';
-import { ExternalApp } from '../../services/spotifyPlaylistGuardApi';
-import { useExternalApps } from './hooks/useExternalApps';
+import { ExternalApp } from '@/services/spotifyPlaylistGuardApi';
+import { useExternalApps } from '../hooks/useExternalApps';
 import { useModal } from '@/contexts/ModalContext';
-import { PaginationNav } from '../PaginationNav';
-import { EditExternalAppModal } from '../EditExternalAppModal';
+import { PaginationNav } from '@/components/PaginationNav';
+import { EditExternalAppModal } from './EditExternalAppModal';
 
 export type ExternalAppsListProps = {
     externalApps: ExternalApp[];

@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { useExternalApp } from './hooks/useExternalApp';
+import { useExternalApp } from '../hooks/useExternalApp';
 import { ExternalApp } from '@/services/spotifyPlaylistGuardApi';
 
 export type EditExternalAppModalProps = {

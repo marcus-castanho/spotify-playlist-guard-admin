@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { SignOutButton } from '@/components/SignOutButton';
-import { ExternalAppsList } from '@/components/ExternalAppsList';
+import { ExternalAppsList } from './components/ExternalAppsList';
 import { getExternalApps } from '@/services/spotifyPlaylistGuardApi';
 import { getPageCookie } from '@/storage/cookies/server';
 
