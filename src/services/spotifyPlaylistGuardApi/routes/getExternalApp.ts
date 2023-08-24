@@ -1,23 +1,19 @@
 import { z } from 'zod';
-import { Fetch } from '..';
+import { ExternalApp, Fetch } from '..';
 import { InvalidResponseDataError } from '@/errors';
 import { request } from '../httpClient';
 
-export type ExternalApp = z.infer<typeof externalAppsSchema>[number];
-
-const externalAppsSchema = z.array(
-    z.object({
-        id: z.string(),
-        name: z.string(),
-        recoverEmail: z.string(),
-        baseUrl: z.string(),
-        createdAt: z.string().datetime(),
-        updatedAt: z.string().datetime(),
-    }),
-);
+const externalAppSchema = z.object({
+    id: z.string(),
+    name: z.string(),
+    recoverEmail: z.string(),
+    baseUrl: z.string(),
+    createdAt: z.string().datetime(),
+    updatedAt: z.string().datetime(),
+});
 
 function validateExternalAppSchema(payload: unknown) {
-    const validation = externalAppsSchema.safeParse(payload);
+    const validation = externalAppSchema.safeParse(payload);
     const { success } = validation;
 
     if (!success)
@@ -28,18 +24,18 @@ function validateExternalAppSchema(payload: unknown) {
     return validation.data;
 }
 
-type GetExternalAppsPayload = {
-    page: number;
+type GetExternalAppPayload = {
+    id: string;
     authToken: string;
 };
 
-export const getExternalApps: Fetch<
-    ExternalApp[],
-    GetExternalAppsPayload
-> = async (payload: { page: number; authToken: string }) => {
-    const { page, authToken } = payload;
+export const getExternalApp: Fetch<
+    ExternalApp,
+    GetExternalAppPayload
+> = async (payload: { id: string; authToken: string }) => {
+    const { id, authToken } = payload;
     const response = await request({
-        path: `/external-apps/list/${page}`,
+        path: `/external-apps/find/${id}`,
         options: { method: 'GET' },
         authToken,
     });
