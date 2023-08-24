@@ -29,15 +29,16 @@ type GetExternalAppPayload = {
     authToken: string;
 };
 
-export const getExternalApp: Fetch<
-    ExternalApp,
-    GetExternalAppPayload
-> = async (payload: { id: string; authToken: string }) => {
+export const getExternalApp: Fetch<ExternalApp, GetExternalAppPayload> = async (
+    payload: { id: string; authToken: string },
+    fetchType = { type: 'SSG' },
+) => {
     const { id, authToken } = payload;
     const response = await request({
         path: `/external-apps/find/${id}`,
         options: { method: 'GET' },
         authToken,
+        fetchType,
     });
     const { status } = response;
     const resBody = await response.json().catch(() => ({}));
