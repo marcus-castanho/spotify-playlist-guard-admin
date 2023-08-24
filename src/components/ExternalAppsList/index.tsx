@@ -5,6 +5,7 @@ import { ExternalApp } from '../../services/spotifyPlaylistGuardApi';
 import { useExternalApps } from './hooks/useExternalApps';
 import { useExternalApp } from './hooks/useExternalApp';
 import { useModal } from '@/contexts/ModalContext';
+import { PaginationNav } from '../PaginationNav';
 
 export type ExternalAppsListProps = {
     externalApps: ExternalApp[];
@@ -36,31 +37,11 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
                 );
             })}
             <br />
-            <button onClick={() => changePage('previous')}>
-                previous page
-            </button>
-            {pagesIndexes.map((pageIndex) => {
-                if (pageIndex === null) return '...';
-                return (
-                    <button
-                        key={pageIndex}
-                        onClick={() => changePage(pageIndex)}
-                        style={{
-                            border: page === pageIndex ? '1px red solid' : '',
-                        }}
-                    >
-                        {pageIndex}
-                    </button>
-                );
-            })}
-            <button
-                onClick={() => {
-                    if (page === pagesIndexes[pagesIndexes.length - 1]) return;
-                    return changePage('next');
-                }}
-            >
-                next page
-            </button>
+            <PaginationNav
+                page={page}
+                changePage={changePage}
+                pagesIndexes={pagesIndexes}
+            />
         </>
     );
 };
