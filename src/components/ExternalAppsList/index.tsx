@@ -3,9 +3,9 @@
 import React, { FC } from 'react';
 import { ExternalApp } from '../../services/spotifyPlaylistGuardApi';
 import { useExternalApps } from './hooks/useExternalApps';
-import { useExternalApp } from './hooks/useExternalApp';
 import { useModal } from '@/contexts/ModalContext';
 import { PaginationNav } from '../PaginationNav';
+import { EditExternalAppModal } from '../EditExternalAppModal';
 
 export type ExternalAppsListProps = {
     externalApps: ExternalApp[];
@@ -25,17 +25,13 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
 
     return (
         <>
-            {externalApps.map((item) => {
-                const { id } = item;
-                return (
-                    <>
-                        <ExternalAppComponent key={id} externalApp={item} />;
-                        <button onClick={() => handleEditExternalApp(id)}>
-                            select external app
-                        </button>
-                    </>
-                );
-            })}
+            {externalApps.map((externalApp) => (
+                <ExternalAppComponent
+                    key={externalApp.id}
+                    externalApp={externalApp}
+                    handleEditExternalApp={handleEditExternalApp}
+                />
+            ))}
             <br />
             <PaginationNav
                 page={page}
@@ -48,41 +44,31 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
 
 type ExternalAppComponentProps = {
     externalApp: ExternalApp;
+    handleEditExternalApp: (id: string) => void;
 };
 
-function ExternalAppComponent({ externalApp }: ExternalAppComponentProps) {
-    return (
-        <div>
-            {'{'}
-            {Object.keys(externalApp).map((key) => {
-                return (
-                    <div key={key}>
-                        {`${key}: ${
-                            externalApp[key as keyof typeof externalApp]
-                        }`}
-                    </div>
-                );
-            })}
-            {'}'}
-        </div>
-    );
-}
-
-type EditExternalAppModalProps = {
-    externalAppId: string;
-};
-
-function EditExternalAppModal({ externalAppId }: EditExternalAppModalProps) {
-    const { externalApp } = useExternalApp(externalAppId);
-
+function ExternalAppComponent({
+    externalApp,
+    handleEditExternalApp,
+}: ExternalAppComponentProps) {
     return (
         <>
-            {externalApp && (
-                <ExternalAppComponent
-                    key={externalAppId}
-                    externalApp={externalApp}
-                />
-            )}
+            <div>
+                {'{'}
+                {Object.keys(externalApp).map((key) => {
+                    return (
+                        <div key={key}>
+                            {`${key}: ${
+                                externalApp[key as keyof typeof externalApp]
+                            }`}
+                        </div>
+                    );
+                })}
+                {'}'}
+            </div>
+            <button onClick={() => handleEditExternalApp(externalApp.id)}>
+                select external app
+            </button>
         </>
     );
 }
