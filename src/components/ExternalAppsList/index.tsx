@@ -3,6 +3,8 @@
 import React, { FC } from 'react';
 import { ExternalApp } from '../../services/spotifyPlaylistGuardApi';
 import { useExternalApps } from './hooks/useExternalApps';
+import { useExternalApp } from './hooks/useExternalApp';
+import { useModal } from '@/contexts/ModalContext';
 
 export type ExternalAppsListProps = {
     externalApps: ExternalApp[];
@@ -14,29 +16,26 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
     const { externalApps, page, changePage, getPagesIndexes } =
         useExternalApps(initialExternalApps);
     const { indexesArr: pagesIndexes } = getPagesIndexes(20, 5);
+    const { openModal } = useModal();
+
+    const handleEditExternalApp = (id: string) => {
+        openModal(<EditExternalAppModal externalAppId={id} />);
+    };
 
     return (
         <>
-            {externalApps.map((externalApp) => {
-                const { id } = externalApp;
+            {externalApps.map((item) => {
+                const { id } = item;
                 return (
-                    <div key={id}>
-                        {'{'}
-                        {Object.keys(externalApp).map((key) => {
-                            return (
-                                <div key={key}>
-                                    {`${key}: ${
-                                        externalApp[
-                                            key as keyof typeof externalApp
-                                        ]
-                                    }`}
-                                </div>
-                            );
-                        })}
-                        {'}'}
-                    </div>
+                    <>
+                        <ExternalAppComponent key={id} externalApp={item} />;
+                        <button onClick={() => handleEditExternalApp(id)}>
+                            select external app
+                        </button>
+                    </>
                 );
             })}
+            <br />
             <button onClick={() => changePage('previous')}>
                 previous page
             </button>
@@ -65,3 +64,44 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
         </>
     );
 };
+
+type ExternalAppComponentProps = {
+    externalApp: ExternalApp;
+};
+
+function ExternalAppComponent({ externalApp }: ExternalAppComponentProps) {
+    return (
+        <div>
+            {'{'}
+            {Object.keys(externalApp).map((key) => {
+                return (
+                    <div key={key}>
+                        {`${key}: ${
+                            externalApp[key as keyof typeof externalApp]
+                        }`}
+                    </div>
+                );
+            })}
+            {'}'}
+        </div>
+    );
+}
+
+type EditExternalAppModalProps = {
+    externalAppId: string;
+};
+
+function EditExternalAppModal({ externalAppId }: EditExternalAppModalProps) {
+    const { externalApp } = useExternalApp(externalAppId);
+
+    return (
+        <>
+            {externalApp && (
+                <ExternalAppComponent
+                    key={externalAppId}
+                    externalApp={externalApp}
+                />
+            )}
+        </>
+    );
+}
