@@ -5,15 +5,18 @@ import { useModal } from '@/contexts/ModalContext';
 
 export type EditExternalAppModalProps = {
     externalAppId?: string;
+    onClose: () => void;
 };
 
 export const EditExternalAppModal: FC<EditExternalAppModalProps> = ({
     externalAppId,
+    onClose,
 }) => {
     const { externalApp } = useExternalApp(externalAppId);
     const { closeModal } = useModal();
 
     const onSubmit = () => {
+        onClose();
         closeModal();
     };
 

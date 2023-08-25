@@ -24,8 +24,10 @@ export function useExternalApps(externalApps: ExternalApp[]) {
 
     return {
         externalApps: externalAppsQuery.data,
+        isFetching: externalAppsQuery.isFetching,
         page,
         changePage,
         getPagesIndexes,
+        externalAppsQuery,
     };
 }
