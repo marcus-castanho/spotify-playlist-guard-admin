@@ -22,6 +22,7 @@ export const EditExternalAppModal: FC<EditExternalAppModalProps> = ({
                         <div>{`updatedAt: ${externalApp.updatedAt}`}</div>
                     </div>
                     <ExternalAppForm
+                        id={externalAppId}
                         defaultForm={{
                             name: externalApp.name,
                             baseUrl: externalApp.baseUrl,

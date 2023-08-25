@@ -1,15 +1,50 @@
 import React, { FC, useState } from 'react';
-import { ExternalApp } from '@/services/spotifyPlaylistGuardApi';
+import {
+    ExternalApp,
+    postExternalApp,
+    patchExternalApp,
+} from '@/services/spotifyPlaylistGuardApi';
+import { getCookie } from '@/storage/cookies/client';
+import { useClientErrorHandler } from '@/errors/clientErrorHandlers';
 
 export type ExternalAppFormProps = {
+    id?: string;
     defaultForm: Pick<ExternalApp, 'name' | 'recoverEmail' | 'baseUrl'>;
 };
 
-export const ExternalAppForm: FC<ExternalAppFormProps> = ({ defaultForm }) => {
+export const ExternalAppForm: FC<ExternalAppFormProps> = ({
+    id,
+    defaultForm,
+}) => {
+    const token = getCookie('s-p-guard-admin:token') || '';
+    const { handleGuardApiResponse } = useClientErrorHandler();
     const [form, setForm] = useState(defaultForm);
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        if (id) {
+            await patchExternalApp({
+                id,
+                ...form,
+                authToken: token,
+            })
+                .then(handleGuardApiResponse)
+                .catch((error) => {
+                    console.log(error);
+                });
+
+            return;
+        }
+
+        postExternalApp({
+            ...form,
+            authToken: token,
+        })
+            .then(handleGuardApiResponse)
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
