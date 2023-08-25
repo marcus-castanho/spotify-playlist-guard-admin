@@ -50,7 +50,7 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
             return;
         }
 
-        postExternalApp({
+        await postExternalApp({
             ...form,
             authToken: token,
         })
