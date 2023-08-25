@@ -5,7 +5,11 @@ import {
     patchExternalApp,
 } from '@/services/spotifyPlaylistGuardApi';
 import { getCookie } from '@/storage/cookies/client';
-import { useClientErrorHandler } from '@/errors/clientErrorHandlers';
+import {
+    handleUncaughtClientError,
+    useClientErrorHandler,
+} from '@/errors/clientErrorHandlers';
+import { useToast } from '@/contexts/ToastContext';
 
 export type ExternalAppFormProps = {
     id?: string;
@@ -19,6 +23,7 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
     const token = getCookie('s-p-guard-admin:token') || '';
     const { handleGuardApiResponse } = useClientErrorHandler();
     const [form, setForm] = useState(defaultForm);
+    const { toast } = useToast();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -30,8 +35,10 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
                 authToken: token,
             })
                 .then(handleGuardApiResponse)
+                .then(() => toast('Successfully updated.', 'success'))
                 .catch((error) => {
-                    console.log(error);
+                    handleUncaughtClientError(error);
+                    toast('Error while performing this operation', 'error');
                 });
 
             return;
@@ -42,8 +49,10 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
             authToken: token,
         })
             .then(handleGuardApiResponse)
+            .then(() => toast('Successfully created.', 'success'))
             .catch((error) => {
-                console.log(error);
+                handleUncaughtClientError(error);
+                toast('Error while performing this operation', 'error');
             });
     };
 
