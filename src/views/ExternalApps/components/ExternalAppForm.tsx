@@ -14,19 +14,23 @@ import { useToast } from '@/contexts/ToastContext';
 export type ExternalAppFormProps = {
     id?: string;
     defaultForm: Pick<ExternalApp, 'name' | 'recoverEmail' | 'baseUrl'>;
+    onSubmit: () => void;
 };
 
 export const ExternalAppForm: FC<ExternalAppFormProps> = ({
     id,
     defaultForm,
+    onSubmit,
 }) => {
     const token = getCookie('s-p-guard-admin:token') || '';
     const { handleGuardApiResponse } = useClientErrorHandler();
     const [form, setForm] = useState(defaultForm);
     const { toast } = useToast();
+    const [isSubmiting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setIsSubmitting(true);
 
         if (id) {
             await patchExternalApp({
@@ -36,10 +40,12 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
             })
                 .then(handleGuardApiResponse)
                 .then(() => toast('Successfully updated.', 'success'))
+                .then(() => onSubmit())
                 .catch((error) => {
                     handleUncaughtClientError(error);
                     toast('Error while performing this operation', 'error');
-                });
+                })
+                .finally(() => setIsSubmitting(false));
 
             return;
         }
@@ -50,10 +56,12 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
         })
             .then(handleGuardApiResponse)
             .then(() => toast('Successfully created.', 'success'))
+            .then(() => onSubmit())
             .catch((error) => {
                 handleUncaughtClientError(error);
                 toast('Error while performing this operation', 'error');
-            });
+            })
+            .finally(() => setIsSubmitting(false));
     };
 
     return (
@@ -97,7 +105,9 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
                     }
                 />
             </label>
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={isSubmiting}>
+                Submit
+            </button>
         </form>
     );
 };

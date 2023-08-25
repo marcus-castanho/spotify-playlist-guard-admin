@@ -1,20 +1,26 @@
 import React, { FC } from 'react';
 import { useExternalApp } from '../hooks/useExternalApp';
 import { ExternalAppForm } from './ExternalAppForm';
+import { useModal } from '@/contexts/ModalContext';
 
 export type EditExternalAppModalProps = {
-    externalAppId: string;
+    externalAppId?: string;
 };
 
 export const EditExternalAppModal: FC<EditExternalAppModalProps> = ({
     externalAppId,
 }) => {
     const { externalApp } = useExternalApp(externalAppId);
+    const { closeModal } = useModal();
 
-    if (!externalApp) return <>loading</>;
+    const onSubmit = () => {
+        closeModal();
+    };
+
+    if (externalAppId && !externalApp) return <>loading</>;
     return (
         <>
-            {externalApp && (
+            {externalApp ? (
                 <>
                     <div style={{ border: '1px solid gray' }}>
                         <div>{`id: ${externalApp.id}`}</div>
@@ -28,8 +34,18 @@ export const EditExternalAppModal: FC<EditExternalAppModalProps> = ({
                             baseUrl: externalApp.baseUrl,
                             recoverEmail: externalApp.recoverEmail,
                         }}
+                        onSubmit={onSubmit}
                     />
                 </>
+            ) : (
+                <ExternalAppForm
+                    defaultForm={{
+                        name: '',
+                        baseUrl: '',
+                        recoverEmail: '',
+                    }}
+                    onSubmit={onSubmit}
+                />
             )}
         </>
     );

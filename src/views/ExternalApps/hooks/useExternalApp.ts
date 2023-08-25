@@ -4,7 +4,7 @@ import { getExternalApp } from '@/services/spotifyPlaylistGuardApi';
 import { getCookie } from '@/storage/cookies/client';
 import { useQuery } from '@tanstack/react-query';
 
-export function useExternalApp(id: string) {
+export function useExternalApp(id?: string) {
     const token = getCookie('s-p-guard-admin:token') || '';
     const { handleGuardApiResponse } = useClientErrorHandler();
     const externalAppsQueryKey: QueryKey = 'external-app';
@@ -17,6 +17,7 @@ export function useExternalApp(id: string) {
                 .catch(() => null);
         },
         initialData: null,
+        enabled: !!id,
     });
 
     return {

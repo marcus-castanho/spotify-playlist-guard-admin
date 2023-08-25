@@ -21,6 +21,7 @@ export const ExternalApps = async () => {
             <h1>External Apps</h1>
             <Link href="/home">Home</Link>
             <SignOutButton />
+            <br />
             <ExternalAppsList externalApps={externalApps} />
         </>
     );
