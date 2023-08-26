@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { SignInForm } from '@/components/SignInForm';
+import { SignInForm } from './components/SignInForm';
 
 export const SignIn = () => {
     return (
