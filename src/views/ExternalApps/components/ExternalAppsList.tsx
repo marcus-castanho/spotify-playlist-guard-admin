@@ -6,6 +6,7 @@ import { useExternalApps } from '../hooks/useExternalApps';
 import { useModal } from '@/contexts/ModalContext';
 import { PaginationNav } from '@/components/PaginationNav';
 import { EditExternalAppModal } from './EditExternalAppModal';
+import { DeleteExternalAppModal } from './DeleteExternalAppModal';
 
 export type ExternalAppsListProps = {
     externalApps: ExternalApp[];
@@ -26,7 +27,7 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
     const [isUpdating, setIsUpdating] = useState(false);
     const { openModal } = useModal();
 
-    const onCloseModal = () => {
+    const onMutate = () => {
         setIsUpdating(true);
         externalAppsQuery.refetch();
     };
@@ -35,13 +36,22 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
         openModal(
             <EditExternalAppModal
                 externalAppId={id}
-                onClose={() => onCloseModal()}
+                onClose={() => onMutate()}
             />,
         );
     };
 
     const handleCreateExternalApp = () => {
-        openModal(<EditExternalAppModal onClose={() => onCloseModal()} />);
+        openModal(<EditExternalAppModal onClose={() => onMutate()} />);
+    };
+
+    const handleDeleteExternalApp = async (id: string) => {
+        openModal(
+            <DeleteExternalAppModal
+                externalAppId={id}
+                onClose={() => onMutate()}
+            />,
+        );
     };
 
     useEffect(() => {
@@ -74,7 +84,12 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
                     <button
                         onClick={() => handleEditExternalApp(externalApp.id)}
                     >
-                        select external app
+                        edit external app
+                    </button>
+                    <button
+                        onClick={() => handleDeleteExternalApp(externalApp.id)}
+                    >
+                        delete external app
                     </button>
                 </Fragment>
             ))}
