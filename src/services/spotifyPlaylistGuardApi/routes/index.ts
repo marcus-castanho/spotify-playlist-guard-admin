@@ -4,3 +4,4 @@ export * from './getExternalApps';
 export * from './getExternalApp';
 export * from './postExternalApp';
 export * from './patchExternalApp';
+export * from './deleteExternalApp';
