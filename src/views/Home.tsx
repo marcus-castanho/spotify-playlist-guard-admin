@@ -10,8 +10,6 @@ export const Home = () => {
             <br />
             <Link href="/profile">Profile</Link>
             <br />
-            <Link href="/users">Users</Link>
-            <br />
             <Link href="/external-apps">External Apps</Link>
         </>
     );
