@@ -21,13 +21,15 @@ export function ToastProvider({ children }: ToastProviderProps) {
     const [message, setMessage] = useState('');
     const [type, setType] = useState<ToastType>('info');
 
-    const toast = (toastMessage: string, toastType: typeof type = 'info') => {
+    const toast = (toastMessage: string, toastType: ToastType = 'info') => {
         setDisplay(true);
         setType(toastType);
         setMessage(toastMessage);
 
         setTimeout(() => {
             setDisplay(false);
+            setMessage('');
+            setType('info');
         }, 3000);
     };
 
