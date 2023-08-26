@@ -22,9 +22,16 @@ export const Toast: FC<ToastProps> = ({ display, message, type }) => {
             style={{
                 border: `solid 1px ${borderColor}`,
                 color: 'white',
+                position: 'fixed',
+                zIndex: 2,
+                display: 'flex',
+                width: '100vw',
+                justifyContent: 'end',
+                top: 0,
+                left: 0,
             }}
         >
-            {message !== '' ? message : 'TOAST MESSAGE'}
+            <p> {message !== '' ? message : 'TOAST MESSAGE'}</p>
         </div>
     );
 };
