@@ -4,10 +4,13 @@ import React, { useState } from 'react';
 import { postAuth } from '@/services/spotifyPlaylistGuardApi';
 import { useRouter } from 'next/navigation';
 import { setCookie } from '@/storage/cookies/client';
+import { useToast } from '@/contexts/ToastContext';
+import { handleUncaughtClientError } from '@/errors/clientErrorHandlers';
 
 export const SignInForm = () => {
     const [form, setForm] = useState({ email: '', password: '' });
     const router = useRouter();
+    const { toast } = useToast();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -19,8 +22,13 @@ export const SignInForm = () => {
                     maxAge: 60 * 60 * 1,
                 });
             })
+            .then(() => toast('Successfully updated.', 'success'))
             .then(() => {
                 router.push('/home');
+            })
+            .catch((error) => {
+                handleUncaughtClientError(error);
+                toast('Error while performing this operation', 'error');
             });
     };
 
