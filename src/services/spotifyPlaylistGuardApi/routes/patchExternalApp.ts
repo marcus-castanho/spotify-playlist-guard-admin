@@ -24,7 +24,7 @@ function validateExternalAppWithKeySchema(payload: unknown) {
     return validation.data;
 }
 
-type PatchExternalApp = {
+type PatchExternalAppPayload = {
     id: string;
     name: string;
     recoverEmail: string;
@@ -32,10 +32,10 @@ type PatchExternalApp = {
     authToken: string;
 };
 
-export const patchExternalApp: Fetch<ExternalApp, PatchExternalApp> = async (
-    payload,
-    fetchType = { type: 'SSG' },
-) => {
+export const patchExternalApp: Fetch<
+    ExternalApp,
+    PatchExternalAppPayload
+> = async (payload, fetchType = { type: 'SSG' }) => {
     const { authToken, id, ...reqPayload } = payload;
 
     const response = await request({

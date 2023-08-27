@@ -27,7 +27,7 @@ function validateExternalAppWithKeySchema(payload: unknown) {
     return validation.data;
 }
 
-type PostExternalApp = {
+type PostExternalAppPayload = {
     name: string;
     recoverEmail: string;
     baseUrl: string;
@@ -36,7 +36,7 @@ type PostExternalApp = {
 
 export const postExternalApp: Fetch<
     ExternalAppWithKey,
-    PostExternalApp
+    PostExternalAppPayload
 > = async (payload, fetchType = { type: 'SSG' }) => {
     const { authToken, ...reqPayload } = payload;
 
