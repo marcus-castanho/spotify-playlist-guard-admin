@@ -1,11 +1,14 @@
+import { isPrivatePage } from '@/config/pages';
 import { QueryKey } from '@/contexts/QueryContext';
 import { getMe } from '@/services/spotifyPlaylistGuardApi';
 import { getCookie } from '@/storage/cookies/client';
 import { useQuery } from '@tanstack/react-query';
+import { usePathname } from 'next/navigation';
 
 export function useUserMe(signOut: (sessionEnd?: boolean) => void) {
     const token = getCookie('s-p-guard-admin:token') || '';
     const userMeQueryKey: QueryKey = 'user-me';
+    const pathname = usePathname();
 
     const userMeQuery = useQuery([userMeQueryKey], {
         queryFn: () =>
@@ -18,6 +21,8 @@ export function useUserMe(signOut: (sessionEnd?: boolean) => void) {
                 })
                 .catch(() => null),
         initialData: null,
+        staleTime: 15 * 60 * 1000,
+        enabled: isPrivatePage(pathname || ''),
     });
 
     return {
