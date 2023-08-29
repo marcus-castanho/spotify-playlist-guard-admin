@@ -22,7 +22,7 @@ export const SignInForm = () => {
                     maxAge: 60 * 60 * 1,
                 });
             })
-            .then(() => toast('Successfully updated.', 'success'))
+            .then(() => toast('Successfully signed in.', 'success'))
             .then(() => {
                 router.push('/home');
             })
