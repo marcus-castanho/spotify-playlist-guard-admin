@@ -21,7 +21,6 @@ export function useUserMe(signOut: (sessionEnd?: boolean) => void) {
                 })
                 .catch(() => null),
         initialData: null,
-        staleTime: 15 * 60 * 1000,
         enabled: isPrivatePage(pathname || ''),
     });
 

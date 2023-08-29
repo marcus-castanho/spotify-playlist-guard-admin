@@ -5,8 +5,13 @@ import { useAuth } from '@/contexts/AuthContext';
 import { ProfileForm } from './ProfileForm';
 
 export const UserProfile = () => {
-    const { user } = useAuth();
+    const { user, refetchUser } = useAuth();
     const [isEditing, setIsEditing] = useState(false);
+
+    const onSubmit = () => {
+        setIsEditing(false);
+        refetchUser();
+    };
 
     if (!user) return <>loading</>;
     return (
@@ -25,7 +30,7 @@ export const UserProfile = () => {
                                     name: user.name,
                                     email: user.email,
                                 }}
-                                onSubmit={() => setIsEditing(false)}
+                                onSubmit={onSubmit}
                             />
                         ) : (
                             <>
