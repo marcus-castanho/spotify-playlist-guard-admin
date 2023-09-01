@@ -5,8 +5,8 @@ import {
     Unauthorized,
     InternalServerError,
 } from '.';
-import { deleteResponseCookie } from '../storage/cookies/server';
-import { log } from '../logger';
+import { deleteResponseCookie } from '@/storage/cookies/server';
+import { log } from '@/logger';
 import { NextRequest, NextResponse } from 'next/server';
 
 export function handleApiErrorResponse(error) {
