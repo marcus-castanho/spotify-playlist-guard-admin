@@ -1,8 +1,8 @@
 import {
     HTTPException,
     InvalidResponseDataError,
-    NotFoundError,
-    UnauthorizedError,
+    NotFound,
+    Unauthorized,
     InternalServerError,
 } from '.';
 import { deleteResponseCookie } from '../storage/cookies/server';
@@ -92,7 +92,7 @@ export function handleMiddlewareErrorResponse(
         return NextResponse.redirect(new URL('/500', req.url));
     }
 
-    if (error instanceof UnauthorizedError) {
+    if (error instanceof Unauthorized) {
         const { sessionEnd } = error;
         deleteResponseCookie('s-p-guard-admin:token', res);
 
@@ -103,7 +103,7 @@ export function handleMiddlewareErrorResponse(
         return NextResponse.redirect(signInPath);
     }
 
-    if (error instanceof NotFoundError) {
+    if (error instanceof NotFound) {
         return NextResponse.redirect(new URL('/404', req.url));
     }
 
