@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@tanstack/react-query": "^4.33.0",
+        "js-cookie": "^3.0.5",
         "next": "13.4.13",
         "nookies": "^2.5.2",
         "pino": "^8.15.0",
@@ -23,6 +24,7 @@
     "devDependencies": {
         "@commitlint/cli": "^17.7.1",
         "@commitlint/config-conventional": "^17.7.0",
+        "@types/js-cookie": "^3.0.3",
         "@types/node": "^20.4.10",
         "@types/react": "^18.2.20",
         "@types/react-dom": "^18.2.7",

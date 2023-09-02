@@ -18,9 +18,7 @@ export const SignInForm = () => {
             .then(({ success, data }) => {
                 if (!success) return;
                 const token = data;
-                setCookie('s-p-guard-admin:token', token, {
-                    maxAge: 60 * 60 * 1,
-                });
+                setCookie('s-p-guard-admin:token', token);
             })
             .then(() => toast('Successfully signed in.', 'success'))
             .then(() => {
