@@ -1,6 +1,8 @@
 import { CookieKey } from '.';
 import Cookies from 'js-cookie';
 
+export type CookiesOptions = Cookies.CookieAttributes;
+
 const isServerSide = typeof window === 'undefined';
 
 /**
