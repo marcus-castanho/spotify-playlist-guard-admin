@@ -1,4 +1,4 @@
-export const publicPages = ['/', '/signin', '/404', '/500'] as const;
+export const publicPages = ['/', '/signin', '/500'] as const;
 export type PublicPage = (typeof publicPages)[number];
 
 export const isPrivatePage = (path: string) => {

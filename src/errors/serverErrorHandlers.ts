@@ -104,7 +104,8 @@ export function handleMiddlewareErrorResponse(
     }
 
     if (error instanceof NotFound) {
-        return NextResponse.redirect(new URL('/404', req.url));
+        // Default undefined page to redirect when NotFound is thrown in middleware
+        return NextResponse.redirect(new URL('/_', req.url));
     }
 
     return NextResponse.redirect(new URL('/500', req.url));
