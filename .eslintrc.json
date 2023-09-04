@@ -3,13 +3,20 @@
         "next/core-web-vitals",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:storybook/recommended"
     ],
     "plugins": ["react", "@typescript-eslint", "prettier"],
     "rules": {
         "prettier/prettier": "error",
         "@typescript-eslint/ban-ts-comment": "warn",
         "@typescript-eslint/no-unused-vars": "warn",
-        "@typescript-eslint/no-explicit-any": "warn"
+        "@typescript-eslint/no-explicit-any": "warn",
+        "react/no-unknown-property": [
+            2,
+            {
+                "ignore": ["jsx"]
+            }
+        ]
     }
 }
