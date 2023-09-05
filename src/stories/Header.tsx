@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Button } from './Button';
 import './header.css';
 
@@ -21,7 +20,7 @@ export const Header = ({
     onCreateAccount,
 }: HeaderProps) => (
     <header>
-        <div className="storybook-header">
+        <div className="wrapper">
             <div>
                 <svg
                     width="32"
@@ -49,7 +48,8 @@ export const Header = ({
             <div>
                 {user ? (
                     <>
-                        <span className="welcome">
+                        {/* snipped for brevity */}
+                        <span className="welcome dark:text-white">
                             Welcome, <b>{user.name}</b>!
                         </span>
                         <Button
