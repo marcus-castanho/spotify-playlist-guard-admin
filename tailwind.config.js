@@ -1,8 +1,12 @@
-const { colors } = require('./src/styles/colors');
-const { screens } = require('./src/styles/screens');
-const { shadows } = require('./src/styles/shadows');
-const { spacing } = require('./src/styles/spacing');
-const { fontFamily, fontSize, fontWeight } = require('./src/styles/typography');
+const {
+    colors,
+    screens,
+    shadows,
+    spacing,
+    fontFamily,
+    fontSize,
+    fontWeight,
+} = require('./src/styles/theme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
