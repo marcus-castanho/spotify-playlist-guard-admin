@@ -1,5 +1,5 @@
 const {
-    colors,
+    tailwindColorsConfig: colors,
     screens,
     shadows,
     spacing,

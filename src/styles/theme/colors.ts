@@ -1,9 +1,6 @@
-import { RecursiveKeyValuePair } from 'tailwindcss/types/config';
+export type Color = keyof typeof colors;
 
-export const colors: RecursiveKeyValuePair = {
-    inherit: 'inherit',
-    current: 'currentColor',
-    transparent: 'transparent',
+export const colors = {
     black: '#000',
     white: '#fff',
     slate: {
@@ -292,4 +289,11 @@ export const colors: RecursiveKeyValuePair = {
         '900': '#881337',
         '950': '#4c0519',
     },
+} as const;
+
+export const tailwindColorsConfig = {
+    inherit: 'inherit',
+    current: 'currentColor',
+    transparent: 'transparent',
+    ...colors,
 };
