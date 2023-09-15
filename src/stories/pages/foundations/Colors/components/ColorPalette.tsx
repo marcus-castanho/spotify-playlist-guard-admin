@@ -1,4 +1,4 @@
-import { Color, colors } from '../../../../styles/theme';
+import { Color, colors } from '../../../../../styles/theme';
 import React, { FC } from 'react';
 import colorUtils from 'color';
 
