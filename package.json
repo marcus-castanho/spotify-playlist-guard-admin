@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@tanstack/react-query": "^4.33.0",
+        "color": "^4.2.3",
         "js-cookie": "^3.0.5",
         "next": "13.4.13",
         "nookies": "^2.5.2",
@@ -36,6 +37,7 @@
         "@storybook/nextjs": "^7.4.0",
         "@storybook/react": "^7.4.0",
         "@storybook/testing-library": "^0.2.0",
+        "@types/color": "^3.0.4",
         "@types/js-cookie": "^3.0.3",
         "@types/node": "^20.4.10",
         "@types/react": "^18.2.20",
