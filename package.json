@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@tanstack/react-query": "^4.33.0",
+        "@tippyjs/react": "^4.2.6",
         "color": "^4.2.3",
         "js-cookie": "^3.0.5",
         "next": "13.4.13",
