@@ -50,14 +50,14 @@ export const ColorPalette: FC<ColorPaletteProps> = ({ color }) => {
                     fontColor={color === 'white' ? 'black' : 'white'}
                 />
             ) : (
-                Object.keys(colors[color]).map((variation, i) => {
+                Object.keys(colors[color]).map((variation) => {
                     const hexDecCode = colors[color][variation];
                     const colorRef = colorUtils(hexDecCode);
                     const contrast = colorRef.contrast(colorUtils('white'));
 
                     return (
                         <ColorSwatch
-                            key={i}
+                            key={`${hexDecCode}`}
                             color={hexDecCode}
                             variation={variation}
                             // Minimum contrast ratio following WCAG - https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html
