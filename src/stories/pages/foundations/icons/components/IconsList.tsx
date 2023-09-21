@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { Tooltip } from '../../../../../components/Tooltip';
+import { Tooltip } from '@/components/Tooltip';
 import { linkTo } from '@storybook/addon-links';
 
 type IconsListProps = {
