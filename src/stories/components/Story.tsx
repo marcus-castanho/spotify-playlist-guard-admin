@@ -1,15 +1,15 @@
-import React, { ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 
-interface Props {
+type Props = {
     title: string;
     children: ReactNode;
-}
+};
 
-export function Story({ children, title }: Props) {
+export const Story: FC<Props> = ({ children, title }) => {
     return (
         <div style={{}}>
             <h1>{title}</h1>
             <div style={{}}>{children}</div>
         </div>
     );
-}
+};
