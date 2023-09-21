@@ -3,7 +3,7 @@ import { SearchInput } from './SearchInput';
 import { IconsList } from './IconsList';
 import { icons } from '../icons';
 
-export const IconsStory: FC = () => {
+export const IconsListVisualizer: FC = () => {
     const [filterValue, setFilterValue] = useState('');
     const filteredIcons = icons.filter(({ title }) =>
         title.includes(filterValue),
