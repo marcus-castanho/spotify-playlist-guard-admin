@@ -21,7 +21,7 @@ export const IconsList: FC<IconsListProps> = ({ icons }) => {
                             display: 'inline-block',
                             padding: '2px',
                         }}
-                        onClick={linkTo('Foundations/Colors')}
+                        onClick={linkTo(`Foundations/Icons/${icon.title}`)}
                     >
                         {icon.component}
                     </div>
