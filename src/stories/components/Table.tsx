@@ -57,7 +57,7 @@ type TableProps<T extends string> = {
     rows: {
         id: string;
         cells: {
-            [columnKey in T]: string;
+            [columnKey in T]: string | ReactNode;
         };
     }[];
 };
