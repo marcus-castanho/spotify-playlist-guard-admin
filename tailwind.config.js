@@ -2,7 +2,7 @@ const {
     tailwindColorsConfig: colors,
     tailwindScreensConfig: screens,
     tailwindShadowsConfig: shadows,
-    spacing,
+    tailwindSpacingConfig: spacing,
     fontFamily,
     fontSize,
     fontWeight,
