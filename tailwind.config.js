@@ -1,7 +1,7 @@
 const {
     tailwindColorsConfig: colors,
     tailwindScreensConfig: screens,
-    shadows,
+    tailwindShadowsConfig: shadows,
     spacing,
     fontFamily,
     fontSize,
