@@ -1,6 +1,6 @@
 const {
     tailwindColorsConfig: colors,
-    screens,
+    tailwindScreensConfig: screens,
     shadows,
     spacing,
     fontFamily,
