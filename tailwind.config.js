@@ -3,9 +3,9 @@ const {
     tailwindScreensConfig: screens,
     tailwindShadowsConfig: shadows,
     tailwindSpacingConfig: spacing,
-    fontFamily,
-    fontSize,
-    fontWeight,
+    tailwindFontFamilyConfig: fontFamily,
+    tailwindFontSizeConfig: fontSize,
+    tailwindFontWeightConfig: fontWeight,
 } = require('./src/styles/theme');
 
 /** @type {import('tailwindcss').Config} */

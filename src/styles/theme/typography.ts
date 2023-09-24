@@ -1,6 +1,7 @@
 import { ThemeConfig } from 'tailwindcss/types/config';
 
-export const fontFamily: ThemeConfig['fontFamily'] = {
+export type FontFamily = keyof typeof fontFamily;
+export const fontFamily = {
     sans: [
         'ui-sans-serif',
         'system-ui',
@@ -28,25 +29,27 @@ export const fontFamily: ThemeConfig['fontFamily'] = {
         '"Courier New"',
         'monospace',
     ],
-};
+} as const;
 
-export const fontSize: ThemeConfig['fontSize'] = {
-    xs: ['0.75rem', { lineHeight: '1rem' }],
-    sm: ['0.875rem', { lineHeight: '1.25rem' }],
-    base: ['1rem', { lineHeight: '1.5rem' }],
-    lg: ['1.125rem', { lineHeight: '1.75rem' }],
-    xl: ['1.25rem', { lineHeight: '1.75rem' }],
-    '2xl': ['1.5rem', { lineHeight: '2rem' }],
-    '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
-    '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
-    '5xl': ['3rem', { lineHeight: '1' }],
-    '6xl': ['3.75rem', { lineHeight: '1' }],
-    '7xl': ['4.5rem', { lineHeight: '1' }],
-    '8xl': ['6rem', { lineHeight: '1' }],
-    '9xl': ['8rem', { lineHeight: '1' }],
-};
+export type FontSize = keyof typeof fontSize;
+export const fontSize = {
+    xs: ['0.75rem', '1rem'],
+    sm: ['0.875rem', '1.25rem'],
+    base: ['1rem', '1.5rem'],
+    lg: ['1.125rem', '1.75rem'],
+    xl: ['1.25rem', '1.75rem'],
+    '2xl': ['1.5rem', '2rem'],
+    '3xl': ['1.875rem', '2.25rem'],
+    '4xl': ['2.25rem', '2.5rem'],
+    '5xl': ['3rem', '1'],
+    '6xl': ['3.75rem', '1'],
+    '7xl': ['4.5rem', '1'],
+    '8xl': ['6rem', '1'],
+    '9xl': ['8rem', '1'],
+} as const;
 
-export const fontWeight: ThemeConfig['fontWeight'] = {
+export type FontWeight = keyof typeof fontWeight;
+export const fontWeight = {
     thin: '100',
     extralight: '200',
     light: '300',
@@ -56,4 +59,29 @@ export const fontWeight: ThemeConfig['fontWeight'] = {
     bold: '700',
     extrabold: '800',
     black: '900',
+} as const;
+
+const fontFamilyWithoutReadonlyTypes = Object.keys(fontFamily).reduce(
+    (accumulator, currentValue) => {
+        return { ...accumulator, [currentValue]: fontFamily[currentValue] };
+    },
+    {} as ThemeConfig['fontFamily'],
+);
+export const tailwindFontFamilyConfig: ThemeConfig['fontFamily'] = {
+    ...fontFamilyWithoutReadonlyTypes,
+};
+
+const fontSizeWithoutReadonlyTypes = Object.keys(fontSize).reduce(
+    (accumulator, currentValue) => {
+        return { ...accumulator, [currentValue]: fontSize[currentValue] };
+    },
+    {} as ThemeConfig['fontSize'],
+);
+/**each size uses a value of a tuple of the form [fontSize, lineHeight] */
+export const tailwindFontSizeConfig: ThemeConfig['fontSize'] = {
+    ...fontSizeWithoutReadonlyTypes,
+};
+
+export const tailwindFontWeightConfig: ThemeConfig['fontWeight'] = {
+    ...fontWeight,
 };
