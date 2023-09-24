@@ -1,4 +1,4 @@
-import { KeyValuePair } from 'tailwindcss/types/config';
+import { ThemeConfig } from 'tailwindcss/types/config';
 
 export type Spacing = keyof typeof spacings;
 
@@ -39,7 +39,7 @@ export const spacings = {
     '96': '24rem',
 } as const;
 
-export const tailwindSpacingConfig: KeyValuePair<string, string> = {
+export const tailwindSpacingConfig: ThemeConfig['spacing'] = {
     px: '1px',
     ...spacings,
 };

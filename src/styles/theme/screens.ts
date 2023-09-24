@@ -1,4 +1,4 @@
-import { ScreensConfig } from 'tailwindcss/types/config';
+import { ThemeConfig } from 'tailwindcss/types/config';
 
 export type Screen = keyof typeof screens;
 
@@ -10,6 +10,6 @@ export const screens = {
     '2xl': '1536px',
 } as const;
 
-export const tailwindScreensConfig: ScreensConfig = {
+export const tailwindScreensConfig: ThemeConfig['screens'] = {
     ...screens,
 };

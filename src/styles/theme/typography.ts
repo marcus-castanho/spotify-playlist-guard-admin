@@ -1,4 +1,6 @@
-export const fontFamily = {
+import { ThemeConfig } from 'tailwindcss/types/config';
+
+export const fontFamily: ThemeConfig['fontFamily'] = {
     sans: [
         'ui-sans-serif',
         'system-ui',
@@ -28,7 +30,7 @@ export const fontFamily = {
     ],
 };
 
-export const fontSize = {
+export const fontSize: ThemeConfig['fontSize'] = {
     xs: ['0.75rem', { lineHeight: '1rem' }],
     sm: ['0.875rem', { lineHeight: '1.25rem' }],
     base: ['1rem', { lineHeight: '1.5rem' }],
@@ -44,7 +46,7 @@ export const fontSize = {
     '9xl': ['8rem', { lineHeight: '1' }],
 };
 
-export const fontWeight = {
+export const fontWeight: ThemeConfig['fontWeight'] = {
     thin: '100',
     extralight: '200',
     light: '300',

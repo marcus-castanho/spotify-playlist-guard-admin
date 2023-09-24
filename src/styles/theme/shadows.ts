@@ -1,4 +1,4 @@
-import { KeyValuePair } from 'tailwindcss/types/config';
+import { ThemeConfig } from 'tailwindcss/types/config';
 
 export type Shadow = keyof typeof shadows;
 
@@ -13,6 +13,6 @@ export const shadows = {
     none: 'none',
 } as const;
 
-export const tailwindShadowsConfig: KeyValuePair = {
+export const tailwindShadowsConfig: ThemeConfig['boxShadow'] = {
     ...shadows,
 };

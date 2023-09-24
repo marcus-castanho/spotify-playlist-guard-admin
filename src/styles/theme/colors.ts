@@ -1,3 +1,5 @@
+import { ThemeConfig } from 'tailwindcss/types/config';
+
 export type Color = keyof typeof colors;
 
 export const colors = {
@@ -291,7 +293,7 @@ export const colors = {
     },
 } as const;
 
-export const tailwindColorsConfig = {
+export const tailwindColorsConfig: ThemeConfig['colors'] = {
     inherit: 'inherit',
     current: 'currentColor',
     transparent: 'transparent',
