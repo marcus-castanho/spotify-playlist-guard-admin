@@ -1,34 +1,11 @@
 import { ThemeConfig } from 'tailwindcss/types/config';
 
 export type FontFamily = keyof typeof fontFamily;
+/**Each font family token uses a value of a tuple in the form [...family-name, ...generic-name] */
 export const fontFamily = {
-    sans: [
-        'ui-sans-serif',
-        'system-ui',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
-    ],
-    serif: [
-        'ui-serif',
-        'Georgia',
-        'Cambria',
-        '"Times New Roman"',
-        'Times',
-        'serif',
-    ],
-    mono: [
-        'ui-monospace',
-        'SFMono-Regular',
-        'Menlo',
-        'Monaco',
-        'Consolas',
-        '"Liberation Mono"',
-        '"Courier New"',
-        'monospace',
-    ],
+    sans: ['CircularSp', 'system-ui', 'ui-sans-serif', 'sans-serif'],
+    serif: ['Georgia', 'ui-serif', 'serif'],
+    mono: ['Monaco', 'ui-monospace', 'monospace'],
 } as const;
 
 export type FontSize = keyof typeof fontSize;
@@ -77,7 +54,7 @@ const fontSizeWithoutReadonlyTypes = Object.keys(fontSize).reduce(
     },
     {} as ThemeConfig['fontSize'],
 );
-/**each size uses a value of a tuple of the form [fontSize, lineHeight] */
+/**Each size uses a value of a tuple with the form [fontSize, lineHeight] */
 export const tailwindFontSizeConfig: ThemeConfig['fontSize'] = {
     ...fontSizeWithoutReadonlyTypes,
 };
