@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Table } from '@/stories/components/Table';
-import { fontWeight, FontWeight } from '@/styles/theme';
+import { fontFamily, fontWeight, FontWeight } from '@/styles/theme';
+import { Unstyled } from '@storybook/blocks';
 
 export const FontWeightsTable = () => {
     const fontWeightKeys = Object.keys(fontWeight) as FontWeight[];
@@ -23,13 +24,16 @@ export const FontWeightsTable = () => {
                 weight: fontWeightKey,
                 value: fontWeight[fontWeightKey],
                 example: (
-                    <p
-                        style={{
-                            fontWeight: fontWeight[fontWeightKey],
-                        }}
-                    >
-                        Text
-                    </p>
+                    <Unstyled>
+                        <p
+                            style={{
+                                fontWeight: fontWeight[fontWeightKey],
+                                fontFamily: fontFamily.sans.join(','),
+                            }}
+                        >
+                            Text
+                        </p>
+                    </Unstyled>
                 ),
             },
         };

@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Table } from '@/stories/components/Table';
 import { fontFamily, FontFamily } from '@/styles/theme';
+import { Unstyled } from '@storybook/blocks';
 
 export const FontFamilyTable = () => {
     const fontFamilyKeys = Object.keys(fontFamily) as FontFamily[];
@@ -23,13 +24,15 @@ export const FontFamilyTable = () => {
                 token: fontFamilyKey,
                 value: fontFamily[fontFamilyKey].join(','),
                 example: (
-                    <p
-                        style={{
-                            fontFamily: fontFamily[fontFamilyKey].join(','),
-                        }}
-                    >
-                        Text
-                    </p>
+                    <Unstyled>
+                        <p
+                            style={{
+                                fontFamily: fontFamily[fontFamilyKey].join(','),
+                            }}
+                        >
+                            Text
+                        </p>
+                    </Unstyled>
                 ),
             },
         };
