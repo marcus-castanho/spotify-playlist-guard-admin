@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* body {
     background-color: black;
     color: white;
-}
+} */
 
 * {
     box-sizing: border-box;
