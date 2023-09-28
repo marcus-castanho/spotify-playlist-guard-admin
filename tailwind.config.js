@@ -22,4 +22,5 @@ module.exports = {
         fontWeight,
     },
     plugins: [],
+    darkMode: 'class',
 };
