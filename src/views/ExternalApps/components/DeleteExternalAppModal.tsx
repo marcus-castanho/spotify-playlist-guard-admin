@@ -7,6 +7,7 @@ import {
     useClientErrorHandler,
 } from '@/errors/clientErrorHandlers';
 import { getCookie } from '@/storage/cookies/client';
+import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 
 export type DeleteExternalAppModalProps = {
     externalAppId: string;
@@ -18,7 +19,7 @@ export const DeleteExternalAppModal: FC<DeleteExternalAppModalProps> = ({
     onClose,
 }) => {
     const { closeModal } = useModal();
-    const token = getCookie('s-p-guard-admin:token') || '';
+    const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const { toast } = useToast();
     const { handleGuardApiResponse } = useClientErrorHandler();
     const [isSubmiting, setIsSubmitting] = useState(false);

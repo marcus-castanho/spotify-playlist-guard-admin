@@ -5,6 +5,7 @@ import { User } from '@/services/spotifyPlaylistGuardApi';
 import { useRouter } from 'next/navigation';
 import { deleteCookie } from '@/storage/cookies/client';
 import { useUserMe } from './hooks/useUserMe';
+import { TOKEN_COOKIE_KEY } from '.';
 
 export type AuthContextType = {
     user: User | null;
@@ -25,7 +26,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const isAuthenticated = !!user;
 
     function signOut(sessionEnd?: boolean) {
-        deleteCookie('s-p-guard-admin:token');
+        deleteCookie(TOKEN_COOKIE_KEY);
 
         if (sessionEnd) return router.push(`/signin/?sessionEnd=${true}`);
 

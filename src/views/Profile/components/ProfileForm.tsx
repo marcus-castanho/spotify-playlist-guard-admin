@@ -8,6 +8,7 @@ import {
     useClientErrorHandler,
 } from '@/errors/clientErrorHandlers';
 import { useToast } from '@/contexts/ToastContext';
+import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 
 export type ProfileFormProps = {
     id: string;
@@ -20,7 +21,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
     defaultForm,
     onSubmit,
 }) => {
-    const token = getCookie('s-p-guard-admin:token') || '';
+    const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const [isSubmiting, setIsSubmitting] = useState(false);
     const { handleGuardApiResponse } = useClientErrorHandler();
     const { toast } = useToast();

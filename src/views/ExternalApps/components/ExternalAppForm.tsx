@@ -10,6 +10,7 @@ import {
     useClientErrorHandler,
 } from '@/errors/clientErrorHandlers';
 import { useToast } from '@/contexts/ToastContext';
+import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 
 export type ExternalAppFormProps = {
     id?: string;
@@ -22,7 +23,7 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
     defaultForm,
     onSubmit,
 }) => {
-    const token = getCookie('s-p-guard-admin:token') || '';
+    const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const { handleGuardApiResponse } = useClientErrorHandler();
     const [form, setForm] = useState(defaultForm);
     const { toast } = useToast();

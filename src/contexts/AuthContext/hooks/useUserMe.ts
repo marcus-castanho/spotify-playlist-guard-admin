@@ -4,9 +4,10 @@ import { getMe } from '@/services/spotifyPlaylistGuardApi';
 import { getCookie } from '@/storage/cookies/client';
 import { useQuery } from '@tanstack/react-query';
 import { usePathname } from 'next/navigation';
+import { TOKEN_COOKIE_KEY } from '..';
 
 export function useUserMe(signOut: (sessionEnd?: boolean) => void) {
-    const token = getCookie('s-p-guard-admin:token') || '';
+    const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const userMeQueryKey: QueryKey = 'user-me';
     const pathname = usePathname();
 

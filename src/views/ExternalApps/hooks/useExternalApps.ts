@@ -1,3 +1,4 @@
+import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 import { QueryKey } from '@/contexts/QueryContext';
 import { useClientErrorHandler } from '@/errors/clientErrorHandlers';
 import { usePagination } from '@/hooks/usePagination';
@@ -9,7 +10,7 @@ import { getCookie } from '@/storage/cookies/client';
 import { useQuery } from '@tanstack/react-query';
 
 export function useExternalApps(externalApps: ExternalApp[]) {
-    const token = getCookie('s-p-guard-admin:token') || '';
+    const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const { handleGuardApiResponse } = useClientErrorHandler();
     const externalAppsQueryKey: QueryKey = 'external-apps';
     const { page, changePage, getPagesIndexes } = usePagination();

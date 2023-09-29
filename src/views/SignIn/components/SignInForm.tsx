@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { setCookie } from '@/storage/cookies/client';
 import { useToast } from '@/contexts/ToastContext';
 import { handleUncaughtClientError } from '@/errors/clientErrorHandlers';
+import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 
 export const SignInForm = () => {
     const [form, setForm] = useState({ email: '', password: '' });
@@ -18,7 +19,7 @@ export const SignInForm = () => {
             .then(({ success, data }) => {
                 if (!success) return;
                 const token = data;
-                setCookie('s-p-guard-admin:token', token);
+                setCookie(TOKEN_COOKIE_KEY, token);
             })
             .then(() => toast('Successfully signed in.', 'success'))
             .then(() => {

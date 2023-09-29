@@ -8,6 +8,7 @@ import {
 import { deleteResponseCookie } from '@/storage/cookies/server';
 import { log } from '@/logger';
 import { NextRequest, NextResponse } from 'next/server';
+import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 
 export function handleApiErrorResponse(error) {
     if (
@@ -94,7 +95,7 @@ export function handleMiddlewareErrorResponse(
 
     if (error instanceof Unauthorized) {
         const { sessionEnd } = error;
-        deleteResponseCookie('s-p-guard-admin:token', res);
+        deleteResponseCookie(TOKEN_COOKIE_KEY, res);
 
         const signInPath = sessionEnd
             ? new URL(`/signin/?sessionEnd=${sessionEnd}`, req.url)
