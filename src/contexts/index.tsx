@@ -4,7 +4,7 @@ import { ModalProvider } from './ModalContext';
 import { ToastProvider } from './ToastContext';
 import { QueryProvider } from './QueryContext';
 import { CookiesProvider } from './CookiesContext';
-import { ThemeProvider } from './ThemeContext';
+import { ThemeProvider, Theme, withTheme } from './ThemeContext';
 
 type ComposedContextsProps = {
     components: ComponentType<PropsWithChildren<unknown>>[];
@@ -23,16 +23,19 @@ function ComposedContexts(props: ComposedContextsProps) {
     );
 }
 
-export type AppContextProviderProps = { children: ReactNode };
+export type AppContextProviderProps = { children: ReactNode; theme: Theme };
 
-export function AppContextProvider({ children }: AppContextProviderProps) {
+export function AppContextProvider({
+    children,
+    theme,
+}: AppContextProviderProps) {
     return (
         <ComposedContexts
             components={[
                 CookiesProvider,
                 QueryProvider,
                 AuthProvider,
-                ThemeProvider,
+                withTheme(ThemeProvider, { theme }),
                 ToastProvider,
                 ModalProvider,
             ]}
