@@ -60,7 +60,16 @@ export function CookiesProvider({ children }: CookiesProviderProps) {
 
     useEffect(() => {
         const interval = window.setInterval(() => {
-            setCookies(getCookies());
+            const storagedCookies = getCookies();
+
+            setCookies((state) => {
+                const cookiesHaveChanged =
+                    JSON.stringify(storagedCookies) !== JSON.stringify(state);
+
+                if (cookiesHaveChanged) return storagedCookies;
+
+                return state;
+            });
         }, 250);
         return () => window.clearInterval(interval);
     }, []);
