@@ -1,15 +1,10 @@
 'use client';
 
-import React, {
-    createContext,
-    useContext,
-    ReactNode,
-    useState,
-    useEffect,
-} from 'react';
-import { match } from 'ts-pattern';
+import React, { createContext, useContext, ReactNode, useState } from 'react';
+import { useCookies } from '../CookiesContext';
+import { THEME_COOKIE_KEY } from '.';
 
-type Theme = 'dark' | 'light';
+export type Theme = 'dark' | 'light';
 
 export type ThemeContextType = {
     switchTheme: (theme: Theme) => void;
@@ -18,12 +13,17 @@ export type ThemeContextType = {
 
 export type ThemeProviderProps = {
     children?: ReactNode;
+    theme: Theme;
 };
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export function ThemeProvider({ children }: ThemeProviderProps) {
-    const [theme, setTheme] = useState<Theme>('dark');
+export function ThemeProvider({
+    children,
+    theme: initialTheme,
+}: ThemeProviderProps) {
+    const { getCookie, setCookie } = useCookies();
+    const [theme, setTheme] = useState<Theme>(initialTheme);
 
     const getSystemPreferedColorSchema = () => {
         return window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -33,10 +33,11 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     const updateDocumentThemeClass = () => {
         const systemPreferedColorSchema = getSystemPreferedColorSchema();
+        const storagedTheme = getCookie(THEME_COOKIE_KEY) as Theme | undefined;
 
         if (
-            localStorage.theme === 'dark' ||
-            (!('theme' in localStorage) && systemPreferedColorSchema === 'dark')
+            storagedTheme === 'dark' ||
+            (!storagedTheme && systemPreferedColorSchema === 'dark')
         ) {
             document.documentElement.classList.add('dark');
         } else {
@@ -45,20 +46,10 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     };
 
     const switchTheme = (selectedTheme: 'dark' | 'light') => {
-        localStorage.theme = selectedTheme;
+        setCookie(THEME_COOKIE_KEY, selectedTheme);
         setTheme(selectedTheme);
         updateDocumentThemeClass();
     };
-
-    useEffect(() => {
-        const systemPreferedColorSchema = getSystemPreferedColorSchema();
-        const userDefineColorSchema = match(localStorage.theme)
-            .with('dark', () => 'dark' as const)
-            .with('light', () => 'light' as const)
-            .otherwise(() => undefined);
-
-        switchTheme(userDefineColorSchema || systemPreferedColorSchema);
-    }, []);
 
     return (
         <ThemeContext.Provider value={{ switchTheme, theme }}>
