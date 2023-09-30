@@ -3,7 +3,7 @@ import { Theme, ThemeProvider } from './Provider';
 
 export * from './Provider';
 
-export const THEME_COOKIE_KEY = 's-p-guard-admin-theme' as const;
+export const THEME_COOKIE_KEY = 's-p-guard-admin_theme' as const;
 
 export function withTheme(
     Component: typeof ThemeProvider,
