@@ -13,15 +13,12 @@ export type ThemeContextType = {
 
 export type ThemeProviderProps = {
     children?: ReactNode;
-    theme: Theme;
+    initialTheme: Theme;
 };
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export function ThemeProvider({
-    children,
-    theme: initialTheme,
-}: ThemeProviderProps) {
+export function ThemeProvider({ children, initialTheme }: ThemeProviderProps) {
     const { getCookie, setCookie } = useCookies();
     const [theme, setTheme] = useState<Theme>(initialTheme);
 

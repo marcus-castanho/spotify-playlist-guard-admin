@@ -7,10 +7,10 @@ export const THEME_COOKIE_KEY = 's-p-guard-admin_theme' as const;
 
 export function withTheme(
     Component: typeof ThemeProvider,
-    { theme }: { theme: Theme },
+    { initialTheme }: { initialTheme: Theme },
 ) {
     const ComponentWrapper = ({ children }: { children?: ReactNode }) => {
-        return <Component theme={theme}>{children}</Component>;
+        return <Component initialTheme={initialTheme}>{children}</Component>;
     };
 
     return ComponentWrapper;
