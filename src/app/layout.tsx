@@ -21,15 +21,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     const theme = getPageCookie(THEME_COOKIE_KEY) === 'dark' ? 'dark' : 'light';
+    const themeClassName = match(theme)
+        .with('light', () => '')
+        .otherwise(() => theme);
     return (
-        <html
-            lang="en"
-            className={match(theme)
-                .with('light', () => '')
-                .otherwise(() => theme)}
-        >
+        <html lang="en" className={themeClassName}>
             <body
-                className={`${inter.className} bg-white text-black dark:bg-black dark:text-white`}
+                className={`${inter.className} dark:bg-black dark:text-white`}
             >
                 <AppContextProvider theme={theme}>
                     {children}
