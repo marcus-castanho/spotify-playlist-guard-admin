@@ -16,7 +16,7 @@ export const IconInfo: FC<IconInfoProps> = ({ children }) => {
             <ul>
                 <li>size - The size of the icon in pixels</li>
                 <li>
-                    {`fillColor - The color to fill the icon - "black" or "white". Default value is "black"`}
+                    {`fillColor (optional) - The color to fill the icon - "black" or "white". Default value is "black"`}
                 </li>
             </ul>
         </>

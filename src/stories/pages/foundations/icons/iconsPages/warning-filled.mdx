@@ -4,6 +4,7 @@ import { Color, colors } from '@/styles/theme';
 import { WarningFilledIcon } from '@/components/icons/WarningFilledIcon.tsx';
 import { IconViewer } from '../components/IconViewer.tsx';
 import { ExportButtons } from '../components/ExportButtons.tsx';
+import { IconInfo } from '../components/IconInfo.tsx';
 import { renderToString } from 'react-dom/server';
 
 <Meta title="Foundations/Icons/warning-filled" />
@@ -16,12 +17,9 @@ import { renderToString } from 'react-dom/server';
         iconName={'warning-filled'}
         componentCode={renderToString(<WarningFilledIcon size={12} />)}
     />
-    <h2>Usage</h2>
-    <p>
-        This icon can be used as HTML code, downloadable asset or as a React
-        component:
-    </p>
-    ```js
-    <WarningFilledIcon size={12} />
-    ```
+    <IconInfo>
+        ```js
+        <WarningFilledIcon size={12} fillColor="black" />
+        ```
+    </IconInfo>
 </Story>

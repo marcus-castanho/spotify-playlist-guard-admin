@@ -4,6 +4,7 @@ import { Color, colors } from '@/styles/theme';
 import { WarningIcon } from '@/components/icons/WarningIcon.tsx';
 import { IconViewer } from '../components/IconViewer.tsx';
 import { ExportButtons } from '../components/ExportButtons.tsx';
+import { IconInfo } from '../components/IconInfo.tsx';
 import { renderToString } from 'react-dom/server';
 
 <Meta title="Foundations/Icons/warning" />
@@ -16,12 +17,9 @@ import { renderToString } from 'react-dom/server';
         iconName={'warning'}
         componentCode={renderToString(<WarningIcon size={12} />)}
     />
-    <h2>Usage</h2>
-    <p>
-        This icon can be used as HTML code, downloadable asset or as a React
-        component:
-    </p>
-    ```js
-    <WarningIcon size={12} />
-    ```
+    <IconInfo>
+        ```js
+        <WarningIcon size={12} fillColor="black" />
+        ```
+    </IconInfo>
 </Story>
