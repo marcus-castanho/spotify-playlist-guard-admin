@@ -2,8 +2,9 @@ import React from 'react';
 import { Decorator } from '@storybook/react';
 
 export const withColorScheme: Decorator = (Story, context) => {
-    const { theme } = context.globals;
+    const { backgrounds } = context.globals;
     const { args } = context;
+    const theme = backgrounds?.value === 'black' ? 'dark' : 'light';
 
     if (theme === 'dark') {
         document.documentElement.classList.add('dark');
