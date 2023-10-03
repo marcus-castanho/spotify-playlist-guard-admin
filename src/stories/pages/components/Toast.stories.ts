@@ -7,6 +7,11 @@ const meta = {
     component: Toast,
     parameters: {
         layout: 'centered',
+        docs: {
+            story: {
+                iframeHeight: 'auto',
+            },
+        },
     },
     tags: ['autodocs'],
     decorators: [withColorScheme],
