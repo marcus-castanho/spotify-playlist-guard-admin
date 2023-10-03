@@ -1,6 +1,6 @@
 'use client';
 
-import { Theme } from '@/contexts/ThemeContext';
+import { Theme, useTheme } from '@/contexts/ThemeContext';
 import React, { FC } from 'react';
 import { MoonIcon } from './icons/MoonIcon';
 import { SunIcon } from './icons/SunIcon';
@@ -26,4 +26,10 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
             {alternativeThemeIcon}
         </button>
     );
+};
+
+export const ThemeSwitcherWithHook = () => {
+    const { theme, switchTheme } = useTheme();
+
+    return <ThemeSwitcher theme={theme} switchTheme={switchTheme} />;
 };
