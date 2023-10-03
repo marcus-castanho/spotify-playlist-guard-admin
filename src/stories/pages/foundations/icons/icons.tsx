@@ -5,6 +5,7 @@ import { CheckIcon } from '@/components/icons/CheckIcon';
 import { InfoIcon } from '@/components/icons/InfoIcon';
 import { ErrorIcon } from '@/components/icons/ErrorIcon';
 import { MoonIcon } from '@/components/icons/MoonIcon';
+import { SunIcon } from '@/components/icons/SunIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -30,5 +31,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'moon',
         component: <MoonIcon size={24} key={MoonIcon.name} />,
+    },
+    {
+        title: 'sun',
+        component: <SunIcon size={24} key={MoonIcon.name} />,
     },
 ];
