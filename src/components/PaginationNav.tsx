@@ -1,7 +1,7 @@
 import { usePagination } from '@/hooks/usePagination';
 import React, { FC } from 'react';
 
-export type PaginationNavProps = {
+type PaginationNavProps = {
     page: number;
     changePage: ReturnType<typeof usePagination>['changePage'];
     pagesIndexes: ReturnType<

@@ -6,7 +6,7 @@ import { WarningFilledIcon } from './icons/WarningFilledIcon';
 import { InfoIcon } from './icons/InfoIcon';
 import { ErrorIcon } from './icons/ErrorIcon';
 
-export type ToastProps = {
+type ToastProps = {
     display: boolean;
     message: string;
     type: ToastType;

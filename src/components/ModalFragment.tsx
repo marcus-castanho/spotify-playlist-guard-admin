@@ -1,7 +1,7 @@
 import React, { ReactNode, FC } from 'react';
 import { useModal } from '@/contexts/ModalContext';
 
-export type ModalFragmentProps = {
+type ModalFragmentProps = {
     display: boolean;
     content: ReactNode;
 };
