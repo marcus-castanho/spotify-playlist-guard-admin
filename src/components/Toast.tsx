@@ -36,13 +36,13 @@ export const Toast: FC<ToastProps> = ({ display, message, type }) => {
 
     if (!display) return <></>;
     return (
-        <div className="fixed right-0 top-0 z-10 max-md:w-full max-md:p-1 md:right-28 md:top-24">
+        <div className="fixed right-0 top-0 z-10 max-md:w-full max-md:p-1 md:right-3 md:top-3">
             <div
-                className={`${backgroundColor} flex justify-center rounded p-4 md:w-44`}
+                className={`${backgroundColor} flex justify-center rounded p-4`}
             >
-                <div className={`flex w-36 items-center justify-between`}>
-                    {icon}
-                    <div className="text-white">
+                <div className={`flex max-w-xs items-center justify-between`}>
+                    <div className="w-6">{icon}</div>
+                    <div className="pl-4 text-white">
                         <p className="font-bold">{title}</p>
                         <p> {message}</p>
                     </div>
