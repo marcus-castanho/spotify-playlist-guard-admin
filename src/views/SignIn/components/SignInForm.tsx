@@ -3,10 +3,8 @@
 import React, { useState } from 'react';
 import { postAuth } from '@/services/spotifyPlaylistGuardApi';
 import { useRouter } from 'next/navigation';
-import { setCookie } from '@/storage/cookies/client';
 import { useToast } from '@/contexts/ToastContext';
 import { handleUncaughtClientError } from '@/errors/clientErrorHandlers';
-import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 
 export const SignInForm = () => {
     const [form, setForm] = useState({ email: '', password: '' });
@@ -16,15 +14,11 @@ export const SignInForm = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         postAuth(form)
-            .then(({ success, data }) => {
-                if (!success) return;
-                const token = data;
-                setCookie(TOKEN_COOKIE_KEY, token);
+            .then(({ success }) => {
+                if (!success) throw new Error('Failed to authenticate');
             })
             .then(() => toast('Successfully signed in.', 'success'))
-            .then(() => {
-                router.push('/home');
-            })
+            .then(() => router.push('/home'))
             .catch((error) => {
                 handleUncaughtClientError(error);
                 toast('Error while performing this operation', 'error');
