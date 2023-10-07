@@ -9,6 +9,7 @@ import React, {
 } from 'react';
 import { ModalFragment } from '@/components/ModalFragment';
 import { usePathname } from 'next/navigation';
+import { useTheme } from './ThemeContext';
 
 export type ModalContextType = {
     openModal: (modalContent: ReactNode) => void;
@@ -25,6 +26,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
     const [display, setDisplay] = useState(false);
     const [content, setContent] = useState<ReactNode>(null);
     const pathname = usePathname();
+    const { theme } = useTheme();
 
     const openModal = (modalContent: ReactNode) => {
         setDisplay(true);
@@ -54,6 +56,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
                 display={display}
                 content={content}
                 closeModal={closeModal}
+                theme={theme}
             />
             {children}
         </ModalContext.Provider>
