@@ -6,6 +6,7 @@ import { InfoIcon } from '@/components/icons/InfoIcon';
 import { ErrorIcon } from '@/components/icons/ErrorIcon';
 import { MoonIcon } from '@/components/icons/MoonIcon';
 import { SunIcon } from '@/components/icons/SunIcon';
+import { CrossMarkIcon } from '@/components/icons/CrossMarkIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -35,5 +36,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'sun',
         component: <SunIcon size={24} key={MoonIcon.name} />,
+    },
+    {
+        title: 'cross-mark',
+        component: <CrossMarkIcon size={24} key={CrossMarkIcon.name} />,
     },
 ];
