@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 type CrossMarkIconProps = {
     size: number;
-    fillColor?: 'black' | 'white';
+    fillColor?: string;
 };
 
 export const CrossMarkIcon: FC<CrossMarkIconProps> = ({

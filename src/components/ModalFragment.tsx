@@ -1,5 +1,7 @@
 import React, { ReactNode, FC } from 'react';
 import { useModal } from '@/contexts/ModalContext';
+import { CrossMarkIcon } from './icons/CrossMarkIcon';
+import { colors } from '@/styles/theme';
 
 type ModalFragmentProps = {
     display: boolean;
@@ -12,26 +14,15 @@ export const ModalFragment: FC<ModalFragmentProps> = ({ display, content }) => {
     if (!display) return <></>;
     return (
         <>
-            <div
-                style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100vw',
-                    height: '100vh',
-                    background: 'rgba(0, 0, 0, 0.5)',
-                }}
-            />
+            <div className="fixed left-0 top-0 h-screen w-screen bg-black opacity-50" />
             <dialog
                 open={display}
-                style={{
-                    position: 'fixed',
-                    top: '50%',
-                    transform: 'translate(0%, -50%)',
-                }}
+                className="fixed top-1/2 translate-y-[-50%] rounded dark:bg-gray-700"
             >
-                <div>
-                    <button onClick={() => closeModal()}>x</button>
+                <div className="flex justify-end">
+                    <button className="p-1" onClick={() => closeModal()}>
+                        <CrossMarkIcon size={14} fillColor={colors.gray[50]} />
+                    </button>
                 </div>
                 {content}
             </dialog>
