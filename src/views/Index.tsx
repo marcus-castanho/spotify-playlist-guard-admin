@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
-import { ThemeSwitcherWithHook as ThemeSwitcher } from '@/components/ThemeSwitcher';
+import { Header } from '@/components/Header';
 
 export const Index = () => {
     return (
         <>
+            <Header />
             <Link href="/signin">Sign in</Link>
-            <ThemeSwitcher />
         </>
     );
 };
