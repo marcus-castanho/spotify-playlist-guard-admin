@@ -22,7 +22,7 @@ export const Toast: FC<ToastProps> = ({ display, message, type }) => {
     const backgroundColor = match(type)
         .with('success', () => 'bg-green-400')
         .with('warning', () => 'bg-yellow-400')
-        .with('info', () => 'bg-gray-400')
+        .with('info', () => 'bg-gray-100')
         .with('error', () => 'bg-red-500')
         .otherwise(() => 'bg-white');
     const icon = match(type)
