@@ -19,12 +19,6 @@ export const Toast: FC<ToastProps> = ({ display, message, type }) => {
         .with('info', () => 'Info')
         .with('error', () => 'Error')
         .otherwise(() => 'Info');
-    const backgroundColor = match(type)
-        .with('success', () => 'bg-green-400')
-        .with('warning', () => 'bg-yellow-400')
-        .with('info', () => 'bg-gray-100')
-        .with('error', () => 'bg-red-500')
-        .otherwise(() => 'bg-white');
     const icon = match(type)
         .with('success', () => <CheckIcon size={24} fillColor="white" />)
         .with('warning', () => (
@@ -33,13 +27,17 @@ export const Toast: FC<ToastProps> = ({ display, message, type }) => {
         .with('info', () => <InfoIcon size={24} fillColor="white" />)
         .with('error', () => <ErrorIcon size={24} fillColor="white" />)
         .otherwise(() => <></>);
+    const toastContainerClass = match(type)
+        .with('success', () => 'bg-green-400 flex justify-center rounded p-4')
+        .with('warning', () => 'bg-yellow-400 flex justify-center rounded p-4')
+        .with('info', () => 'bg-gray-100 flex justify-center rounded p-4')
+        .with('error', () => 'bg-red-500 flex justify-center rounded p-4')
+        .otherwise(() => 'bg-white flex justify-center rounded p-4');
 
     if (!display) return <></>;
     return (
         <div className="fixed right-0 top-0 z-10 max-md:w-full max-md:p-1 md:right-3 md:top-3">
-            <div
-                className={`${backgroundColor} flex justify-center rounded p-4`}
-            >
+            <div className={toastContainerClass}>
                 <div className={`flex max-w-xs items-center justify-between`}>
                     <div className="w-6">{icon}</div>
                     <div className="pl-4 text-white">
