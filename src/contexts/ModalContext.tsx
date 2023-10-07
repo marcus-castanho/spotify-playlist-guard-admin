@@ -50,7 +50,11 @@ export function ModalProvider({ children }: ModalProviderProps) {
 
     return (
         <ModalContext.Provider value={{ openModal, closeModal }}>
-            <ModalFragment display={display} content={content} />
+            <ModalFragment
+                display={display}
+                content={content}
+                closeModal={closeModal}
+            />
             {children}
         </ModalContext.Provider>
     );

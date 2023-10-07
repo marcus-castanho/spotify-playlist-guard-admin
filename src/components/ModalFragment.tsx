@@ -1,16 +1,18 @@
 import React, { ReactNode, FC } from 'react';
-import { useModal } from '@/contexts/ModalContext';
 import { CrossMarkIcon } from './icons/CrossMarkIcon';
 import { colors } from '@/styles/theme';
 
 type ModalFragmentProps = {
     display: boolean;
     content: ReactNode;
+    closeModal: () => void;
 };
 
-export const ModalFragment: FC<ModalFragmentProps> = ({ display, content }) => {
-    const { closeModal } = useModal();
-
+export const ModalFragment: FC<ModalFragmentProps> = ({
+    display,
+    content,
+    closeModal,
+}) => {
     if (!display) return <></>;
     return (
         <>
