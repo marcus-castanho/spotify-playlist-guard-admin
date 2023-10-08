@@ -25,7 +25,7 @@ export const ModalFragment: FC<ModalFragmentProps> = ({
                 className="fixed top-1/2 translate-y-[-50%] rounded text-inherit dark:bg-gray-700"
             >
                 <div className="flex justify-end">
-                    <button className="p-1" onClick={() => closeModal()}>
+                    <button className="p-4" onClick={() => closeModal()}>
                         <CrossMarkIcon
                             size={14}
                             fillColor={
