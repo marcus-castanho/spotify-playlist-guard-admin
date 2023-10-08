@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, InputHTMLAttributes } from 'react';
 
 type TextInputFieldProps = {
     id: string;
@@ -7,6 +7,10 @@ type TextInputFieldProps = {
     placeHolder?: string;
     required?: boolean;
     onChange?: (text: string) => void;
+    type?: Extract<
+        InputHTMLAttributes<HTMLButtonElement>['type'],
+        'email' | 'tel' | 'text' | 'url'
+    >;
 };
 
 export const TextInputField: FC<TextInputFieldProps> = ({
@@ -16,6 +20,7 @@ export const TextInputField: FC<TextInputFieldProps> = ({
     placeHolder = '',
     required = false,
     onChange = () => {},
+    type = 'text',
 }) => {
     return (
         <div className="rounded-lg bg-gray-50 p-4 dark:bg-black">
@@ -24,7 +29,7 @@ export const TextInputField: FC<TextInputFieldProps> = ({
                 {required && <span className="pl-1 text-secondary-red">*</span>}
             </label>
             <input
-                type="text"
+                type={type}
                 id={id}
                 onChange={({ target }) => onChange(target.value)}
                 className="w-full rounded border-[1px] px-3.5 py-0.5 dark:border-gray-50 dark:bg-black"
