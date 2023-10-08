@@ -4,6 +4,7 @@ type TextInputFieldProps = {
     id: string;
     label: string;
     defaultValue?: string;
+    placeHolder?: string;
     required?: boolean;
     onChange?: (text: string) => void;
 };
@@ -12,6 +13,7 @@ export const TextInputField: FC<TextInputFieldProps> = ({
     id,
     label,
     defaultValue = '',
+    placeHolder = '',
     required = false,
     onChange = () => {},
 }) => {
@@ -28,6 +30,7 @@ export const TextInputField: FC<TextInputFieldProps> = ({
                 className="w-full rounded border-[1px] px-3.5 py-0.5 dark:border-gray-50 dark:bg-black"
                 required={required}
                 defaultValue={defaultValue}
+                placeholder={placeHolder}
             />
         </div>
     );
