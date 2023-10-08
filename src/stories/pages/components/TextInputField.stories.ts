@@ -16,6 +16,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const InputField: Story = {
-    args: { id: 'example-id', label: 'Name' },
+    args: { id: 'name', label: 'Name' },
     decorators: [withColorScheme],
 };
