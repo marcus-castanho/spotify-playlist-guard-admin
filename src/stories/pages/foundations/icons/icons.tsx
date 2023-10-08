@@ -7,6 +7,7 @@ import { ErrorIcon } from '@/components/icons/ErrorIcon';
 import { MoonIcon } from '@/components/icons/MoonIcon';
 import { SunIcon } from '@/components/icons/SunIcon';
 import { CrossMarkIcon } from '@/components/icons/CrossMarkIcon';
+import { EyeIcon } from '@/components/icons/EyeIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -40,5 +41,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'cross-mark',
         component: <CrossMarkIcon size={24} key={CrossMarkIcon.name} />,
+    },
+    {
+        title: 'eye',
+        component: <EyeIcon size={24} key={EyeIcon.name} />,
     },
 ];
