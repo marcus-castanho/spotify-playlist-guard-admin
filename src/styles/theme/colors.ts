@@ -6,6 +6,7 @@ export const colors = {
     black: '#000',
     white: '#fff',
     primary: {
+        verdant: '#1ed760',
         green: '#1db954',
         black: '#191414',
         white: '#fff',
