@@ -44,7 +44,7 @@ export const PasswordInputField: FC<PasswordInputFieldProps> = ({
                     onClick={() => setVisible((state) => !state)}
                     className="absolute right-4 top-1/2 translate-y-[-50%]"
                 >
-                    {visible ? (
+                    {!visible ? (
                         <EyeSlashIcon
                             size={24}
                             fillColor={theme === 'dark' ? 'white' : 'black'}
