@@ -24,22 +24,16 @@ export const EditExternalAppModal: FC<EditExternalAppModalProps> = ({
     return (
         <>
             {externalApp ? (
-                <>
-                    <div style={{ border: '1px solid gray' }}>
-                        <div>{`id: ${externalApp.id}`}</div>
-                        <div>{`createdAt: ${externalApp.createdAt}`}</div>
-                        <div>{`updatedAt: ${externalApp.updatedAt}`}</div>
-                    </div>
-                    <ExternalAppForm
-                        id={externalAppId}
-                        defaultForm={{
-                            name: externalApp.name,
-                            baseUrl: externalApp.baseUrl,
-                            recoverEmail: externalApp.recoverEmail,
-                        }}
-                        onSubmit={onSubmit}
-                    />
-                </>
+                <ExternalAppForm
+                    id={externalAppId}
+                    defaultForm={{
+                        name: externalApp.name,
+                        baseUrl: externalApp.baseUrl,
+                        recoverEmail: externalApp.recoverEmail,
+                    }}
+                    onSubmit={onSubmit}
+                    onCancel={closeModal}
+                />
             ) : (
                 <ExternalAppForm
                     defaultForm={{
@@ -48,6 +42,7 @@ export const EditExternalAppModal: FC<EditExternalAppModalProps> = ({
                         recoverEmail: '',
                     }}
                     onSubmit={onSubmit}
+                    onCancel={closeModal}
                 />
             )}
         </>

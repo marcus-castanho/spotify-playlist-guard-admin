@@ -11,17 +11,23 @@ import {
 } from '@/errors/clientErrorHandlers';
 import { useToast } from '@/contexts/ToastContext';
 import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
+import { TextInputField } from '@/components/TextInputField';
+import { FormRow } from '@/components/FormRow';
+import { ButtonPrimary } from '@/components/ButtonPrimary';
+import { ButtonSecondary } from '@/components/ButtonSecondary';
 
 export type ExternalAppFormProps = {
     id?: string;
     defaultForm: Pick<ExternalApp, 'name' | 'recoverEmail' | 'baseUrl'>;
     onSubmit: () => void;
+    onCancel: () => void;
 };
 
 export const ExternalAppForm: FC<ExternalAppFormProps> = ({
     id,
     defaultForm,
     onSubmit,
+    onCancel,
 }) => {
     const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const { handleGuardApiResponse } = useClientErrorHandler();
@@ -39,7 +45,6 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
                 ...form,
                 authToken: token,
             })
-                .then(handleGuardApiResponse)
                 .then(() => toast('Successfully updated.', 'success'))
                 .then(() => onSubmit())
                 .catch((error) => {
@@ -55,6 +60,9 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
             ...form,
             authToken: token,
         })
+            .then(() => {
+                throw new Error();
+            })
             .then(handleGuardApiResponse)
             .then(() => toast('Successfully created.', 'success'))
             .then(() => onSubmit())
@@ -66,49 +74,49 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label style={{ display: 'flex', justifyContent: 'space-between' }}>
-                Name
-                <input
-                    type="text"
-                    value={form.name}
-                    onChange={({ target }) =>
+        <form onSubmit={handleSubmit} className="p-3.5">
+            <FormRow columns={2}>
+                <TextInputField
+                    id="name"
+                    label="Name"
+                    defaultValue={defaultForm.name}
+                    required
+                    onChange={(value) =>
+                        setForm((state) => ({ ...state, name: value }))
+                    }
+                />
+                <TextInputField
+                    id="recover-email"
+                    label="Recover email"
+                    defaultValue={defaultForm.recoverEmail}
+                    required
+                    onChange={(value) =>
                         setForm((state) => ({
                             ...state,
-                            name: target.value,
+                            recoverEmail: value,
                         }))
                     }
                 />
-            </label>
-            <label style={{ display: 'flex', justifyContent: 'space-between' }}>
-                Recover email
-                <input
-                    type="text"
-                    value={form.recoverEmail}
-                    onChange={({ target }) =>
-                        setForm((state) => ({
-                            ...state,
-                            recoverEmail: target.value,
-                        }))
+            </FormRow>
+            <FormRow columns={1}>
+                <TextInputField
+                    id="base-url"
+                    label="Base URL"
+                    defaultValue={defaultForm.baseUrl}
+                    required
+                    onChange={(value) =>
+                        setForm((state) => ({ ...state, baseUrl: value }))
                     }
                 />
-            </label>
-            <label style={{ display: 'flex', justifyContent: 'space-between' }}>
-                Base URL
-                <input
-                    type="text"
-                    value={form.baseUrl}
-                    onChange={({ target }) =>
-                        setForm((state) => ({
-                            ...state,
-                            baseUrl: target.value,
-                        }))
-                    }
+            </FormRow>
+            <div className="flex gap-3.5">
+                <ButtonPrimary
+                    content="Save"
+                    type="submit"
+                    disabled={isSubmiting}
                 />
-            </label>
-            <button type="submit" disabled={isSubmiting}>
-                Submit
-            </button>
+                <ButtonSecondary content="Cancel" onClick={onCancel} />
+            </div>
         </form>
     );
 };
