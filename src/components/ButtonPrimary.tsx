@@ -5,6 +5,7 @@ type ButtonPrimaryProps = {
     onClick?: () => void;
     type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
     disabled?: boolean;
+    stretch?: boolean;
 };
 
 export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
@@ -12,18 +13,23 @@ export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
     onClick = () => {},
     type = 'button',
     disabled = false,
+    stretch = false,
 }) => {
-    const styleClass = disabled
-        ? 'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white opacity-50 dark:text-black'
-        : 'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white hover:scale-105 dark:text-black';
+    const disabledStyleClass = disabled ? 'opacity-50' : 'hover:scale-105';
+    const styleClass = stretch
+        ? 'w-full rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
+        : 'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black';
+
     return (
-        <button
-            type={type}
-            onClick={onClick}
-            className={styleClass}
-            disabled={disabled}
-        >
-            {content}
-        </button>
+        <div className={disabledStyleClass}>
+            <button
+                type={type}
+                onClick={onClick}
+                className={styleClass}
+                disabled={disabled}
+            >
+                {content}
+            </button>
+        </div>
     );
 };
