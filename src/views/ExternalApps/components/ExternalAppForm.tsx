@@ -109,7 +109,7 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
                     }
                 />
             </FormRow>
-            <div className="flex gap-3.5">
+            <div className="flex gap-3.5 p-4">
                 <ButtonPrimary
                     content="Save"
                     type="submit"
