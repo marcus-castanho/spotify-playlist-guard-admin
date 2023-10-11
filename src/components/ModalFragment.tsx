@@ -22,7 +22,7 @@ export const ModalFragment: FC<ModalFragmentProps> = ({
             <div className="fixed left-0 top-0 h-screen w-screen bg-black opacity-50" />
             <dialog
                 open={display}
-                className="fixed top-1/2 translate-y-[-50%] rounded-lg text-inherit dark:bg-gray-700"
+                className="fixed top-1/2 translate-y-[-50%] rounded-lg border-[1px] text-inherit dark:border-gray-100 dark:bg-black"
             >
                 <div className="flex justify-end">
                     <button className="p-4" onClick={() => closeModal()}>
