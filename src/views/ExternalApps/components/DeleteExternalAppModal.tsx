@@ -8,6 +8,10 @@ import {
 } from '@/errors/clientErrorHandlers';
 import { getCookie } from '@/storage/cookies/client';
 import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
+import { ButtonPrimary } from '@/components/ButtonPrimary';
+import { ButtonSecondary } from '@/components/ButtonSecondary';
+import { WarningIcon } from '@/components/icons/WarningIcon';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export type DeleteExternalAppModalProps = {
     externalAppId: string;
@@ -23,6 +27,7 @@ export const DeleteExternalAppModal: FC<DeleteExternalAppModalProps> = ({
     const { toast } = useToast();
     const { handleGuardApiResponse } = useClientErrorHandler();
     const [isSubmiting, setIsSubmitting] = useState(false);
+    const { theme } = useTheme();
 
     const onSubmit = () => {
         onClose();
@@ -47,17 +52,30 @@ export const DeleteExternalAppModal: FC<DeleteExternalAppModalProps> = ({
     };
 
     return (
-        <>
-            <>
-                <p>Are you sure you want to delete this item?</p>
-                <button onClick={() => closeModal()}>cancel</button>
-                <button
-                    onClick={() => handleConfirmDelete(externalAppId)}
+        <form
+            onSubmit={() => handleConfirmDelete(externalAppId)}
+            className="p-3.5"
+        >
+            <div className="flex justify-center">
+                <WarningIcon
+                    size={26}
+                    fillColor={theme === 'dark' ? 'white' : 'black'}
+                />
+            </div>
+            <div className="flex justify-center pb-3.5">
+                Are you sure you want to delete this external app?
+            </div>
+            <div className="flex justify-center gap-3.5">
+                <ButtonPrimary
+                    content="Confirm"
+                    type="submit"
                     disabled={isSubmiting}
-                >
-                    confirm
-                </button>
-            </>
-        </>
+                />
+                <ButtonSecondary
+                    content="Cancel"
+                    onClick={() => closeModal()}
+                />
+            </div>
+        </form>
     );
 };
