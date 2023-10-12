@@ -9,14 +9,12 @@ import { TextInputField } from '@/components/TextInputField';
 import { PasswordInputField } from '@/components/PasswordInputField';
 import { FormRow } from '@/components/FormRow';
 import { ButtonPrimary } from '@/components/ButtonPrimary';
-import { useTheme } from '@/contexts/ThemeContext';
 
 export const SignInForm = () => {
     const [form, setForm] = useState({ email: '', password: '' });
     const router = useRouter();
     const { toast } = useToast();
     const [isSubmiting, setIsSubmitting] = useState(false);
-    const { theme } = useTheme();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -59,7 +57,6 @@ export const SignInForm = () => {
                         onChange={(value) =>
                             setForm((state) => ({ ...state, password: value }))
                         }
-                        theme={theme}
                     />
                 </FormRow>
                 <div className="p-4">

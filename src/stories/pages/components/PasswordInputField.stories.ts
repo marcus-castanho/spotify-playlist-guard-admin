@@ -16,7 +16,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const InputField: Story = {
-    //@ts-ignore - theme arg is passed in withColorScheme decorator
     args: { id: 'password', label: 'Password' },
     decorators: [withColorScheme],
 };

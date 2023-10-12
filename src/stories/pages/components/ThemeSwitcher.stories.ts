@@ -16,9 +16,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Switcher: Story = {
-    //@ts-ignore - theme arg is passed in withColorScheme decorator
-    args: {
-        switchTheme: () => {},
-    },
+    args: {},
     decorators: [withColorScheme],
 };

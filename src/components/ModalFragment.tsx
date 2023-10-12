@@ -1,21 +1,21 @@
 import React, { ReactNode, FC } from 'react';
 import { CrossMarkIcon } from './icons/CrossMarkIcon';
 import { colors } from '@/styles/theme';
-import { Theme } from '@/contexts/ThemeContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
 type ModalFragmentProps = {
     display: boolean;
     content: ReactNode;
     closeModal: () => void;
-    theme: Theme;
 };
 
 export const ModalFragment: FC<ModalFragmentProps> = ({
     display,
     content,
     closeModal,
-    theme,
 }) => {
+    const { theme } = useTheme();
+
     if (!display) return <></>;
     return (
         <>

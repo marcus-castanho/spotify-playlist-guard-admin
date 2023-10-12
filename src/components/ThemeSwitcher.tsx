@@ -1,18 +1,12 @@
 'use client';
 
-import { Theme, useTheme } from '@/contexts/ThemeContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import React, { FC } from 'react';
 import { MoonIcon } from './icons/MoonIcon';
 import { SunIcon } from './icons/SunIcon';
 
-type ThemeSwitcherProps = {
-    theme: Theme;
-    switchTheme: (alternativeTheme: Theme) => void;
-};
-export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
-    theme,
-    switchTheme,
-}) => {
+export const ThemeSwitcher: FC = () => {
+    const { theme, switchTheme } = useTheme();
     const alternativeTheme = theme === 'dark' ? 'light' : 'dark';
     const alternativeThemeIcon =
         theme === 'dark' ? (
@@ -26,10 +20,4 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
             {alternativeThemeIcon}
         </button>
     );
-};
-
-export const ThemeSwitcherWithHook = () => {
-    const { theme, switchTheme } = useTheme();
-
-    return <ThemeSwitcher theme={theme} switchTheme={switchTheme} />;
 };

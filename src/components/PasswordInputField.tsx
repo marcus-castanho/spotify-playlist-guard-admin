@@ -3,7 +3,7 @@
 import React, { FC, useState } from 'react';
 import { EyeIcon } from './icons/EyeIcon';
 import { EyeSlashIcon } from './icons/EyeSlashIcon';
-import { Theme } from '@/contexts/ThemeContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
 type PasswordInputFieldProps = {
     id: string;
@@ -11,7 +11,6 @@ type PasswordInputFieldProps = {
     placeHolder?: string;
     required?: boolean;
     onChange?: (text: string) => void;
-    theme?: Theme;
 };
 
 export const PasswordInputField: FC<PasswordInputFieldProps> = ({
@@ -20,9 +19,9 @@ export const PasswordInputField: FC<PasswordInputFieldProps> = ({
     placeHolder = '',
     required = false,
     onChange = () => {},
-    theme = 'light',
 }) => {
     const [visible, setVisible] = useState(false);
+    const { theme } = useTheme();
 
     return (
         <div className="rounded-lg bg-gray-50 p-4 dark:bg-black">
