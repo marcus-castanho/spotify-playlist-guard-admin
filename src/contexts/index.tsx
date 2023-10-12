@@ -26,24 +26,22 @@ function ComposedContexts(props: ComposedContextsProps) {
 export type AppContextProviderProps = {
     children: ReactNode;
     initialTheme: Theme;
+    providers?: ComposedContextsProps['components'];
 };
 
 export function AppContextProvider({
     children,
     initialTheme,
+    providers = [
+        CookiesProvider,
+        QueryProvider,
+        AuthProvider,
+        withTheme(ThemeProvider, { initialTheme }),
+        ToastProvider,
+        ModalProvider,
+    ],
 }: AppContextProviderProps) {
     return (
-        <ComposedContexts
-            components={[
-                CookiesProvider,
-                QueryProvider,
-                AuthProvider,
-                withTheme(ThemeProvider, { initialTheme }),
-                ToastProvider,
-                ModalProvider,
-            ]}
-        >
-            {children}
-        </ComposedContexts>
+        <ComposedContexts components={providers}>{children}</ComposedContexts>
     );
 }
