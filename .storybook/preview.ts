@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 import '../src/styles/globals.css';
 import '../src/stories/styles/globals.css';
+import { withColorScheme } from '../src/stories/utils/decorators';
 
 const preview: Preview = {
     parameters: {
@@ -25,6 +26,7 @@ const preview: Preview = {
             ],
         },
     },
+    decorators: [withColorScheme],
 };
 
 export default preview;

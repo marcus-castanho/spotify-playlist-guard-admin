@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Toast } from '@/components/Toast';
-import { withColorScheme } from './decorators';
 
 const meta = {
     title: 'Components/Toast',
@@ -9,7 +8,6 @@ const meta = {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    decorators: [withColorScheme],
 } satisfies Meta<typeof Toast>;
 
 export default meta;
@@ -21,7 +19,6 @@ export const Success: Story = {
         message: 'Toast message',
         type: 'success',
     },
-    decorators: [withColorScheme],
 };
 
 export const Warning: Story = {
@@ -30,7 +27,6 @@ export const Warning: Story = {
         message: 'Toast message',
         type: 'warning',
     },
-    decorators: [withColorScheme],
 };
 
 export const Info: Story = {
@@ -39,7 +35,6 @@ export const Info: Story = {
         message: 'Toast message',
         type: 'info',
     },
-    decorators: [withColorScheme],
 };
 
 export const Error: Story = {
@@ -48,5 +43,4 @@ export const Error: Story = {
         message: 'Toast message',
         type: 'error',
     },
-    decorators: [withColorScheme],
 };
