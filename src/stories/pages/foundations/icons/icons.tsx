@@ -9,6 +9,7 @@ import { SunIcon } from '@/components/icons/SunIcon';
 import { CrossMarkIcon } from '@/components/icons/CrossMarkIcon';
 import { EyeIcon } from '@/components/icons/EyeIcon';
 import { EyeSlashIcon } from '@/components/icons/EyeSlashIcon';
+import { GuardIcon } from '@/components/icons/GuardIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -50,5 +51,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'eye-slash',
         component: <EyeSlashIcon size={24} key={EyeIcon.name} />,
+    },
+    {
+        title: 'guard',
+        component: <GuardIcon size={24} key={GuardIcon.name} />,
     },
 ];
