@@ -1,6 +1,12 @@
 'use client';
 
-import React, { createContext, useContext, ReactNode, useState } from 'react';
+import React, {
+    createContext,
+    useContext,
+    ReactNode,
+    useState,
+    useEffect,
+} from 'react';
 import { useCookies } from '../CookiesContext';
 import { THEME_COOKIE_KEY } from '.';
 
@@ -47,6 +53,11 @@ export function ThemeProvider({ children, initialTheme }: ThemeProviderProps) {
         setTheme(selectedTheme);
         updateDocumentThemeClass();
     };
+
+    useEffect(() => {
+        setCookie(THEME_COOKIE_KEY, theme);
+        updateDocumentThemeClass();
+    }, [theme]);
 
     return (
         <ThemeContext.Provider value={{ switchTheme, theme }}>
