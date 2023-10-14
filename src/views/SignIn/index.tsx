@@ -7,7 +7,7 @@ export const SignIn = () => {
     return (
         <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="flex flex-1 items-center justify-center">
+            <main className="flex w-full flex-1 items-center justify-center">
                 <SignInForm />
             </main>
             <Footer />
