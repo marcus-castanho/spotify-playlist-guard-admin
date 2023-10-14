@@ -10,6 +10,7 @@ import { CrossMarkIcon } from '@/components/icons/CrossMarkIcon';
 import { EyeIcon } from '@/components/icons/EyeIcon';
 import { EyeSlashIcon } from '@/components/icons/EyeSlashIcon';
 import { GuardIcon } from '@/components/icons/GuardIcon';
+import { GitHubIcon } from '@/components/icons/GitHubIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -55,5 +56,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'guard',
         component: <GuardIcon size={24} key={GuardIcon.name} />,
+    },
+    {
+        title: 'github',
+        component: <GitHubIcon size={24} key={GitHubIcon.name} />,
     },
 ];
