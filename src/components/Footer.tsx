@@ -10,7 +10,7 @@ export const Footer = () => {
     const { theme } = useTheme();
 
     return (
-        <footer className="flex justify-center gap-4 border-t-2 p-5 dark:border-black">
+        <footer className="flex justify-center gap-4 p-5">
             <Link
                 href="https://github.com/marcus-castanho/spotify-playlist-guard-admin"
                 target="_blank"

@@ -5,7 +5,7 @@ import { GuardBotLogo } from './GuardBotLogo';
 
 export const Header = () => {
     return (
-        <header className="flex justify-between border-b-2 p-5 dark:border-black">
+        <header className="flex justify-between p-5">
             <Link href="/" className="flex items-center gap-4">
                 <GuardBotLogo />
                 <div>for Admin</div>
