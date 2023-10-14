@@ -12,6 +12,7 @@ import { EyeSlashIcon } from '@/components/icons/EyeSlashIcon';
 import { GuardIcon } from '@/components/icons/GuardIcon';
 import { GitHubIcon } from '@/components/icons/GitHubIcon';
 import { ExternalLinkIcon } from '@/components/icons/ExternalLinkIcon';
+import { DefaultAvatarIcon } from '@/components/icons/DefaultAvatarIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -65,5 +66,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'external-link',
         component: <ExternalLinkIcon size={24} key={ExternalLinkIcon.name} />,
+    },
+    {
+        title: 'default-avatar',
+        component: <DefaultAvatarIcon size={24} key={DefaultAvatarIcon.name} />,
     },
 ];
