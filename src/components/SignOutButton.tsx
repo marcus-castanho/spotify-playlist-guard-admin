@@ -6,5 +6,9 @@ import { useAuth } from '@/contexts/AuthContext';
 export const SignOutButton = () => {
     const { signOut } = useAuth();
 
-    return <button onClick={() => signOut()}>Sign Out</button>;
+    return (
+        <button onClick={() => signOut()} className="flex w-full items-start">
+            Sign Out
+        </button>
+    );
 };
