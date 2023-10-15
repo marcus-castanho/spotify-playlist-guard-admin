@@ -13,7 +13,7 @@ export const Avatar: FC<AvatarProps> = ({ src }) => {
     const size = 24;
 
     return (
-        <div className="p-1">
+        <>
             {src ? (
                 <Image
                     alt="Avatar image"
@@ -27,6 +27,6 @@ export const Avatar: FC<AvatarProps> = ({ src }) => {
                     fillColor={theme === 'dark' ? 'white' : 'black'}
                 />
             )}
-        </div>
+        </>
     );
 };
