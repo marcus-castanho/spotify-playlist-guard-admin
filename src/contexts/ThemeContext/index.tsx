@@ -5,7 +5,7 @@ export * from './Provider';
 
 export const THEME_COOKIE_KEY = 's-p-guard-admin_theme' as const;
 
-export function withTheme(
+export function withInitialTheme(
     Component: typeof ThemeProvider,
     { initialTheme }: { initialTheme: Theme },
 ) {
