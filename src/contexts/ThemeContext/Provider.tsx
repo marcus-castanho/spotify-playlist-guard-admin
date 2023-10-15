@@ -57,6 +57,7 @@ export function ThemeProvider({ children, initialTheme }: ThemeProviderProps) {
     useEffect(() => {
         setCookie(THEME_COOKIE_KEY, theme);
         updateDocumentThemeClass();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [theme]);
 
     return (
