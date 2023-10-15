@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
+'use client';
+
+import React from 'react';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import Link from 'next/link';
 import { GuardBotLogo } from './GuardBotLogo';
 import { AvatarMenu } from './AvatarMenu';
 import { useAuth } from '@/contexts/AuthContext';
 
-type HeaderProps = {
-    user: ReturnType<typeof useAuth>['user'];
-};
-export const Header: FC<HeaderProps> = ({ user }) => {
+export const Header = () => {
+    const { user } = useAuth();
     return (
         <header className="flex justify-between p-5">
             <Link href="/" className="flex items-center gap-4">
