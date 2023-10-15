@@ -24,9 +24,9 @@ const ListItem: FC<ListItemProps> = ({ children, border }) => {
                 .with('bottom', () => 'border-b-[1px] border-gray-100')
                 .otherwise(() => '')}
         >
-            <button className="flex w-full items-start rounded-[4px] p-3 hover:bg-gray-500">
+            <div className="flex w-full items-start rounded-[4px] p-3 hover:bg-gray-500">
                 {children}
-            </button>
+            </div>
         </li>
     );
 };
