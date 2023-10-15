@@ -1,13 +1,14 @@
 import React, { FC, ReactNode } from 'react';
 import { match } from 'ts-pattern';
+import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 
 type HeaderProps = {
     children: ReactNode;
 };
 const Header: FC<HeaderProps> = ({ children }) => {
     return (
-        <div className="p-1">
-            <div className="border-b-[1px] border-gray-100">{children}</div>
+        <div className="px-1">
+            <div className="border-b-[1px] border-gray-100 p-3">{children}</div>
         </div>
     );
 };
@@ -34,14 +35,26 @@ const ListItem: FC<ListItemProps> = ({ children, border }) => {
 type DropdownMenuListProps = {
     header?: ReactNode;
     itemsGroups: ReactNode[][];
+    onClose: () => void;
 };
 export const DropdownMenuList: FC<DropdownMenuListProps> = ({
     header,
     itemsGroups,
+    onClose,
 }) => {
     return (
         <div className="rounded-lg bg-gray-700 text-white max-sm:h-full sm:w-[200px]">
-            {header && <Header>{header}</Header>}
+            {
+                <Header>
+                    <button
+                        onClick={() => onClose()}
+                        className="pb-6 sm:hidden"
+                    >
+                        <ArrowLeftIcon size={24} fillColor="white" />
+                    </button>
+                    {header && <>{header}</>}
+                </Header>
+            }
             <ul className="p-1">
                 {itemsGroups
                     .map((items, groupIndex) => {

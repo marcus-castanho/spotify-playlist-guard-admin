@@ -16,7 +16,7 @@ export const AvatarMenu: FC<AvatarMenuProps> = ({
     user,
     defaultVisibilty = false,
 }) => {
-    const { ref, isVisible, switchVisibility } =
+    const { ref, isVisible, switchVisibility, setIsVisible } =
         useVisibleComponent<HTMLDivElement>(defaultVisibilty);
 
     return (
@@ -35,11 +35,12 @@ export const AvatarMenu: FC<AvatarMenuProps> = ({
                 >
                     <DropdownMenuList
                         header={
-                            <div className="flex items-center gap-2 p-3">
+                            <div className="flex items-center gap-2">
                                 <Avatar size={30} fillColor="white" />
                                 {user.name}
                             </div>
                         }
+                        onClose={() => setIsVisible(false)}
                         itemsGroups={[
                             [
                                 <Link
