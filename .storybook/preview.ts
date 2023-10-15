@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/react';
 import '../src/styles/globals.css';
 import '../src/stories/styles/globals.css';
-import { useWithColorScheme } from '../src/stories/utils/decorators';
+import { useWithContexts } from '../src/stories/utils/decorators';
 
 const preview: Preview = {
     parameters: {
@@ -25,8 +25,11 @@ const preview: Preview = {
                 },
             ],
         },
+        nextjs: {
+            appDirectory: true,
+        },
     },
-    decorators: [useWithColorScheme],
+    decorators: [useWithContexts],
 };
 
 export default preview;
