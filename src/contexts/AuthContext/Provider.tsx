@@ -16,13 +16,14 @@ export type AuthContextType = {
 
 export type AuthProviderProps = {
     children?: ReactNode;
+    defaultUser?: User;
 };
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-export function AuthProvider({ children }: AuthProviderProps) {
+export function AuthProvider({ children, defaultUser }: AuthProviderProps) {
     const router = useRouter();
-    const { me: user, refetch, query } = useUserMe(signOut);
+    const { me: user, refetch, query } = useUserMe({ signOut, defaultUser });
     const isAuthenticated = !!user;
 
     function signOut(sessionEnd?: boolean) {

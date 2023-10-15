@@ -1,17 +1,21 @@
 import { isPrivatePage } from '@/config/pages';
 import { QueryKey } from '@/contexts/QueryContext';
-import { getMe } from '@/services/spotifyPlaylistGuardApi';
+import { User, getMe } from '@/services/spotifyPlaylistGuardApi';
 import { getCookie } from '@/storage/cookies/client';
 import { useQuery } from '@tanstack/react-query';
 import { usePathname } from 'next/navigation';
 import { TOKEN_COOKIE_KEY } from '..';
 
-export function useUserMe(signOut: (sessionEnd?: boolean) => void) {
+type UseUserMeParams = {
+    signOut: (sessionEnd?: boolean) => void;
+    defaultUser?: User;
+};
+export function useUserMe({ signOut, defaultUser }: UseUserMeParams) {
     const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const userMeQueryKey: QueryKey = 'user-me';
     const pathname = usePathname();
 
-    const userMeQuery = useQuery([userMeQueryKey], {
+    const userMeQuery = useQuery([userMeQueryKey, defaultUser], {
         queryFn: () =>
             getMe(token)
                 .then(({ data, status, success }) => {
@@ -21,7 +25,7 @@ export function useUserMe(signOut: (sessionEnd?: boolean) => void) {
                     return data;
                 })
                 .catch(() => null),
-        initialData: null,
+        initialData: defaultUser || null,
         enabled: isPrivatePage(pathname || ''),
     });
 
