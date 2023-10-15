@@ -13,6 +13,7 @@ import { GuardIcon } from '@/components/icons/GuardIcon';
 import { GitHubIcon } from '@/components/icons/GitHubIcon';
 import { ExternalLinkIcon } from '@/components/icons/ExternalLinkIcon';
 import { DefaultAvatarIcon } from '@/components/icons/DefaultAvatarIcon';
+import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -70,5 +71,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'default-avatar',
         component: <DefaultAvatarIcon size={24} key={DefaultAvatarIcon.name} />,
+    },
+    {
+        title: 'arrow-left',
+        component: <ArrowLeftIcon size={24} key={ArrowLeftIcon.name} />,
     },
 ];
