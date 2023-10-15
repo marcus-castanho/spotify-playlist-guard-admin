@@ -7,10 +7,12 @@ import { useTheme } from '@/contexts/ThemeContext';
 
 type AvatarProps = {
     src?: string;
+    size?: number;
+    fillColor?: 'black' | 'white';
 };
-export const Avatar: FC<AvatarProps> = ({ src }) => {
+export const Avatar: FC<AvatarProps> = ({ src, size = 24, fillColor }) => {
     const { theme } = useTheme();
-    const size = 24;
+    const avatarIconColor = fillColor || theme === 'dark' ? 'white' : 'black';
 
     return (
         <>
@@ -22,10 +24,7 @@ export const Avatar: FC<AvatarProps> = ({ src }) => {
                     height={size}
                 />
             ) : (
-                <DefaultAvatarIcon
-                    size={size}
-                    fillColor={theme === 'dark' ? 'white' : 'black'}
-                />
+                <DefaultAvatarIcon size={size} fillColor={avatarIconColor} />
             )}
         </>
     );
