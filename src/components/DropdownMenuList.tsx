@@ -6,11 +6,7 @@ type HeaderProps = {
     children: ReactNode;
 };
 const Header: FC<HeaderProps> = ({ children }) => {
-    return (
-        <div className="px-1">
-            <div className="border-b-[1px] border-gray-100 p-3">{children}</div>
-        </div>
-    );
+    return <div className="border-b-[1px] border-gray-100 p-3">{children}</div>;
 };
 
 type ListItemProps = {
@@ -43,7 +39,7 @@ export const DropdownMenuList: FC<DropdownMenuListProps> = ({
     onClose,
 }) => {
     return (
-        <div className="rounded-lg bg-gray-700 text-white max-sm:h-full sm:w-[200px]">
+        <div className="rounded-lg bg-gray-700 p-1 text-white max-sm:h-full sm:w-[200px]">
             {
                 <Header>
                     <button
@@ -55,7 +51,7 @@ export const DropdownMenuList: FC<DropdownMenuListProps> = ({
                     {header && <>{header}</>}
                 </Header>
             }
-            <ul className="p-1">
+            <ul>
                 {itemsGroups
                     .map((items, groupIndex) => {
                         const isLastGroup =
