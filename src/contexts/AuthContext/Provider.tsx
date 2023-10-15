@@ -22,11 +22,12 @@ export const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: AuthProviderProps) {
     const router = useRouter();
-    const { me: user, refetch } = useUserMe(signOut);
+    const { me: user, refetch, query } = useUserMe(signOut);
     const isAuthenticated = !!user;
 
     function signOut(sessionEnd?: boolean) {
         deleteCookie(TOKEN_COOKIE_KEY);
+        query.remove();
 
         if (sessionEnd) return router.push(`/signin/?sessionEnd=${true}`);
 

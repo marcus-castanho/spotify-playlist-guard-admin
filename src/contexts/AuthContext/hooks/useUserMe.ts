@@ -28,5 +28,6 @@ export function useUserMe(signOut: (sessionEnd?: boolean) => void) {
     return {
         me: userMeQuery.data,
         refetch: userMeQuery.refetch,
+        query: userMeQuery,
     };
 }
