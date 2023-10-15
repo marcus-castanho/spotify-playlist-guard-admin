@@ -28,7 +28,11 @@ export const AvatarMenu: FC<AvatarMenuProps> = ({
                 <Avatar />
             </button>
             {isVisible && (
-                <div className={'absolute bottom-0 right-0 translate-y-[100%]'}>
+                <div
+                    className={
+                        'fixed max-sm:left-0 max-sm:top-0 max-sm:h-screen max-sm:w-screen max-sm:p-2 sm:absolute sm:bottom-0 sm:right-0 sm:translate-y-[100%]'
+                    }
+                >
                     <DropdownMenuList
                         header={
                             <div className="flex items-center gap-2 p-3">

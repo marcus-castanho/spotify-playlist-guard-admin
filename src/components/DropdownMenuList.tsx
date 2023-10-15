@@ -40,7 +40,7 @@ export const DropdownMenuList: FC<DropdownMenuListProps> = ({
     itemsGroups,
 }) => {
     return (
-        <div className="min-w-[200px] rounded-lg bg-gray-700 text-white">
+        <div className="rounded-lg bg-gray-700 text-white max-sm:h-full sm:w-[200px]">
             {header && <Header>{header}</Header>}
             <ul className="p-1">
                 {itemsGroups
