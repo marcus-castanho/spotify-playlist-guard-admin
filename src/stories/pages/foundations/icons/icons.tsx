@@ -15,6 +15,7 @@ import { ExternalLinkIcon } from '@/components/icons/ExternalLinkIcon';
 import { DefaultAvatarIcon } from '@/components/icons/DefaultAvatarIcon';
 import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon';
 import { ChevronLeftIcon } from '@/components/icons/ChevronLeftIcon';
+import { ChevronRightIcon } from '@/components/icons/ChevronRightIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -80,5 +81,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'chevron-left',
         component: <ChevronLeftIcon size={24} key={ChevronLeftIcon.name} />,
+    },
+    {
+        title: 'chevron-right',
+        component: <ChevronRightIcon size={24} key={ChevronRightIcon.name} />,
     },
 ];
