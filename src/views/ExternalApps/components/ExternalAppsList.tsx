@@ -62,7 +62,7 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
 
     if (isUpdating) return <>loading</>;
     return (
-        <>
+        <div>
             <button onClick={() => handleCreateExternalApp()}>create</button>
             {externalApps.map((externalApp) => (
                 <Fragment key={externalApp.id}>
@@ -99,6 +99,6 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
                 changePage={changePage}
                 pagesIndexes={pagesIndexes}
             />
-        </>
+        </div>
     );
 };

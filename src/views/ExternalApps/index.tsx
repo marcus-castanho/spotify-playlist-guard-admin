@@ -6,6 +6,7 @@ import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 import { Header } from '@/components/Header';
 import { PageContainer } from '@/components/PageContainer';
 import { Main } from '@/components/Main';
+import { Footer } from '@/components/Footer';
 
 export const ExternalApps = async () => {
     const token = getPageCookie(TOKEN_COOKIE_KEY) || '';
@@ -22,10 +23,9 @@ export const ExternalApps = async () => {
         <PageContainer>
             <Header />
             <Main>
-                <div>
-                    <ExternalAppsList externalApps={externalApps} />
-                </div>
+                <ExternalAppsList externalApps={externalApps} />
             </Main>
+            <Footer />
         </PageContainer>
     );
 };
