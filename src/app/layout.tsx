@@ -22,11 +22,13 @@ export default function RootLayout({
 }) {
     const initialTheme =
         getPageCookie(THEME_COOKIE_KEY) === 'dark' ? 'dark' : 'light';
-    const themeClassName = match(initialTheme)
-        .with('light', () => '')
-        .otherwise(() => initialTheme);
     return (
-        <html lang="en" className={themeClassName}>
+        <html
+            lang="en"
+            className={match(initialTheme)
+                .with('light', () => '')
+                .otherwise(() => initialTheme)}
+        >
             <body
                 className={`${inter.className} dark:bg-black dark:text-white`}
             >
