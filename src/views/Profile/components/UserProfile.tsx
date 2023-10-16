@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { ProfileForm } from './ProfileForm';
+import { ProfileVisualizer } from './ProfileVisualizer';
+import { Avatar } from '@/components/Avatar';
 
 export const UserProfile = () => {
     const { user, refetchUser } = useAuth();
@@ -15,39 +17,33 @@ export const UserProfile = () => {
 
     if (!user) return <>loading</>;
     return (
-        <>
-            <div>
-                {user && (
-                    <>
-                        <div>{`createdAt: ${user.createdAt}`}</div>
-                        <div>{`updatedAt: ${user.updatedAt}`}</div>
-                        <div>{`roles: ${user.roles}`}</div>
-                        <div>{`id: ${user.id}`}</div>
-                        {isEditing ? (
-                            <ProfileForm
-                                id={user.id}
-                                defaultForm={{
-                                    name: user.name,
-                                    email: user.email,
-                                }}
-                                onSubmit={onSubmit}
-                            />
-                        ) : (
-                            <>
-                                <div>{`name: ${user.name}`}</div>
-                                <div>{`email: ${user.email}`}</div>
-                                <button
-                                    onClick={() =>
-                                        setIsEditing((state) => !state)
-                                    }
-                                >
-                                    edit
-                                </button>
-                            </>
-                        )}
-                    </>
-                )}
+        <div className="p-3. top-1/2 max-w-xs">
+            <div className="flex justify-center">
+                <Avatar size={52} />
             </div>
-        </>
+            {user && (
+                <>
+                    {isEditing ? (
+                        <ProfileForm
+                            id={user.id}
+                            defaultForm={{
+                                name: user.name,
+                                email: user.email,
+                            }}
+                            onSubmit={onSubmit}
+                            onCancel={() => setIsEditing(false)}
+                        />
+                    ) : (
+                        <ProfileVisualizer
+                            defaultForm={{
+                                name: user.name,
+                                email: user.email,
+                            }}
+                            onEdit={() => setIsEditing((state) => !state)}
+                        />
+                    )}
+                </>
+            )}
+        </div>
     );
 };
