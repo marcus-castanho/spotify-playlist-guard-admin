@@ -14,11 +14,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    args: {},
+    args: { size: 52 },
 };
 
 export const Example: Story = {
     args: {
+        size: 52,
         src: 'https://raw.githubusercontent.com/marcus-castanho/spotify_playlist_guard/main/public/images/guardBot-1db954-circle.png',
     },
 };
