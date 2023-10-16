@@ -87,7 +87,7 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
                 />
                 <TextInputField
                     id="recover-email"
-                    label="Recover email"
+                    label="Recover e-mail"
                     defaultValue={defaultForm.recoverEmail}
                     required
                     onChange={(value) =>

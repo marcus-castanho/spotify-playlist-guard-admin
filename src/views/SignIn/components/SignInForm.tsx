@@ -41,7 +41,7 @@ export const SignInForm = () => {
                 <FormRow columns={1}>
                     <TextInputField
                         id="email"
-                        label="Email"
+                        label="E-mail"
                         defaultValue={''}
                         required
                         onChange={(value) =>
