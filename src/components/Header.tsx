@@ -8,10 +8,13 @@ import { AvatarMenu } from './AvatarMenu';
 import { useAuth } from '@/contexts/AuthContext';
 
 export const Header = () => {
-    const { user } = useAuth();
+    const { user, isAuthenticated } = useAuth();
     return (
         <header className="flex justify-between p-5">
-            <Link href="/" className="flex items-center gap-4">
+            <Link
+                href={isAuthenticated ? '/home' : '/'}
+                className="flex items-center gap-4"
+            >
                 <GuardBotLogo />
                 <div>for Admin</div>
             </Link>
