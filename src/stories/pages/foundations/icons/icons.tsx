@@ -14,6 +14,7 @@ import { GitHubIcon } from '@/components/icons/GitHubIcon';
 import { ExternalLinkIcon } from '@/components/icons/ExternalLinkIcon';
 import { DefaultAvatarIcon } from '@/components/icons/DefaultAvatarIcon';
 import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon';
+import { ChevronLeftIcon } from '@/components/icons/ChevronLeftIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -75,5 +76,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'arrow-left',
         component: <ArrowLeftIcon size={24} key={ArrowLeftIcon.name} />,
+    },
+    {
+        title: 'chevron-left',
+        component: <ChevronLeftIcon size={24} key={ChevronLeftIcon.name} />,
     },
 ];
