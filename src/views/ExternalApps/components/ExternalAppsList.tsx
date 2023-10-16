@@ -20,10 +20,9 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
         isFetching,
         page,
         changePage,
-        getPagesIndexes,
+        pagesIndexes,
         externalAppsQuery,
     } = useExternalApps(initialExternalApps);
-    const { indexesArr: pagesIndexes } = getPagesIndexes(20, 5);
     const [isUpdating, setIsUpdating] = useState(false);
     const { openModal } = useModal();
 

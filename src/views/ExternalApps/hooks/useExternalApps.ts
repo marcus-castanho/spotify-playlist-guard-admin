@@ -14,6 +14,7 @@ export function useExternalApps(externalApps: ExternalApp[]) {
     const { handleGuardApiResponse } = useClientErrorHandler();
     const externalAppsQueryKey: QueryKey = 'external-apps';
     const { page, changePage, getPagesIndexes } = usePagination();
+    const { indexesArr: pagesIndexes } = getPagesIndexes(20, 5);
 
     const externalAppsQuery = useQuery([externalAppsQueryKey, page], {
         queryFn: () =>
@@ -28,7 +29,7 @@ export function useExternalApps(externalApps: ExternalApp[]) {
         isFetching: externalAppsQuery.isFetching,
         page,
         changePage,
-        getPagesIndexes,
+        pagesIndexes,
         externalAppsQuery,
     };
 }
