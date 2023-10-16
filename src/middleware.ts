@@ -3,6 +3,7 @@ import { handleMiddlewareErrorResponse } from './errors/serverErrorHandlers';
 import { validateSession } from './middlewares/validateSession';
 import { isPrivatePage } from './config/pages';
 import { shouldRunMiddlewares } from './middlewares/shouldRunMiddlewares';
+import { redirectToSignIn } from './middlewares/redirectToSignIn';
 
 export const config = {
     /*
@@ -17,8 +18,11 @@ export const config = {
 
 export async function middleware(request: NextRequest) {
     try {
+        const { pathname } = request.nextUrl;
+
         if (!shouldRunMiddlewares(request)) return NextResponse.next();
-        if (isPrivatePage(request.nextUrl.pathname)) validateSession(request);
+        if (pathname === '/') return redirectToSignIn(request);
+        if (isPrivatePage(pathname)) validateSession(request);
 
         return NextResponse.next();
     } catch (error) {
