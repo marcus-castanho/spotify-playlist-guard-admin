@@ -1,17 +1,18 @@
 import React from 'react';
-import Link from 'next/link';
-import { SignOutButton } from '@/components/SignOutButton';
 import { UserProfile } from './components/UserProfile';
 import { Header } from '@/components/Header';
+import { PageContainer } from '@/components/PageContainer';
+import { Footer } from '@/components/Footer';
+import { Main } from '@/components/Main';
 
 export const Profile = () => {
     return (
-        <>
+        <PageContainer>
             <Header />
-            <h1>Profile</h1>
-            <Link href="/home">Home</Link>
-            <SignOutButton />
-            <UserProfile />
-        </>
+            <Main>
+                <UserProfile />
+            </Main>
+            <Footer />
+        </PageContainer>
     );
 };
