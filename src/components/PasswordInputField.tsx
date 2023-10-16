@@ -11,6 +11,7 @@ type PasswordInputFieldProps = {
     placeHolder?: string;
     required?: boolean;
     onChange?: (text: string) => void;
+    disabled?: boolean;
 };
 
 export const PasswordInputField: FC<PasswordInputFieldProps> = ({
@@ -19,6 +20,7 @@ export const PasswordInputField: FC<PasswordInputFieldProps> = ({
     placeHolder = '',
     required = false,
     onChange = () => {},
+    disabled = false,
 }) => {
     const [visible, setVisible] = useState(false);
     const { theme } = useTheme();
@@ -37,6 +39,7 @@ export const PasswordInputField: FC<PasswordInputFieldProps> = ({
                     className="w-full rounded border-[1px] py-0.5 pl-3.5 pr-11 dark:border-gray-50 dark:bg-black"
                     required={required}
                     placeholder={placeHolder}
+                    disabled={disabled}
                 />
                 <button
                     type="button"

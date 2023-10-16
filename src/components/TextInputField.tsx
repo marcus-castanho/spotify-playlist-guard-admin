@@ -11,6 +11,7 @@ type TextInputFieldProps = {
         InputHTMLAttributes<HTMLButtonElement>['type'],
         'email' | 'tel' | 'text' | 'url'
     >;
+    disabled?: boolean;
 };
 
 export const TextInputField: FC<TextInputFieldProps> = ({
@@ -21,6 +22,7 @@ export const TextInputField: FC<TextInputFieldProps> = ({
     required = false,
     onChange = () => {},
     type = 'text',
+    disabled = false,
 }) => {
     return (
         <div className="rounded-lg bg-gray-50 p-4 dark:bg-black">
@@ -36,6 +38,7 @@ export const TextInputField: FC<TextInputFieldProps> = ({
                 required={required}
                 defaultValue={defaultValue}
                 placeholder={placeHolder}
+                disabled={disabled}
             />
         </div>
     );
