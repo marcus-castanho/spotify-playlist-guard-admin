@@ -18,7 +18,7 @@ export const UserProfile = () => {
     if (!user) return <>loading</>;
     return (
         <div className="p-3. top-1/2 max-w-xs">
-            <div className="flex justify-center">
+            <div className="flex justify-center p-4">
                 <Avatar size={52} />
             </div>
             {user && (
