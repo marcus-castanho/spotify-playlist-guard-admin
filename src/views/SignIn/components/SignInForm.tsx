@@ -36,7 +36,7 @@ export const SignInForm = () => {
         <>
             <form
                 onSubmit={handleSubmit}
-                className="top-1/2 max-w-xs rounded-lg border-gray-100 bg-white p-3.5 dark:bg-black md:border-[1px]"
+                className="top-1/2 max-w-xs rounded-lg border-gray-100 bg-white p-3.5 dark:bg-black sm:border-[1px]"
             >
                 <FormRow columns={1}>
                     <TextInputField

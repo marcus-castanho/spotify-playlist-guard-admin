@@ -11,7 +11,7 @@ export const SignIn = () => {
             <Header />
             <Main>
                 <div>
-                    <h1 className="px-4 text-4xl md:py-4">Sign in</h1>
+                    <h1 className="px-4 text-4xl sm:py-4">Sign in</h1>
                     <SignInForm />
                 </div>
             </Main>

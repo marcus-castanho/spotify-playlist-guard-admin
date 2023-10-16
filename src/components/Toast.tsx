@@ -36,7 +36,7 @@ export const Toast: FC<ToastProps> = ({ display, message, type }) => {
 
     if (!display) return <></>;
     return (
-        <div className="fixed right-0 top-0 z-10 max-md:w-full max-md:p-1 md:right-3 md:top-3">
+        <div className="fixed right-0 top-0 z-10 max-sm:w-full max-sm:p-1 sm:right-3 sm:top-3">
             <div className={toastContainerClass}>
                 <div className={`flex max-w-xs items-center justify-between`}>
                     <div className="w-6">{icon}</div>
