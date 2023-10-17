@@ -77,7 +77,7 @@ export const PaginationNav: FC<PaginationNavProps> = ({
     const isLastPage = page === pagesIndexes[pagesIndexes.length - 1];
 
     return (
-        <div className="flex gap-2 p-4">
+        <div className="flex justify-center gap-2 p-4">
             <NavButton
                 onClick={() => changePage('previous')}
                 disabled={isFirstPage}
