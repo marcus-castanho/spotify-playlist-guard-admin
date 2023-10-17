@@ -84,7 +84,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
                     }
                 />
             </FormRow>
-            <div className=" flex flex-col gap-3.5 p-4 sm:flex-row">
+            <div className="flex flex-col gap-3.5 p-4 sm:flex-row">
                 <ButtonPrimary
                     content="Save"
                     type="submit"

@@ -59,7 +59,7 @@ export const SignInForm = () => {
                         }
                     />
                 </FormRow>
-                <div className="p-4">
+                <div className="flex flex-col p-4 sm:flex-row">
                     <ButtonPrimary
                         content="Sign In"
                         type="submit"
