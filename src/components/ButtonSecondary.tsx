@@ -17,10 +17,8 @@ export const ButtonSecondary: FC<ButtonSecondaryProps> = ({
     scale = true,
 }) => {
     return (
-        <div>
-            <button
-                type={type}
-                onClick={onClick}
+        <button type={type} onClick={onClick}>
+            <div
                 className={match({ stretch, scale })
                     .with(
                         { stretch: true, scale: true },
@@ -45,7 +43,7 @@ export const ButtonSecondary: FC<ButtonSecondaryProps> = ({
                     .otherwise(() => '')}
             >
                 {content}
-            </button>
-        </div>
+            </div>
+        </button>
     );
 };

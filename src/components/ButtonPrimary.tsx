@@ -19,24 +19,24 @@ export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
     scale = true,
 }) => {
     return (
-        <div
+        <button
+            type={type}
+            onClick={onClick}
+            disabled={disabled}
             className={match({ disabled, scale })
                 .with({ disabled: true }, () => 'opacity-50')
                 .with({ scale: false }, () => '')
                 .otherwise(() => 'hover:scale-105')}
         >
-            <button
-                type={type}
-                onClick={onClick}
+            <div
                 className={
                     stretch
                         ? 'w-full rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
                         : 'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
                 }
-                disabled={disabled}
             >
                 {content}
-            </button>
-        </div>
+            </div>
+        </button>
     );
 };
