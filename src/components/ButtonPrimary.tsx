@@ -1,4 +1,5 @@
 import React, { FC, ButtonHTMLAttributes } from 'react';
+import { match } from 'ts-pattern';
 
 type ButtonPrimaryProps = {
     content: string;
@@ -6,6 +7,7 @@ type ButtonPrimaryProps = {
     type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
     disabled?: boolean;
     stretch?: boolean;
+    scale?: boolean;
 };
 
 export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
@@ -14,18 +16,23 @@ export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
     type = 'button',
     disabled = false,
     stretch = false,
+    scale = true,
 }) => {
-    const disabledStyleClass = disabled ? 'opacity-50' : 'hover:scale-105';
-    const styleClass = stretch
-        ? 'w-full rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
-        : 'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black';
-
     return (
-        <div className={disabledStyleClass}>
+        <div
+            className={match({ disabled, scale })
+                .with({ disabled: true }, () => 'opacity-50')
+                .with({ scale: false }, () => '')
+                .otherwise(() => 'hover:scale-105')}
+        >
             <button
                 type={type}
                 onClick={onClick}
-                className={styleClass}
+                className={
+                    stretch
+                        ? 'w-full rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
+                        : 'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
+                }
                 disabled={disabled}
             >
                 {content}
