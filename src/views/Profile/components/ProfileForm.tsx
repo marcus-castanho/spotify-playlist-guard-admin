@@ -89,13 +89,8 @@ export const ProfileForm: FC<ProfileFormProps> = ({
                     content="Save"
                     type="submit"
                     disabled={isSubmiting}
-                    stretch
                 />
-                <ButtonSecondary
-                    content="Cancel"
-                    onClick={() => onCancel()}
-                    stretch
-                />
+                <ButtonSecondary content="Cancel" onClick={() => onCancel()} />
             </div>
         </form>
     );

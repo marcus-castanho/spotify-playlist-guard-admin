@@ -6,7 +6,6 @@ type ButtonPrimaryProps = {
     onClick?: () => void;
     type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
     disabled?: boolean;
-    stretch?: boolean;
     scale?: boolean;
 };
 
@@ -15,7 +14,6 @@ export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
     onClick = () => {},
     type = 'button',
     disabled = false,
-    stretch = false,
     scale = true,
 }) => {
     return (
@@ -30,9 +28,7 @@ export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
         >
             <div
                 className={
-                    stretch
-                        ? 'w-full rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
-                        : 'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
+                    'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
                 }
             >
                 {content}

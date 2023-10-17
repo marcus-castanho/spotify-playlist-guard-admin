@@ -64,7 +64,6 @@ export const SignInForm = () => {
                         content="Sign In"
                         type="submit"
                         disabled={isSubmiting}
-                        stretch
                     />
                 </div>
             </form>
