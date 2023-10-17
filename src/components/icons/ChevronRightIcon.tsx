@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 type ChevronRightIconProps = {
     size: number;
-    fillColor?: 'black' | 'white';
+    fillColor?: string;
 };
 
 export const ChevronRightIcon: FC<ChevronRightIconProps> = ({
