@@ -32,7 +32,7 @@ export const ProfileVisualizer: FC<ProfileVisualizerProps> = ({
                     disabled
                 />
             </FormRow>
-            <div className="flex justify-center p-4">
+            <div className="flex flex-col justify-center p-4 sm:flex-row">
                 <ButtonPrimary
                     content="Edit"
                     type="submit"
