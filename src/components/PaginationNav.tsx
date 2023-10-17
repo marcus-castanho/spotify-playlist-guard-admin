@@ -4,6 +4,7 @@ import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 import { useTheme } from '@/contexts/ThemeContext';
 import { ChevronRightIcon } from './icons/ChevronRightIcon';
 import { match } from 'ts-pattern';
+import { colors } from '@/styles/theme';
 
 const GapBox = () => {
     return <div className="p-2">...</div>;
@@ -45,7 +46,7 @@ const NavButton: FC<NavButtonProps> = ({
                 .with(
                     { disabled: true },
                     () =>
-                        'flex items-center justify-between rounded-md border-[1px] border-transparent p-1 opacity-50',
+                        'flex items-center justify-between rounded-md border-[1px] border-transparent p-1',
                 )
                 .otherwise(
                     () =>
@@ -72,19 +73,25 @@ export const PaginationNav: FC<PaginationNavProps> = ({
     pagesIndexes,
 }) => {
     const { theme } = useTheme();
-    const lastPage = pagesIndexes[pagesIndexes.length - 1];
+    const isFirstPage = page === 1;
+    const isLastPage = page === pagesIndexes[pagesIndexes.length - 1];
 
     return (
         <div className="flex gap-2 p-4">
             <NavButton
                 onClick={() => changePage('previous')}
-                disabled={page === 1}
+                disabled={isFirstPage}
             >
                 <ChevronLeftIcon
                     size={16}
-                    fillColor={theme === 'dark' ? 'white' : 'black'}
+                    fillColor={match({ isFirstPage, theme })
+                        .with({ isFirstPage: true }, () => colors.gray[100])
+                        .with({ theme: 'dark' }, () => 'white')
+                        .otherwise(() => 'black')}
                 />
-                <div className="pr-2">Previous</div>
+                <div className={isFirstPage ? 'pr-2 text-gray-100' : 'pr-2'}>
+                    Previous
+                </div>
             </NavButton>
             <div className="flex gap-2 max-sm:hidden">
                 {pagesIndexes.map((pageIndex) =>
@@ -104,14 +111,16 @@ export const PaginationNav: FC<PaginationNavProps> = ({
                     ),
                 )}
             </div>
-            <NavButton
-                onClick={() => changePage('next')}
-                disabled={page === lastPage}
-            >
-                <div className="pl-2">Next</div>
+            <NavButton onClick={() => changePage('next')} disabled={isLastPage}>
+                <div className={isLastPage ? 'pl-2 text-gray-200' : 'pl-2'}>
+                    Next
+                </div>
                 <ChevronRightIcon
                     size={16}
-                    fillColor={theme === 'dark' ? 'white' : 'black'}
+                    fillColor={match({ isFirstPage, theme })
+                        .with({ isFirstPage: true }, () => colors.gray[100])
+                        .with({ theme: 'dark' }, () => 'white')
+                        .otherwise(() => 'black')}
                 />
             </NavButton>
         </div>
