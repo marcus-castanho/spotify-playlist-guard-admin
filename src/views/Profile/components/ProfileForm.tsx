@@ -10,9 +10,9 @@ import {
 import { useToast } from '@/contexts/ToastContext';
 import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 import { FormRow } from '@/components/FormRow';
-import { TextInputField } from '@/components/TextInputField';
 import { ButtonPrimary } from '@/components/ButtonPrimary';
 import { ButtonSecondary } from '@/components/ButtonSecondary';
+import { FormField } from '@/components/FormField';
 
 export type ProfileFormProps = {
     id: string;
@@ -57,32 +57,34 @@ export const ProfileForm: FC<ProfileFormProps> = ({
     return (
         <form onSubmit={handleSaveUserInfo}>
             <FormRow columns={1}>
-                <TextInputField
-                    id="name"
-                    label="Name"
-                    defaultValue={defaultForm.name}
-                    required
-                    onChange={(value) =>
-                        setForm((state) => ({
-                            ...state,
-                            name: value,
-                        }))
-                    }
-                />
+                <FormField.Root id="name" label="Name" required>
+                    <FormField.TextInput
+                        id="name"
+                        defaultValue={defaultForm.name}
+                        required
+                        onChange={(value) =>
+                            setForm((state) => ({
+                                ...state,
+                                name: value,
+                            }))
+                        }
+                    />
+                </FormField.Root>
             </FormRow>
             <FormRow columns={1}>
-                <TextInputField
-                    id="email"
-                    label="E-mail"
-                    defaultValue={defaultForm.email}
-                    required
-                    onChange={(value) =>
-                        setForm((state) => ({
-                            ...state,
-                            email: value,
-                        }))
-                    }
-                />
+                <FormField.Root id="email" label="e-mail" required>
+                    <FormField.TextInput
+                        id="email"
+                        defaultValue={defaultForm.email}
+                        required
+                        onChange={(value) =>
+                            setForm((state) => ({
+                                ...state,
+                                email: value,
+                            }))
+                        }
+                    />
+                </FormField.Root>
             </FormRow>
             <div className="flex flex-col gap-3.5 p-4 sm:flex-row">
                 <ButtonPrimary
