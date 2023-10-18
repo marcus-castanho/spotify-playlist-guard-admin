@@ -7,7 +7,6 @@ import { useTheme } from '@/contexts/ThemeContext';
 
 type PasswordInputProps = {
     id: string;
-    label: string;
     placeHolder?: string;
     required?: boolean;
     onChange?: (text: string) => void;
