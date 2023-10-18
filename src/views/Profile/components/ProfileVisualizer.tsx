@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { ButtonPrimary } from '@/components/ButtonPrimary';
 import { FormRow } from '@/components/FormRow';
-import { TextInputField } from '@/components/TextInputField';
+import { FormField } from '@/components/FormField';
 
 type ProfileVisualizerProps = {
     defaultForm: { name: string; email: string };
@@ -15,22 +15,26 @@ export const ProfileVisualizer: FC<ProfileVisualizerProps> = ({
     return (
         <div>
             <FormRow columns={1}>
-                <TextInputField
-                    id="name"
-                    label="Name"
-                    defaultValue={defaultForm.name}
-                    onChange={() => {}}
-                    disabled
-                />
+                <FormField.Root id="name" label="Name" required>
+                    <FormField.TextInput
+                        id="name"
+                        defaultValue={defaultForm.name}
+                        required
+                        onChange={() => {}}
+                        disabled
+                    />
+                </FormField.Root>
             </FormRow>
             <FormRow columns={1}>
-                <TextInputField
-                    id="email"
-                    label="E-mail"
-                    defaultValue={defaultForm.email}
-                    onChange={() => {}}
-                    disabled
-                />
+                <FormField.Root id="email" label="e-mail" required>
+                    <FormField.TextInput
+                        id="email"
+                        defaultValue={defaultForm.email}
+                        required
+                        onChange={() => {}}
+                        disabled
+                    />
+                </FormField.Root>
             </FormRow>
             <div className="flex flex-col justify-center p-4 sm:flex-row">
                 <ButtonPrimary
