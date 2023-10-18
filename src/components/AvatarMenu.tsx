@@ -36,7 +36,7 @@ export const AvatarMenu: FC<AvatarMenuProps> = ({
                     <DropdownMenuList
                         header={
                             <div className="flex items-center gap-2">
-                                <Avatar size={30} fillColor="white" />
+                                <Avatar size={30} />
                                 {user.name}
                             </div>
                         }
