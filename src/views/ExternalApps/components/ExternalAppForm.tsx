@@ -11,10 +11,10 @@ import {
 } from '@/errors/clientErrorHandlers';
 import { useToast } from '@/contexts/ToastContext';
 import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
-import { TextInputField } from '@/components/TextInputField';
 import { FormRow } from '@/components/FormRow';
 import { ButtonPrimary } from '@/components/ButtonPrimary';
 import { ButtonSecondary } from '@/components/ButtonSecondary';
+import { FormField } from '@/components/FormField';
 
 export type ExternalAppFormProps = {
     id?: string;
@@ -76,38 +76,45 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
     return (
         <form onSubmit={handleSubmit} className="p-3.5">
             <FormRow columns={2}>
-                <TextInputField
-                    id="name"
-                    label="Name"
-                    defaultValue={defaultForm.name}
-                    required
-                    onChange={(value) =>
-                        setForm((state) => ({ ...state, name: value }))
-                    }
-                />
-                <TextInputField
+                <FormField.Root id="name" label="Name" required>
+                    <FormField.TextInput
+                        id="name"
+                        defaultValue={defaultForm.name}
+                        required
+                        onChange={(value) =>
+                            setForm((state) => ({ ...state, name: value }))
+                        }
+                    />
+                </FormField.Root>
+                <FormField.Root
                     id="recover-email"
                     label="Recover e-mail"
-                    defaultValue={defaultForm.recoverEmail}
                     required
-                    onChange={(value) =>
-                        setForm((state) => ({
-                            ...state,
-                            recoverEmail: value,
-                        }))
-                    }
-                />
+                >
+                    <FormField.TextInput
+                        id="recover-email"
+                        defaultValue={defaultForm.recoverEmail}
+                        required
+                        onChange={(value) =>
+                            setForm((state) => ({
+                                ...state,
+                                recoverEmail: value,
+                            }))
+                        }
+                    />
+                </FormField.Root>
             </FormRow>
             <FormRow columns={1}>
-                <TextInputField
-                    id="base-url"
-                    label="Base URL"
-                    defaultValue={defaultForm.baseUrl}
-                    required
-                    onChange={(value) =>
-                        setForm((state) => ({ ...state, baseUrl: value }))
-                    }
-                />
+                <FormField.Root id="base-url" label="Base URL" required>
+                    <FormField.TextInput
+                        id="base-url"
+                        defaultValue={defaultForm.baseUrl}
+                        required
+                        onChange={(value) =>
+                            setForm((state) => ({ ...state, baseUrl: value }))
+                        }
+                    />
+                </FormField.Root>
             </FormRow>
             <div className="flex gap-3.5 p-4">
                 <ButtonPrimary
