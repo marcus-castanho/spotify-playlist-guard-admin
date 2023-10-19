@@ -7,6 +7,8 @@ import { useModal } from '@/contexts/ModalContext';
 import { PaginationNav } from '@/components/PaginationNav';
 import { EditExternalAppModal } from './EditExternalAppModal';
 import { DeleteExternalAppModal } from './DeleteExternalAppModal';
+import { ButtonPrimary } from '@/components/ButtonPrimary';
+import { ExternalAppCard } from './ExternalAppCard';
 
 export type ExternalAppsListProps = {
     externalApps: ExternalApp[];
@@ -60,38 +62,34 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
     }, [isFetching]);
 
     if (isUpdating) return <>loading</>;
+    const externalApps1 = new Array(11)
+        .fill(externalApps[0])
+        .map((item, index) => ({ ...item, id: `${index}` }));
     return (
         <div>
-            <button onClick={() => handleCreateExternalApp()}>create</button>
-            {externalApps.map((externalApp) => (
-                <Fragment key={externalApp.id}>
-                    <div>
-                        {'{'}
-                        {Object.keys(externalApp).map((key) => {
-                            return (
-                                <div key={key}>
-                                    {`${key}: ${
-                                        externalApp[
-                                            key as keyof typeof externalApp
-                                        ]
-                                    }`}
-                                </div>
-                            );
-                        })}
-                        {'}'}
-                    </div>
-                    <button
-                        onClick={() => handleEditExternalApp(externalApp.id)}
-                    >
-                        edit external app
-                    </button>
-                    <button
-                        onClick={() => handleDeleteExternalApp(externalApp.id)}
-                    >
-                        delete external app
-                    </button>
-                </Fragment>
-            ))}
+            <div className="flex min-w-[50vw] p-3.5">
+                <ButtonPrimary
+                    content="+"
+                    onClick={() => handleCreateExternalApp()}
+                    scale={false}
+                />
+            </div>
+            <div
+                className={
+                    externalApps1.length < 5
+                        ? 'flex justify-center gap-3.5 p-3.5 max-sm:flex-col'
+                        : 'grid grid-cols-5 gap-3.5 p-3.5 max-sm:grid-cols-1'
+                }
+            >
+                {externalApps1.map((externalApp) => (
+                    <ExternalAppCard
+                        key={externalApp.id}
+                        externalApp={externalApp}
+                        handleDeleteExternalApp={handleDeleteExternalApp}
+                        handleEditExternalApp={handleEditExternalApp}
+                    />
+                ))}
+            </div>
             <br />
             <PaginationNav
                 page={page}
