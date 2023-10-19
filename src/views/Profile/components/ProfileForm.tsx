@@ -87,12 +87,12 @@ export const ProfileForm: FC<ProfileFormProps> = ({
                 </FormField.Root>
             </FormRow>
             <div className="flex flex-col gap-3.5 p-4 sm:flex-row">
-                <ButtonPrimary
-                    content="Save"
-                    type="submit"
-                    disabled={isSubmiting}
-                />
-                <ButtonSecondary content="Cancel" onClick={() => onCancel()} />
+                <ButtonPrimary type="submit" disabled={isSubmiting}>
+                    Save
+                </ButtonPrimary>
+                <ButtonSecondary onClick={() => onCancel()}>
+                    Cancel
+                </ButtonSecondary>
             </div>
         </form>
     );

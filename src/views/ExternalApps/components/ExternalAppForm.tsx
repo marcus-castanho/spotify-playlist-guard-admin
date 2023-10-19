@@ -117,12 +117,10 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
                 </FormField.Root>
             </FormRow>
             <div className="flex gap-3.5 p-4">
-                <ButtonPrimary
-                    content="Save"
-                    type="submit"
-                    disabled={isSubmiting}
-                />
-                <ButtonSecondary content="Cancel" onClick={onCancel} />
+                <ButtonPrimary type="submit" disabled={isSubmiting}>
+                    Save
+                </ButtonPrimary>
+                <ButtonSecondary onClick={onCancel}>Cancel</ButtonSecondary>
             </div>
         </form>
     );

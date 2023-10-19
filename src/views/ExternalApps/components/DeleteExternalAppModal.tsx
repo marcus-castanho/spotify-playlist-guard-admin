@@ -66,15 +66,12 @@ export const DeleteExternalAppModal: FC<DeleteExternalAppModalProps> = ({
                 Are you sure you want to delete this external app?
             </div>
             <div className="flex justify-center gap-3.5">
-                <ButtonPrimary
-                    content="Confirm"
-                    type="submit"
-                    disabled={isSubmiting}
-                />
-                <ButtonSecondary
-                    content="Cancel"
-                    onClick={() => closeModal()}
-                />
+                <ButtonPrimary type="submit" disabled={isSubmiting}>
+                    Confirm
+                </ButtonPrimary>
+                <ButtonSecondary onClick={() => closeModal()}>
+                    Cancel
+                </ButtonSecondary>
             </div>
         </form>
     );

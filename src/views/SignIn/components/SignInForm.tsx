@@ -64,11 +64,9 @@ export const SignInForm = () => {
                     </FormField.Root>
                 </FormRow>
                 <div className="flex flex-col p-4 sm:flex-row">
-                    <ButtonPrimary
-                        content="Sign In"
-                        type="submit"
-                        disabled={isSubmiting}
-                    />
+                    <ButtonPrimary type="submit" disabled={isSubmiting}>
+                        Sign In
+                    </ButtonPrimary>
                 </div>
             </form>
         </>

@@ -37,11 +37,9 @@ export const ProfileVisualizer: FC<ProfileVisualizerProps> = ({
                 </FormField.Root>
             </FormRow>
             <div className="flex flex-col justify-center p-4 sm:flex-row">
-                <ButtonPrimary
-                    content="Edit"
-                    type="submit"
-                    onClick={() => onEdit()}
-                />
+                <ButtonPrimary type="submit" onClick={() => onEdit()}>
+                    Edit
+                </ButtonPrimary>
             </div>
         </div>
     );

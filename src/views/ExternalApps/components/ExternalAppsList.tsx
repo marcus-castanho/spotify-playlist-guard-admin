@@ -9,6 +9,7 @@ import { EditExternalAppModal } from './EditExternalAppModal';
 import { DeleteExternalAppModal } from './DeleteExternalAppModal';
 import { ButtonPrimary } from '@/components/ButtonPrimary';
 import { ExternalAppCard } from './ExternalAppCard';
+import { PlusIcon } from '@/components/icons/PlusIcon';
 
 export type ExternalAppsListProps = {
     externalApps: ExternalApp[];
@@ -66,10 +67,12 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
         <div className="w-[90vw] rounded-lg p-1 dark:bg-gradient-to-b dark:from-gray-950 dark:to-black">
             <div className="flex p-3.5">
                 <ButtonPrimary
-                    content="+"
                     onClick={() => handleCreateExternalApp()}
                     scale={false}
-                />
+                    round
+                >
+                    <PlusIcon size={24} />
+                </ButtonPrimary>
             </div>
             <div
                 className={

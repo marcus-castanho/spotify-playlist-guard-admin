@@ -3,7 +3,6 @@ import { match } from 'ts-pattern';
 
 type ButtonPrimaryProps = {
     children: ReactNode;
-    content: string;
     onClick?: () => void;
     type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
     disabled?: boolean;
@@ -13,7 +12,6 @@ type ButtonPrimaryProps = {
 
 export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
     children,
-    content,
     onClick = () => {},
     type = 'button',
     disabled = false,
@@ -37,7 +35,7 @@ export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
                         : 'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
                 }
             >
-                {children || content}
+                {children}
             </div>
         </button>
     );
