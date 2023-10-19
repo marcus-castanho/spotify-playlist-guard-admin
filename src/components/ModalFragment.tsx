@@ -22,21 +22,23 @@ export const ModalFragment: FC<ModalFragmentProps> = ({
             <div className="fixed left-0 top-0 h-screen w-screen bg-black opacity-50" />
             <dialog
                 open={display}
-                className="fixed top-1/2 translate-y-[-50%] rounded-lg border-[1px] text-inherit dark:border-gray-100 dark:bg-black"
+                className="fixed top-1/2 translate-y-[-50%] bg-transparent p-2 text-inherit"
             >
-                <div className="flex justify-end p-4">
-                    <button onClick={() => closeModal()}>
-                        <CrossMarkIcon
-                            size={14}
-                            fillColor={
-                                theme === 'dark'
-                                    ? colors.gray[50]
-                                    : colors.gray[100]
-                            }
-                        />
-                    </button>
+                <div className="rounded-lg border-[1px] bg-white dark:border-gray-100 dark:bg-black">
+                    <div className="flex justify-end p-4">
+                        <button onClick={() => closeModal()}>
+                            <CrossMarkIcon
+                                size={14}
+                                fillColor={
+                                    theme === 'dark'
+                                        ? colors.gray[50]
+                                        : colors.gray[100]
+                                }
+                            />
+                        </button>
+                    </div>
+                    {content}
                 </div>
-                {content}
             </dialog>
         </>
     );
