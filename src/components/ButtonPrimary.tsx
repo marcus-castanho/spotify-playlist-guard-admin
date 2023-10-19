@@ -1,20 +1,24 @@
-import React, { FC, ButtonHTMLAttributes } from 'react';
+import React, { FC, ButtonHTMLAttributes, ReactNode } from 'react';
 import { match } from 'ts-pattern';
 
 type ButtonPrimaryProps = {
+    children: ReactNode;
     content: string;
     onClick?: () => void;
     type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
     disabled?: boolean;
     scale?: boolean;
+    round?: boolean;
 };
 
 export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
+    children,
     content,
     onClick = () => {},
     type = 'button',
     disabled = false,
     scale = true,
+    round = false,
 }) => {
     return (
         <button
@@ -28,10 +32,12 @@ export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
         >
             <div
                 className={
-                    'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
+                    round
+                        ? 'rounded-[500px] bg-primary-verdant p-3 font-bold text-white dark:text-black'
+                        : 'rounded-[500px] bg-primary-verdant px-8 py-3 font-bold text-white dark:text-black'
                 }
             >
-                {content}
+                {children || content}
             </div>
         </button>
     );
