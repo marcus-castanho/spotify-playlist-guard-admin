@@ -15,22 +15,20 @@ export const ProfileVisualizer: FC<ProfileVisualizerProps> = ({
     return (
         <div>
             <FormRow columns={1}>
-                <FormField.Root id="name" label="Name" required>
+                <FormField.Root id="name" label="Name">
                     <FormField.TextInput
                         id="name"
                         defaultValue={defaultForm.name}
-                        required
                         onChange={() => {}}
                         disabled
                     />
                 </FormField.Root>
             </FormRow>
             <FormRow columns={1}>
-                <FormField.Root id="email" label="e-mail" required>
+                <FormField.Root id="email" label="e-mail">
                     <FormField.TextInput
                         id="email"
                         defaultValue={defaultForm.email}
-                        required
                         onChange={() => {}}
                         disabled
                     />
