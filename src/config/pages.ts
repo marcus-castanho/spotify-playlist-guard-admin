@@ -1,7 +1,7 @@
 export const publicPages = ['/', '/signin', '/500'] as const;
 export type PublicPage = (typeof publicPages)[number];
 
-export const privatePages = ['/external-apps', '/home', '/profile'] as const;
+export const privatePages = ['/home', '/profile'] as const;
 export type PrivatePage = (typeof privatePages)[number];
 
 export const isPublicPage = (path: string) => {
