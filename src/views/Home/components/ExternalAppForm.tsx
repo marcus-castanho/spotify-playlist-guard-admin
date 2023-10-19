@@ -116,7 +116,7 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
                     />
                 </FormField.Root>
             </FormRow>
-            <div className="flex gap-3.5 p-4">
+            <div className="flex gap-3.5 p-4 max-sm:flex-col">
                 <ButtonPrimary type="submit" disabled={isSubmiting}>
                     Save
                 </ButtonPrimary>
