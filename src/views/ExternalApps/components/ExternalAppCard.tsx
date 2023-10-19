@@ -31,7 +31,7 @@ export const ExternalAppCard: FC<ExternalAppCardProps> = ({
 }) => {
     const { theme } = useTheme();
     return (
-        <div className="rounded-lg bg-white p-1 shadow-md dark:bg-gray-700  max-sm:h-full sm:w-[200px]">
+        <div className="rounded-lg bg-white p-1 shadow-md dark:bg-gray-950 dark:hover:bg-gray-800 max-sm:h-full sm:w-[200px]">
             <div className="p-4">
                 <div className="font-bold">{externalApp.name}</div>
             </div>

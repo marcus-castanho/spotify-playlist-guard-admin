@@ -62,12 +62,9 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
     }, [isFetching]);
 
     if (isUpdating) return <>loading</>;
-    const externalApps1 = new Array(11)
-        .fill(externalApps[0])
-        .map((item, index) => ({ ...item, id: `${index}` }));
     return (
-        <div>
-            <div className="flex min-w-[50vw] p-3.5">
+        <div className="w-[90vw] rounded-lg p-1 dark:bg-gradient-to-b dark:from-gray-950 dark:to-black">
+            <div className="flex p-3.5">
                 <ButtonPrimary
                     content="+"
                     onClick={() => handleCreateExternalApp()}
@@ -76,12 +73,12 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
             </div>
             <div
                 className={
-                    externalApps1.length < 5
+                    externalApps.length < 5
                         ? 'flex justify-center gap-3.5 p-3.5 max-sm:flex-col'
                         : 'grid grid-cols-5 gap-3.5 p-3.5 max-sm:grid-cols-1'
                 }
             >
-                {externalApps1.map((externalApp) => (
+                {externalApps.map((externalApp) => (
                     <ExternalAppCard
                         key={externalApp.id}
                         externalApp={externalApp}
