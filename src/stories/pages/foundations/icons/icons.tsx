@@ -18,6 +18,7 @@ import { ChevronLeftIcon } from '@/components/icons/ChevronLeftIcon';
 import { ChevronRightIcon } from '@/components/icons/ChevronRightIcon';
 import { TrashIcon } from '@/components/icons/TrashIcon';
 import { PencilIcon } from '@/components/icons/PencilIcon';
+import { PlusIcon } from '@/components/icons/PlusIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -95,5 +96,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'pencil',
         component: <PencilIcon size={24} key={PencilIcon.name} />,
+    },
+    {
+        title: 'plus',
+        component: <PlusIcon size={24} key={PlusIcon.name} />,
     },
 ];
