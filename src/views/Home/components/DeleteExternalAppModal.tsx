@@ -56,14 +56,16 @@ export const DeleteExternalAppModal: FC<DeleteExternalAppModalProps> = ({
             onSubmit={() => handleConfirmDelete(externalAppId)}
             className="p-3.5"
         >
-            <div className="flex justify-center">
-                <WarningIcon
-                    size={26}
-                    fillColor={theme === 'dark' ? 'white' : 'black'}
-                />
-            </div>
-            <div className="flex justify-center pb-3.5">
-                Are you sure you want to delete this external app?
+            <div className="p-3.5">
+                <div className="flex justify-center p-3.5">
+                    <WarningIcon
+                        size={50}
+                        fillColor={theme === 'dark' ? 'white' : 'black'}
+                    />
+                </div>
+                <div className="flex justify-center pb-3.5">
+                    Are you sure you want to delete this external app?
+                </div>
             </div>
             <div className="flex justify-center gap-3.5">
                 <ButtonPrimary type="submit" disabled={isSubmiting}>
