@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useExternalApp } from '../hooks/useExternalApp';
 import { ExternalAppForm } from './ExternalAppForm';
 import { useModal } from '@/contexts/ModalContext';
+import { Spinner } from '@/components/Spinner';
 
 export type EditExternalAppModalProps = {
     externalAppId?: string;
@@ -20,7 +21,13 @@ export const EditExternalAppModal: FC<EditExternalAppModalProps> = ({
         closeModal();
     };
 
-    if (externalAppId && !externalApp) return <>loading</>;
+    if (externalAppId && !externalApp)
+        return (
+            <div className="flex h-80 w-80 items-center justify-center">
+                <Spinner size="small" />
+            </div>
+        );
+
     return (
         <>
             {externalApp ? (
