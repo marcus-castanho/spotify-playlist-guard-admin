@@ -6,7 +6,7 @@ export const Loading: FC = () => {
     return (
         <PageContainer>
             <div className="flex flex-1 items-center justify-center">
-                <Spinner />
+                <Spinner size="large" />
             </div>
         </PageContainer>
     );
