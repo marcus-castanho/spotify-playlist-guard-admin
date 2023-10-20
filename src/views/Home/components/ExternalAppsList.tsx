@@ -64,7 +64,7 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
 
     if (isUpdating) return <>loading</>;
     return (
-        <div className="w-[90vw] rounded-lg p-1 dark:bg-gradient-to-b dark:from-gray-950 dark:to-black">
+        <div className="flex w-[90vw] flex-col rounded-lg p-1 dark:bg-gradient-to-b dark:from-gray-950 dark:to-black">
             <div className="flex p-3.5">
                 <ButtonPrimary
                     onClick={() => handleCreateExternalApp()}
@@ -74,23 +74,24 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
                     <PlusIcon size={24} />
                 </ButtonPrimary>
             </div>
-            <div
-                className={
-                    externalApps.length < 5
-                        ? 'flex justify-center gap-3.5 p-3.5 max-sm:flex-col'
-                        : 'grid grid-cols-5 gap-3.5 p-3.5 max-sm:grid-cols-1'
-                }
-            >
-                {externalApps.map((externalApp) => (
-                    <ExternalAppCard
-                        key={externalApp.id}
-                        externalApp={externalApp}
-                        handleDeleteExternalApp={handleDeleteExternalApp}
-                        handleEditExternalApp={handleEditExternalApp}
-                    />
-                ))}
+            <div className="flex flex-1 items-center justify-center">
+                <div
+                    className={
+                        externalApps.length < 5
+                            ? 'flex justify-center gap-3.5 p-3.5 max-sm:flex-col'
+                            : 'grid grid-cols-5 gap-3.5 p-3.5 max-sm:grid-cols-1'
+                    }
+                >
+                    {externalApps.map((externalApp) => (
+                        <ExternalAppCard
+                            key={externalApp.id}
+                            externalApp={externalApp}
+                            handleDeleteExternalApp={handleDeleteExternalApp}
+                            handleEditExternalApp={handleEditExternalApp}
+                        />
+                    ))}
+                </div>
             </div>
-            <br />
             <PaginationNav
                 page={page}
                 changePage={changePage}
