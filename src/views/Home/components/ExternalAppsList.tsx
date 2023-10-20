@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, Fragment, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { ExternalApp } from '@/services/spotifyPlaylistGuardApi';
 import { useExternalApps } from '../hooks/useExternalApps';
 import { useModal } from '@/contexts/ModalContext';
@@ -10,6 +10,7 @@ import { DeleteExternalAppModal } from './DeleteExternalAppModal';
 import { ButtonPrimary } from '@/components/ButtonPrimary';
 import { ExternalAppCard } from './ExternalAppCard';
 import { PlusIcon } from '@/components/icons/PlusIcon';
+import { Spinner } from '@/components/Spinner';
 
 export type ExternalAppsListProps = {
     externalApps: ExternalApp[];
@@ -62,7 +63,6 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
         }
     }, [isFetching]);
 
-    if (isUpdating) return <>loading</>;
     return (
         <div className="flex w-[90vw] flex-col rounded-lg p-1 dark:bg-gradient-to-b dark:from-gray-950 dark:to-black">
             <div className="flex p-3.5">
@@ -75,22 +75,28 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
                 </ButtonPrimary>
             </div>
             <div className="flex flex-1 items-center justify-center">
-                <div
-                    className={
-                        externalApps.length < 5
-                            ? 'flex justify-center gap-3.5 p-3.5 max-sm:flex-col'
-                            : 'grid grid-cols-5 gap-3.5 p-3.5 max-sm:grid-cols-1'
-                    }
-                >
-                    {externalApps.map((externalApp) => (
-                        <ExternalAppCard
-                            key={externalApp.id}
-                            externalApp={externalApp}
-                            handleDeleteExternalApp={handleDeleteExternalApp}
-                            handleEditExternalApp={handleEditExternalApp}
-                        />
-                    ))}
-                </div>
+                {isUpdating ? (
+                    <Spinner size="small" />
+                ) : (
+                    <div
+                        className={
+                            externalApps.length < 5
+                                ? 'flex justify-center gap-3.5 p-3.5 max-sm:flex-col'
+                                : 'grid grid-cols-5 gap-3.5 p-3.5 max-sm:grid-cols-1'
+                        }
+                    >
+                        {externalApps.map((externalApp) => (
+                            <ExternalAppCard
+                                key={externalApp.id}
+                                externalApp={externalApp}
+                                handleDeleteExternalApp={
+                                    handleDeleteExternalApp
+                                }
+                                handleEditExternalApp={handleEditExternalApp}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
             <PaginationNav
                 page={page}
