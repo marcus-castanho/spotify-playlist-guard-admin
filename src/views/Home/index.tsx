@@ -23,7 +23,9 @@ export const Home = async () => {
         <PageContainer>
             <Header />
             <Main>
-                <ExternalAppsList externalApps={externalApps} />
+                <div className="flex w-full justify-center">
+                    <ExternalAppsList externalApps={externalApps} />
+                </div>
             </Main>
             <Footer />
         </PageContainer>

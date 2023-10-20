@@ -10,7 +10,9 @@ export const Profile = () => {
         <PageContainer>
             <Header />
             <Main>
-                <UserProfile />
+                <div className="flex w-full items-center justify-center">
+                    <UserProfile />
+                </div>
             </Main>
             <Footer />
         </PageContainer>

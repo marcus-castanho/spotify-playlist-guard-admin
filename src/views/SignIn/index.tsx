@@ -10,9 +10,11 @@ export const SignIn = () => {
         <PageContainer>
             <Header />
             <Main>
-                <div>
-                    <h1 className="px-4 text-4xl sm:py-4">Sign in</h1>
-                    <SignInForm />
+                <div className="flex w-full items-center justify-center">
+                    <div>
+                        <h1 className="px-4 text-4xl sm:py-4">Sign in</h1>
+                        <SignInForm />
+                    </div>
                 </div>
             </Main>
             <Footer />
