@@ -5,6 +5,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { ProfileForm } from './ProfileForm';
 import { ProfileVisualizer } from './ProfileVisualizer';
 import { Avatar } from '@/components/Avatar';
+import { Spinner } from '@/components/Spinner';
 
 export const UserProfile = () => {
     const { user, refetchUser } = useAuth();
@@ -15,13 +16,12 @@ export const UserProfile = () => {
         refetchUser();
     };
 
-    if (!user) return <>loading</>;
     return (
         <div className="p-3. top-1/2 max-w-xs">
             <div className="flex justify-center p-4">
                 <Avatar size={52} />
             </div>
-            {user && (
+            {user ? (
                 <>
                     {isEditing ? (
                         <ProfileForm
@@ -43,6 +43,10 @@ export const UserProfile = () => {
                         />
                     )}
                 </>
+            ) : (
+                <div className="flex h-40 items-center justify-center">
+                    <Spinner size="small" />
+                </div>
             )}
         </div>
     );
