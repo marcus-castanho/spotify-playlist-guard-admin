@@ -18,6 +18,7 @@ const config: StorybookConfig = {
         },
         '@storybook/addon-mdx-gfm',
         '@storybook/addon-storysource',
+        '@storybook/addon-a11y',
     ],
     framework: {
         name: '@storybook/nextjs',
