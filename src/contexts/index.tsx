@@ -11,7 +11,6 @@ type ComposedContextsProps = {
     components: ComponentType<PropsWithChildren<unknown>>[];
     children: ReactNode;
 };
-
 function ComposedContexts(props: ComposedContextsProps) {
     const { components, children } = props;
 
@@ -24,13 +23,12 @@ function ComposedContexts(props: ComposedContextsProps) {
     );
 }
 
-export type AppContextProviderProps = {
+type AppContextProviderProps = {
     children: ReactNode;
     initialTheme: Theme;
     defaultUser?: User;
     providers?: ComposedContextsProps['components'];
 };
-
 export function AppContextProvider({
     children,
     initialTheme,
@@ -38,7 +36,6 @@ export function AppContextProvider({
     providers = [
         CookiesProvider,
         QueryProvider,
-        AuthProvider,
         withDefaultUser(AuthProvider, { defaultUser }),
         withInitialTheme(ThemeProvider, { initialTheme }),
         ToastProvider,
