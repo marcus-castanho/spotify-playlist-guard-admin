@@ -1,7 +1,7 @@
 import React, { ComponentProps, ReactNode } from 'react';
 import { AppRouterContextProviderMock } from './AppRouterContextProviderMock';
 import { AppContextProvider } from '@/contexts';
-import './window-mock';
+import './windoMock';
 
 const initialTheme: ComponentProps<typeof AppContextProvider>['initialTheme'] =
     'light';
