@@ -18,7 +18,7 @@ export const TextInputField = () => (
     <FormField.Root id="example" label="Example" required>
         <FormField.TextInput
             id="example"
-            defaultValue="Example"
+            defaultValue="Default text"
             placeHolder="Type some text"
             required
         />
