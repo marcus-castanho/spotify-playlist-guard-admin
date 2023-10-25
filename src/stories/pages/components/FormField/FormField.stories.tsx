@@ -15,9 +15,9 @@ const meta = {
 export default meta;
 
 export const TextInputField = () => (
-    <FormField.Root id="example" label="Example" required>
+    <FormField.Root inputId="example" label="Example" required>
         <FormField.TextInput
-            id="example"
+            inputId="example"
             defaultValue="Default text"
             placeHolder="Type some text"
             required
@@ -26,9 +26,9 @@ export const TextInputField = () => (
 );
 
 export const PasswordInputField = () => (
-    <FormField.Root id="password" label="Password" required>
+    <FormField.Root inputId="password" label="Password" required>
         <FormField.PasswordInput
-            id="example"
+            inputId="example"
             placeHolder="Type the password"
             required
         />

@@ -57,9 +57,9 @@ export const ProfileForm: FC<ProfileFormProps> = ({
     return (
         <form onSubmit={handleSaveUserInfo}>
             <FormRow columns={1}>
-                <FormField.Root id="name" label="Name" required>
+                <FormField.Root inputId="name" label="Name" required>
                     <FormField.TextInput
-                        id="name"
+                        inputId="name"
                         defaultValue={defaultForm.name}
                         required
                         onChange={(value) =>
@@ -72,9 +72,9 @@ export const ProfileForm: FC<ProfileFormProps> = ({
                 </FormField.Root>
             </FormRow>
             <FormRow columns={1}>
-                <FormField.Root id="email" label="e-mail" required>
+                <FormField.Root inputId="email" label="e-mail" required>
                     <FormField.TextInput
-                        id="email"
+                        inputId="email"
                         defaultValue={defaultForm.email}
                         required
                         onChange={(value) =>

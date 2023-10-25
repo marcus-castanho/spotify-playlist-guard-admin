@@ -38,9 +38,9 @@ export const SignInForm = () => {
                 className="top-1/2 max-w-xs rounded-lg border-gray-100 bg-white p-3.5 dark:bg-black sm:border-[1px]"
             >
                 <FormRow columns={1}>
-                    <FormField.Root id="email" label="E-mail" required>
+                    <FormField.Root inputId="email" label="E-mail" required>
                         <FormField.TextInput
-                            id="name"
+                            inputId="email"
                             defaultValue={''}
                             required
                             onChange={(value) =>
@@ -50,9 +50,13 @@ export const SignInForm = () => {
                     </FormField.Root>
                 </FormRow>
                 <FormRow columns={1}>
-                    <FormField.Root id="password" label="Password" required>
+                    <FormField.Root
+                        inputId="password"
+                        label="Password"
+                        required
+                    >
                         <FormField.PasswordInput
-                            id="name"
+                            inputId="password"
                             required
                             onChange={(value) =>
                                 setForm((state) => ({

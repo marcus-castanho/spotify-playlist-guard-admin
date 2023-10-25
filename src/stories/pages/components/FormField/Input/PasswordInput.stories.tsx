@@ -14,5 +14,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    args: { id: 'example', required: true, placeHolder: 'Type the password' },
+    args: {
+        inputId: 'example',
+        required: true,
+        placeHolder: 'Type the password',
+    },
 };

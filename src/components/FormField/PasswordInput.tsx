@@ -6,7 +6,7 @@ import { EyeSlashIcon } from '../icons/EyeSlashIcon';
 import { useTheme } from '@/contexts/ThemeContext';
 
 type PasswordInputProps = {
-    id: string;
+    inputId: string;
     placeHolder?: string;
     required?: boolean;
     onChange?: (text: string) => void;
@@ -14,7 +14,7 @@ type PasswordInputProps = {
 };
 
 export const PasswordInput: FC<PasswordInputProps> = ({
-    id,
+    inputId,
     placeHolder = '',
     required = false,
     onChange = () => {},
@@ -27,7 +27,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
         <div className="relative">
             <input
                 type={visible ? 'text' : 'password'}
-                id={id}
+                id={inputId}
                 onChange={({ target }) => onChange(target.value)}
                 className="w-full rounded border-[1px] py-0.5 pl-3.5 pr-11 dark:border-gray-50 dark:bg-black"
                 required={required}

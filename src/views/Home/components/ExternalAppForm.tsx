@@ -76,9 +76,9 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
     return (
         <form onSubmit={handleSubmit} className="p-3.5">
             <FormRow columns={2}>
-                <FormField.Root id="name" label="Name" required>
+                <FormField.Root inputId="name" label="Name" required>
                     <FormField.TextInput
-                        id="name"
+                        inputId="name"
                         defaultValue={defaultForm.name}
                         required
                         onChange={(value) =>
@@ -87,12 +87,12 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
                     />
                 </FormField.Root>
                 <FormField.Root
-                    id="recover-email"
+                    inputId="recover-email"
                     label="Recover e-mail"
                     required
                 >
                     <FormField.TextInput
-                        id="recover-email"
+                        inputId="recover-email"
                         defaultValue={defaultForm.recoverEmail}
                         required
                         onChange={(value) =>
@@ -105,9 +105,9 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
                 </FormField.Root>
             </FormRow>
             <FormRow columns={1}>
-                <FormField.Root id="base-url" label="Base URL" required>
+                <FormField.Root inputId="base-url" label="Base URL" required>
                     <FormField.TextInput
-                        id="base-url"
+                        inputId="base-url"
                         defaultValue={defaultForm.baseUrl}
                         required
                         onChange={(value) =>
