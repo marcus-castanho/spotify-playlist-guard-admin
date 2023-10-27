@@ -17,6 +17,7 @@ export const ChevronLeftIcon: FC<ChevronLeftIconProps> = ({
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
+            <title>chevron-left-icon</title>
             <path
                 fillRule="evenodd"
                 clipRule="evenodd"

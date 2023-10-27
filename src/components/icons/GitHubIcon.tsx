@@ -16,6 +16,7 @@ export const GitHubIcon: FC<GitHubIconProps> = ({
             viewBox="0 0 98 96"
             xmlns="http://www.w3.org/2000/svg"
         >
+            <title>github-icon</title>
             <path
                 fillRule="evenodd"
                 clipRule="evenodd"

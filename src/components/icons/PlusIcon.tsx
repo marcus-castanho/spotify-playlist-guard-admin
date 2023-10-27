@@ -14,6 +14,7 @@ export const PlusIcon: FC<PlusIconProps> = ({ size, fillColor = 'black' }) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
+            <title>plus-icon</title>
             <path
                 d="M4 12H20M12 4V20"
                 stroke={fillColor}

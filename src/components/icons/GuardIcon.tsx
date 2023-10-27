@@ -16,6 +16,7 @@ export const GuardIcon: FC<GuardIconProps> = ({
             height={size}
             viewBox="0 0 1036 1137"
         >
+            <title>guard-icon</title>
             <path
                 id="Selection #1"
                 fill={fillColor}

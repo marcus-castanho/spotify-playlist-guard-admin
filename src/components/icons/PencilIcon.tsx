@@ -20,6 +20,7 @@ export const PencilIcon: FC<PencilIconProps> = ({
             viewBox="0 0 32 32"
             xmlSpace="preserve"
         >
+            <title>pencil-icon</title>
             <g>
                 <path d="M31,7.8c-0.7-3.4-3.3-6.1-6.8-6.8c-0.3-0.1-0.7,0-0.9,0.3l-2.5,2.5c3.4,1.4,6,4.1,7.4,7.4l2.5-2.5C30.9,8.5,31,8.1,31,7.8z" />
                 <path

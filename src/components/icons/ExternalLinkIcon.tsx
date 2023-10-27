@@ -19,6 +19,7 @@ export const ExternalLinkIcon: FC<ExternalLinkIconProps> = ({
             xmlns="http://www.w3.org/2000/svg"
             xmlSpace="preserve"
         >
+            <title>external-link-icon</title>
             <rect
                 id="Icons"
                 x="-896"
