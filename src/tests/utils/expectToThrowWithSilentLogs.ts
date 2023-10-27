@@ -3,7 +3,7 @@ type JestToErrorArg = Parameters<
 >[0];
 
 /**
- * Assertion expect .toThrow when logged error can be ignored
+ * Use when assertion expect .toThrow logged error can be ignored
  */
 export function expectToThrowWithSilentLogs(
     func: () => unknown,
