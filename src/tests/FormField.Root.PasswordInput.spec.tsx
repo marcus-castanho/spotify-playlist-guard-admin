@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { FormField } from '@/components/FormField';
-import { ContextsProvidersMock } from '../mocks/ContextsProvidersMock';
-import { expectToThrowWithSilentLogs } from '../utils/expectToThrowWithSilentLogs';
+import { ContextsProvidersMock } from './mocks/ContextsProvidersMock';
+import { expectToThrowWithSilentLogs } from './utils/expectToThrowWithSilentLogs';
 
 const CUSTOM_ID = 'customId';
 

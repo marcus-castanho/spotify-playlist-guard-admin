@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { FormField } from '@/components/FormField';
-import { ContextsProvidersMock } from '../mocks/ContextsProvidersMock';
+import { ContextsProvidersMock } from './mocks/ContextsProvidersMock';
 
 const LABEL_TEXT = 'Form field';
 const CUSTOM_ID = 'customId';
