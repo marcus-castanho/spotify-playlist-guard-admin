@@ -20,6 +20,6 @@ export const Default: Story = {
 export const Example: Story = {
     args: {
         size: 52,
-        src: 'https://raw.githubusercontent.com/marcus-castanho/spotify_playlist_guard/main/public/images/guardBot-1db954-circle.png',
+        src: '/images/guardBot-1db954-circle.png',
     },
 };
