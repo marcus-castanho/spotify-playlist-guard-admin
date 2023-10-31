@@ -42,21 +42,20 @@ export const DropdownMenuList: FC<DropdownMenuListProps> = ({
     const { theme } = useTheme();
     return (
         <div className="rounded-lg bg-white p-1 shadow-md dark:bg-gray-700  max-sm:h-full sm:w-[200px]">
-            {
-                <Header>
-                    <button
-                        onClick={() => onClose()}
-                        className="pb-6 sm:hidden"
-                    >
-                        <ArrowLeftIcon
-                            size={24}
-                            fillColor={theme === 'dark' ? 'white' : 'black'}
-                        />
-                    </button>
-                    {header && <>{header}</>}
-                </Header>
-            }
-            <ul>
+            <Header>
+                <button
+                    aria-label="dropdown-menu-list-button"
+                    onClick={() => onClose()}
+                    className="pb-6 sm:hidden"
+                >
+                    <ArrowLeftIcon
+                        size={24}
+                        fillColor={theme === 'dark' ? 'white' : 'black'}
+                    />
+                </button>
+                {header && <>{header}</>}
+            </Header>
+            <ul aria-label="dropdown-menu-list">
                 {itemsGroups
                     .map((items, groupIndex) => {
                         const isLastGroup =
