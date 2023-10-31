@@ -8,6 +8,26 @@ import { useVisibleComponent } from '@/hooks/useVisibleComponent';
 import Link from 'next/link';
 import { SignOutButton } from './SignOutButton';
 
+type AvatarMenuHeaderProps = {
+    userName: string;
+};
+const AvatarMenuHeader: FC<AvatarMenuHeaderProps> = ({ userName }) => {
+    return (
+        <div className="flex items-center gap-2">
+            <Avatar size={30} />
+            {userName}
+        </div>
+    );
+};
+
+const ProfileLink = () => {
+    return (
+        <Link href="/profile" className="w-full">
+            Profile
+        </Link>
+    );
+};
+
 type AvatarMenuProps = {
     user: User;
     defaultVisibilty?: boolean;
@@ -34,23 +54,10 @@ export const AvatarMenu: FC<AvatarMenuProps> = ({
                     }
                 >
                     <DropdownMenuList
-                        header={
-                            <div className="flex items-center gap-2">
-                                <Avatar size={30} />
-                                {user.name}
-                            </div>
-                        }
+                        header={<AvatarMenuHeader userName={user.name} />}
                         onClose={() => setIsVisible(false)}
                         itemsGroups={[
-                            [
-                                <Link
-                                    key="profile-link"
-                                    href="/profile"
-                                    className="w-full"
-                                >
-                                    Profile
-                                </Link>,
-                            ],
+                            [<ProfileLink key="profile-link" />],
                             [<SignOutButton key="sign-out-button" />],
                         ]}
                     />
