@@ -20,6 +20,7 @@ export const ButtonPrimary: FC<ButtonPrimaryProps> = ({
 }) => {
     return (
         <button
+            aria-label="button-primary"
             type={type}
             onClick={onClick}
             disabled={disabled}
