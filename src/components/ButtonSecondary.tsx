@@ -17,6 +17,7 @@ export const ButtonSecondary: FC<ButtonSecondaryProps> = ({
 }) => {
     return (
         <button
+            aria-label="button-secondary"
             type={type}
             onClick={onClick}
             className={scale ? 'hover:scale-105' : ''}
