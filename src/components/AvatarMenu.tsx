@@ -40,7 +40,7 @@ export const AvatarMenu: FC<AvatarMenuProps> = ({
         useVisibleComponent<HTMLDivElement>(defaultVisibilty);
 
     return (
-        <div data-testid="AvatarMenu" className="relative flex" ref={ref}>
+        <div aria-label="avatar-menu" className="relative flex" ref={ref}>
             <button
                 onClick={() => switchVisibility()}
                 className="py-2 hover:scale-105"

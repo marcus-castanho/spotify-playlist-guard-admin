@@ -1,19 +1,13 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { AvatarMenu } from '@/components/AvatarMenu';
-import { ContextsProvidersMock } from './mocks/ContextsProvidersMock';
+import {
+    ContextsProvidersMock,
+    DEFAULT_USER,
+} from './mocks/ContextsProvidersMock';
 import { expectToThrowWithSilentLogs } from './utils/expectToThrowWithSilentLogs';
 
-const DEFAULT_USER = {
-    id: '00000000-0000-0000-0000-000000000000',
-    name: 'Test user',
-    email: 'test@test.com',
-    roles: ['admin'],
-    createdAt: '2023-08-13T02:31:45.610Z',
-    updatedAt: '2023-10-11T01:18:06.082Z',
-};
-
-const TEST_ID = 'AvatarMenu';
+const LABEL = 'avatar-menu';
 
 const DEFAULT_AVATAR_ICON_TITLE = 'default-avatar-icon';
 
@@ -25,25 +19,25 @@ describe('AvatarMenu', () => {
     });
 
     it('should render', () => {
-        const { getByTestId } = render(
+        const { getByLabelText } = render(
             <ContextsProvidersMock>
                 <AvatarMenu user={DEFAULT_USER} />,
             </ContextsProvidersMock>,
         );
 
-        const component = getByTestId(TEST_ID);
+        const component = getByLabelText(LABEL);
 
         expect(component).toBeDefined();
     });
 
     it('should render with hidden dropdown menu by default', () => {
-        const { getByTestId } = render(
+        const { getByLabelText } = render(
             <ContextsProvidersMock>
                 <AvatarMenu user={DEFAULT_USER} />,
             </ContextsProvidersMock>,
         );
 
-        const component = getByTestId(TEST_ID);
+        const component = getByLabelText(LABEL);
         const children = component.children;
         const numberOfChildElements = children.length;
         const lastChildTagName = children[0].tagName;
@@ -53,13 +47,13 @@ describe('AvatarMenu', () => {
     });
 
     it('should render with visible dropdown as passed by prop', () => {
-        const { getByTestId } = render(
+        const { getByLabelText } = render(
             <ContextsProvidersMock>
                 <AvatarMenu user={DEFAULT_USER} defaultVisibilty />,
             </ContextsProvidersMock>,
         );
 
-        const component = getByTestId(TEST_ID);
+        const component = getByLabelText(LABEL);
         const children = component.children;
         const numberOfChildElements = children.length;
         const lastChildTagName = children[1].tagName;
@@ -69,13 +63,13 @@ describe('AvatarMenu', () => {
     });
 
     it('should render dropdown menu when click avatar', () => {
-        const { getByTestId, getByTitle } = render(
+        const { getByLabelText, getByTitle } = render(
             <ContextsProvidersMock>
                 <AvatarMenu user={DEFAULT_USER} />,
             </ContextsProvidersMock>,
         );
 
-        const component = getByTestId(TEST_ID);
+        const component = getByLabelText(LABEL);
         const childrenBefore = component.children;
         const numberOfChildElementsBefore = childrenBefore.length;
         const lastChildTagNameBefore =
@@ -98,13 +92,13 @@ describe('AvatarMenu', () => {
     });
 
     it('should hide dropdown menu when click outside component', () => {
-        const { getByTestId } = render(
+        const { getByLabelText } = render(
             <ContextsProvidersMock>
                 <AvatarMenu user={DEFAULT_USER} defaultVisibilty />,
             </ContextsProvidersMock>,
         );
 
-        const component = getByTestId(TEST_ID);
+        const component = getByLabelText(LABEL);
         const childrenBefore = component.children;
         const numberOfChildElementsBefore = childrenBefore.length;
         const lastChildTagNameBefore =
