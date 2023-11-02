@@ -9,6 +9,7 @@ type FormRowProps = {
 export const FormRow: FC<FormRowProps> = ({ columns, children }) => {
     return (
         <div
+            aria-label="form-row"
             className={match(columns)
                 .with(1, () => 'grid grid-cols-1 gap-3.5 pb-3.5')
                 .with(2, () => 'grid grid-cols-2 gap-3.5 pb-3.5')
