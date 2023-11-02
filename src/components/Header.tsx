@@ -14,6 +14,7 @@ export const Header = () => {
             <Link
                 href={isAuthenticated ? '/home' : '/'}
                 className="flex items-center gap-4"
+                aria-label="home-link"
             >
                 <GuardBotLogo />
                 <div>for Admin</div>
