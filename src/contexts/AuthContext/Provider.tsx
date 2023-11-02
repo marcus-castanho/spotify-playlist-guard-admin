@@ -16,7 +16,7 @@ export type AuthContextType = {
 
 export type AuthProviderProps = {
     children?: ReactNode;
-    defaultUser?: User;
+    defaultUser?: User | null;
 };
 
 export const AuthContext = createContext<AuthContextType | null>(null);

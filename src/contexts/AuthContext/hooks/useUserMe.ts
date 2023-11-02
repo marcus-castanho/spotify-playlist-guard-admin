@@ -8,7 +8,7 @@ import { TOKEN_COOKIE_KEY } from '..';
 
 type UseUserMeParams = {
     signOut: (sessionEnd?: boolean) => void;
-    defaultUser?: User;
+    defaultUser?: User | null;
 };
 export function useUserMe({ signOut, defaultUser }: UseUserMeParams) {
     const token = getCookie(TOKEN_COOKIE_KEY) || '';

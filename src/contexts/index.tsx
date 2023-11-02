@@ -1,11 +1,15 @@
-import React, { ReactNode, ComponentType, PropsWithChildren } from 'react';
+import React, {
+    ReactNode,
+    ComponentType,
+    PropsWithChildren,
+    ComponentProps,
+} from 'react';
 import { AuthProvider, withDefaultUser } from './AuthContext';
 import { ModalProvider } from './ModalContext';
 import { ToastProvider } from './ToastContext';
 import { QueryProvider } from './QueryContext';
 import { CookiesProvider } from './CookiesContext';
 import { ThemeProvider, Theme, withInitialTheme } from './ThemeContext';
-import { User } from '@/services/spotifyPlaylistGuardApi';
 
 type ComposedContextsProps = {
     components: ComponentType<PropsWithChildren<unknown>>[];
@@ -26,7 +30,7 @@ function ComposedContexts(props: ComposedContextsProps) {
 type AppContextProviderProps = {
     children: ReactNode;
     initialTheme: Theme;
-    defaultUser?: User;
+    defaultUser?: Parameters<typeof withDefaultUser>[1]['defaultUser'];
     providers?: ComposedContextsProps['components'];
 };
 export function AppContextProvider({
