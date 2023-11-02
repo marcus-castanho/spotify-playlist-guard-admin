@@ -7,7 +7,6 @@ export type PrivatePage = (typeof privatePages)[number];
 export const isPublicPage = (path: string) => {
     return publicPages.some((page) => {
         if (page === '/') return path === page;
-        console.log({ path, page });
         return path.startsWith(page);
     });
 };
