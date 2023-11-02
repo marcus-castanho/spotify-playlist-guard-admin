@@ -21,7 +21,7 @@ describe('AvatarMenu', () => {
     it('should render', () => {
         const { getByLabelText } = render(
             <ContextsProvidersMock>
-                <AvatarMenu user={DEFAULT_USER} />,
+                <AvatarMenu user={DEFAULT_USER} />
             </ContextsProvidersMock>,
         );
 
@@ -33,7 +33,7 @@ describe('AvatarMenu', () => {
     it('should render with hidden dropdown menu by default', () => {
         const { getByLabelText } = render(
             <ContextsProvidersMock>
-                <AvatarMenu user={DEFAULT_USER} />,
+                <AvatarMenu user={DEFAULT_USER} />
             </ContextsProvidersMock>,
         );
 
@@ -49,7 +49,7 @@ describe('AvatarMenu', () => {
     it('should render with visible dropdown as passed by prop', () => {
         const { getByLabelText } = render(
             <ContextsProvidersMock>
-                <AvatarMenu user={DEFAULT_USER} defaultVisibilty />,
+                <AvatarMenu user={DEFAULT_USER} defaultVisibilty />
             </ContextsProvidersMock>,
         );
 
@@ -65,7 +65,7 @@ describe('AvatarMenu', () => {
     it('should render dropdown menu when click avatar', () => {
         const { getByLabelText, getByTitle } = render(
             <ContextsProvidersMock>
-                <AvatarMenu user={DEFAULT_USER} />,
+                <AvatarMenu user={DEFAULT_USER} />
             </ContextsProvidersMock>,
         );
 
@@ -94,7 +94,7 @@ describe('AvatarMenu', () => {
     it('should hide dropdown menu when click outside component', () => {
         const { getByLabelText } = render(
             <ContextsProvidersMock>
-                <AvatarMenu user={DEFAULT_USER} defaultVisibilty />,
+                <AvatarMenu user={DEFAULT_USER} defaultVisibilty />
             </ContextsProvidersMock>,
         );
 

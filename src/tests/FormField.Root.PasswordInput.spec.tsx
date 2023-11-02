@@ -17,7 +17,7 @@ describe('FormField.PasswordInput', () => {
     it('should render', () => {
         const { container } = render(
             <ContextsProvidersMock>
-                <FormField.PasswordInput inputId={CUSTOM_ID} />,
+                <FormField.PasswordInput inputId={CUSTOM_ID} />
             </ContextsProvidersMock>,
         );
 
@@ -34,7 +34,6 @@ describe('FormField.PasswordInput', () => {
                     inputId={CUSTOM_ID}
                     placeHolder={PLACEHOLDER}
                 />
-                ,
             </ContextsProvidersMock>,
         );
 
@@ -46,7 +45,7 @@ describe('FormField.PasswordInput', () => {
     it('should render as required', () => {
         const { container } = render(
             <ContextsProvidersMock>
-                <FormField.PasswordInput inputId={CUSTOM_ID} required />,
+                <FormField.PasswordInput inputId={CUSTOM_ID} required />
             </ContextsProvidersMock>,
         );
 
@@ -60,7 +59,7 @@ describe('FormField.PasswordInput', () => {
     it('should render as disabled', () => {
         const { container } = render(
             <ContextsProvidersMock>
-                <FormField.PasswordInput inputId={CUSTOM_ID} disabled />,
+                <FormField.PasswordInput inputId={CUSTOM_ID} disabled />
             </ContextsProvidersMock>,
         );
 
@@ -80,7 +79,6 @@ describe('FormField.PasswordInput', () => {
                     inputId={CUSTOM_ID}
                     onChange={onChange}
                 />
-                ,
             </ContextsProvidersMock>,
         );
 
@@ -95,7 +93,7 @@ describe('FormField.PasswordInput', () => {
     it('should render with type "password"', () => {
         const { container } = render(
             <ContextsProvidersMock>
-                <FormField.PasswordInput inputId={CUSTOM_ID} />,
+                <FormField.PasswordInput inputId={CUSTOM_ID} />
             </ContextsProvidersMock>,
         );
 
@@ -107,7 +105,7 @@ describe('FormField.PasswordInput', () => {
     it('should show input when click button', () => {
         const { container, getByRole } = render(
             <ContextsProvidersMock>
-                <FormField.PasswordInput inputId={CUSTOM_ID} />,
+                <FormField.PasswordInput inputId={CUSTOM_ID} />
             </ContextsProvidersMock>,
         );
 
@@ -124,7 +122,7 @@ describe('FormField.PasswordInput', () => {
     it('should show and hide input when button is clicked', () => {
         const { container, getByRole } = render(
             <ContextsProvidersMock>
-                <FormField.PasswordInput inputId={CUSTOM_ID} />,
+                <FormField.PasswordInput inputId={CUSTOM_ID} />
             </ContextsProvidersMock>,
         );
 
@@ -146,7 +144,7 @@ describe('FormField.PasswordInput', () => {
         const eyeSlashIconTitle = 'eye-slash-icon';
         const { container, getByRole, getByTitle } = render(
             <ContextsProvidersMock>
-                <FormField.PasswordInput inputId={CUSTOM_ID} />,
+                <FormField.PasswordInput inputId={CUSTOM_ID} />
             </ContextsProvidersMock>,
         );
 

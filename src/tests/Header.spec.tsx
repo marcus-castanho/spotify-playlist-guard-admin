@@ -18,7 +18,7 @@ describe('Header', () => {
     it('should render', () => {
         const { getByRole } = render(
             <ContextsProvidersMock>
-                <Header />,
+                <Header />
             </ContextsProvidersMock>,
         );
 
@@ -31,7 +31,7 @@ describe('Header', () => {
         const HOME_URL = '/home';
         const { getByRole } = render(
             <ContextsProvidersMock>
-                <Header />,
+                <Header />
             </ContextsProvidersMock>,
         );
 
@@ -44,7 +44,7 @@ describe('Header', () => {
         const ROOT_URL = '/';
         const { getByRole } = render(
             <ContextsProvidersMock defaultUser={null}>
-                <Header />,
+                <Header />
             </ContextsProvidersMock>,
         );
 
@@ -56,7 +56,7 @@ describe('Header', () => {
     it('should render AvatarMenu when user is authenticated', () => {
         const { getByLabelText } = render(
             <ContextsProvidersMock>
-                <Header />,
+                <Header />
             </ContextsProvidersMock>,
         );
 
@@ -68,7 +68,7 @@ describe('Header', () => {
     it('should not render AvatarMenu when user is not authenticated', () => {
         const { queryByLabelText } = render(
             <ContextsProvidersMock defaultUser={null}>
-                <Header />,
+                <Header />
             </ContextsProvidersMock>,
         );
 

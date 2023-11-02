@@ -16,7 +16,7 @@ describe('Avatar', () => {
     it('should render with default avatar icon', () => {
         const { getByTitle } = render(
             <ContextsProvidersMock>
-                <Avatar />,
+                <Avatar />
             </ContextsProvidersMock>,
         );
 
@@ -28,7 +28,7 @@ describe('Avatar', () => {
     it('should render with size 24 by default', () => {
         const { getByTitle } = render(
             <ContextsProvidersMock>
-                <Avatar />,
+                <Avatar />
             </ContextsProvidersMock>,
         );
 
@@ -43,7 +43,7 @@ describe('Avatar', () => {
         const SIZE = 52;
         const { getByTitle } = render(
             <ContextsProvidersMock>
-                <Avatar size={SIZE} />,
+                <Avatar size={SIZE} />
             </ContextsProvidersMock>,
         );
 

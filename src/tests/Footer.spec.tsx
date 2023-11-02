@@ -14,7 +14,7 @@ describe('Footer', () => {
     it('should render', () => {
         const { getByText } = render(
             <ContextsProvidersMock>
-                <Footer />,
+                <Footer />
             </ContextsProvidersMock>,
         );
 
@@ -29,7 +29,7 @@ describe('Footer', () => {
             'https://github.com/marcus-castanho/spotify-playlist-guard-admin';
         const { getByRole } = render(
             <ContextsProvidersMock>
-                <Footer />,
+                <Footer />
             </ContextsProvidersMock>,
         );
 
@@ -43,7 +43,7 @@ describe('Footer', () => {
         const PROFILE_URL = 'https://github.com/marcus-castanho';
         const { getByRole } = render(
             <ContextsProvidersMock>
-                <Footer />,
+                <Footer />
             </ContextsProvidersMock>,
         );
 

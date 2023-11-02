@@ -6,7 +6,7 @@ describe('Main', () => {
     it('should render', () => {
         const { getByRole } = render(
             <Main>
-                <></>,
+                <></>
             </Main>,
         );
 
