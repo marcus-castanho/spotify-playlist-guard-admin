@@ -14,6 +14,7 @@ export const Footer = () => {
             <Link
                 href="https://github.com/marcus-castanho/spotify-playlist-guard-admin"
                 target="_blank"
+                aria-label="github-repository-link"
             >
                 <GitHubIcon
                     size={24}
@@ -27,6 +28,7 @@ export const Footer = () => {
                     href="https://github.com/marcus-castanho"
                     target="_blank"
                     className="flex hover:underline"
+                    aria-label="github-profile-link"
                 >
                     Marcus
                     <ExternalLinkIcon
