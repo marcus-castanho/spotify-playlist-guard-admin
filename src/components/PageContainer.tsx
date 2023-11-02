@@ -4,5 +4,9 @@ type PageContainerProps = {
     children: ReactNode;
 };
 export const PageContainer: FC<PageContainerProps> = ({ children }) => {
-    return <div className="flex min-h-screen flex-col">{children}</div>;
+    return (
+        <div aria-label="page-container" className="flex min-h-screen flex-col">
+            {children}
+        </div>
+    );
 };
