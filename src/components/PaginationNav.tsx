@@ -27,15 +27,18 @@ type NavButtonProps = {
     onClick: () => void;
     disabled?: boolean;
     isSelected?: boolean;
+    label?: string;
 };
 const NavButton: FC<NavButtonProps> = ({
     children,
     onClick,
     disabled = false,
     isSelected = false,
+    label = undefined,
 }) => {
     return (
         <button
+            aria-label={label}
             onClick={() => onClick()}
             className={match({ isSelected, disabled })
                 .with(
@@ -77,8 +80,12 @@ export const PaginationNav: FC<PaginationNavProps> = ({
     const isLastPage = page === pagesIndexes[pagesIndexes.length - 1];
 
     return (
-        <div className="flex justify-center gap-2 p-4">
+        <div
+            aria-label="pagination-nav"
+            className="flex justify-center gap-2 p-4"
+        >
             <NavButton
+                label="prev-page-nav-button"
                 onClick={() => changePage('previous')}
                 disabled={isFirstPage}
             >
@@ -111,7 +118,11 @@ export const PaginationNav: FC<PaginationNavProps> = ({
                     ),
                 )}
             </div>
-            <NavButton onClick={() => changePage('next')} disabled={isLastPage}>
+            <NavButton
+                label="next-page-nav-button"
+                onClick={() => changePage('next')}
+                disabled={isLastPage}
+            >
                 <div className={isLastPage ? 'pl-2 text-gray-200' : 'pl-2'}>
                     Next
                 </div>
