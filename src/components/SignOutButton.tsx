@@ -7,7 +7,11 @@ export const SignOutButton = () => {
     const { signOut } = useAuth();
 
     return (
-        <button onClick={() => signOut()} className="flex w-full items-start">
+        <button
+            aria-label="sign-out-button"
+            onClick={() => signOut()}
+            className="flex w-full items-start"
+        >
             Sign Out
         </button>
     );
