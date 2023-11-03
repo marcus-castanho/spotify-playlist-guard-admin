@@ -7,6 +7,7 @@ type SpinnerProps = {
 export const Spinner: FC<SpinnerProps> = ({ size }) => {
     return (
         <span
+            aria-label="spinner"
             className={match(size)
                 .with(
                     'small',
