@@ -8,7 +8,7 @@ import { SunIcon } from './icons/SunIcon';
 export const ThemeSwitcher: FC = () => {
     const { theme, switchTheme } = useTheme();
     const alternativeTheme = theme === 'dark' ? 'light' : 'dark';
-    const alternativeThemeIcon =
+    const icon =
         theme === 'dark' ? (
             <SunIcon size={24} fillColor="white" />
         ) : (
@@ -16,8 +16,11 @@ export const ThemeSwitcher: FC = () => {
         );
 
     return (
-        <button onClick={() => switchTheme(alternativeTheme)}>
-            {alternativeThemeIcon}
+        <button
+            aria-label="theme-switcher-button"
+            onClick={() => switchTheme(alternativeTheme)}
+        >
+            {icon}
         </button>
     );
 };
