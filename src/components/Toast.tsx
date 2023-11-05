@@ -30,7 +30,10 @@ export const Toast: FC<ToastProps> = ({ display, message, type }) => {
 
     if (!display) return <></>;
     return (
-        <div className="fixed right-0 top-0 z-10 max-sm:w-full max-sm:p-1 sm:right-3 sm:top-3">
+        <div
+            aria-label="toast-message"
+            className="fixed right-0 top-0 z-10 max-sm:w-full max-sm:p-1 sm:right-3 sm:top-3"
+        >
             <div
                 className={match(type)
                     .with(
