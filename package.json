@@ -12,7 +12,9 @@
         "lint": "next lint",
         "enable-hooks": "husky install",
         "disable-hooks": "husky uninstall",
-        "test": "jest --watch"
+        "test:watch": "jest --watch",
+        "test": "jest",
+        "cypress:open": "cypress open"
     },
     "dependencies": {
         "@tanstack/react-query": "^4.33.0",
@@ -51,6 +53,7 @@
         "@types/react-dom": "^18.2.7",
         "@typescript-eslint/eslint-plugin": "^6.3.0",
         "autoprefixer": "^10.4.15",
+        "cypress": "^13.4.0",
         "eslint": "^8.47.0",
         "eslint-config-next": "^13.4.13",
         "eslint-config-prettier": "^9.0.0",
