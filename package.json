@@ -14,7 +14,7 @@
         "disable-hooks": "husky uninstall",
         "test:watch": "jest --watch",
         "test": "jest",
-        "cypress:open": "cypress open"
+        "cypress:open": "cypress open --config-file ./cypress/cypress.config.ts"
     },
     "dependencies": {
         "@tanstack/react-query": "^4.33.0",
