@@ -39,11 +39,11 @@ export const getMe: Fetch<User, GetMePayload> = async (authToken) => {
 
     if (status !== 200) return { success: false, status, data: null };
 
-    const user = validateUserSchema(resBody);
+    const data = validateUserSchema(resBody);
 
     return {
         success: true,
         status,
-        data: user,
+        data,
     };
 };

@@ -52,11 +52,11 @@ export const getExternalApps: Fetch<
 
     if (status !== 200) return { success: false, status, data: null };
 
-    const user = validateExternalAppSchema(resBody);
+    const data = validateExternalAppSchema(resBody);
 
     return {
         success: true,
         status,
-        data: user,
+        data,
     };
 };
