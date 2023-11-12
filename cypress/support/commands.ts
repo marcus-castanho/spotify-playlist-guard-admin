@@ -3,5 +3,6 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-import '../global.d.ts';
+/// <reference types="cypress" />
+
 import '@testing-library/cypress/add-commands';
