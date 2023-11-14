@@ -33,6 +33,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
                 required={required}
                 placeholder={placeHolder}
                 disabled={disabled}
+                aria-label="password-input"
             />
             <button
                 type="button"

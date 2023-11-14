@@ -32,6 +32,7 @@ export const TextInput: FC<TextInputProps> = ({
             defaultValue={defaultValue}
             placeholder={placeHolder}
             disabled={disabled}
+            aria-label="text-input"
         />
     );
 };
