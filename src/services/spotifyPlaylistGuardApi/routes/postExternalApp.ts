@@ -37,7 +37,7 @@ type PostExternalAppPayload = {
 export const postExternalApp: Fetch<
     ExternalAppWithKey,
     PostExternalAppPayload
-> = async (payload, fetchType = { type: 'SSG' }) => {
+> = async (payload, fetchType) => {
     const { authToken, ...reqPayload } = payload;
 
     const response = await request({

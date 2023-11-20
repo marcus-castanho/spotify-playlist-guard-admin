@@ -8,7 +8,7 @@ type PostAuthPayload = {
 
 export const postAuth: Fetch<null, PostAuthPayload> = async (
     payload,
-    fetchType = { type: 'SSG' },
+    fetchType,
 ) => {
     const response = await request({
         path: `/auth/login/admin`,

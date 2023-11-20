@@ -35,7 +35,7 @@ type PatchExternalAppPayload = {
 export const patchExternalApp: Fetch<
     ExternalApp,
     PatchExternalAppPayload
-> = async (payload, fetchType = { type: 'SSG' }) => {
+> = async (payload, fetchType) => {
     const { authToken, id, ...reqPayload } = payload;
 
     const response = await request({

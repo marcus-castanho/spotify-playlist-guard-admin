@@ -11,6 +11,9 @@ export function request({
     options,
     fetchType = {
         type: 'SSG',
+        options: {
+            next: { revalidate: 3600 },
+        },
     },
 }: {
     path: string;
@@ -20,22 +23,11 @@ export function request({
 }) {
     const apiUrl = PROXY_URL;
     const headers = options?.headers;
-    const { type } = fetchType;
-    const fetchTypeOptions = {
-        ...(type === 'SSR' ? { cache: 'no-store' } : {}),
-        ...(type === 'SSG' && fetchType?.revalidate
-            ? {
-                  next: {
-                      revalidate: fetchType.revalidate,
-                  },
-              }
-            : {}),
-    };
 
     if (!authToken) {
         return fetch(`${apiUrl}${path}`, {
             ...options,
-            ...{ fetchTypeOptions },
+            ...fetchType.options,
         });
     }
 
@@ -45,6 +37,6 @@ export function request({
             Authorization: `Bearer ${authToken}`,
             ...headers,
         },
-        ...{ fetchTypeOptions },
+        ...fetchType.options,
     });
 }

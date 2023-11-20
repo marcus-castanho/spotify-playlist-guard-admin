@@ -31,7 +31,7 @@ type GetExternalAppPayload = {
 
 export const getExternalApp: Fetch<ExternalApp, GetExternalAppPayload> = async (
     payload: { id: string; authToken: string },
-    fetchType = { type: 'SSG' },
+    fetchType,
 ) => {
     const { id, authToken } = payload;
     const response = await request({

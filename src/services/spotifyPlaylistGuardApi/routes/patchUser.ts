@@ -33,7 +33,7 @@ type PatchUserPayload = {
 
 export const patchUser: Fetch<User, PatchUserPayload> = async (
     payload,
-    fetchType = { type: 'SSG' },
+    fetchType,
 ) => {
     const { authToken, id, ...reqPayload } = payload;
 

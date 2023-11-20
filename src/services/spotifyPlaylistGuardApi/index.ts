@@ -15,10 +15,11 @@ export type ReturnValue<T = never> =
 export type FetchType =
     | {
           type: 'SSR';
+          options: { cache: NonNullable<RequestCache> };
       }
     | {
           type: 'SSG';
-          revalidate?: number;
+          options: { next: NextFetchRequestConfig };
       };
 
 export type Fetch<R, T = never> = [T] extends [never]

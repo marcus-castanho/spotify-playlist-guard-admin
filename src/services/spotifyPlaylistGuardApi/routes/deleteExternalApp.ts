@@ -8,7 +8,7 @@ type DeleteExternalAppPayload = {
 
 export const deleteExternalApp: Fetch<null, DeleteExternalAppPayload> = async (
     payload: { id: string; authToken: string },
-    fetchType = { type: 'SSG' },
+    fetchType,
 ) => {
     const { id, authToken } = payload;
     const response = await request({

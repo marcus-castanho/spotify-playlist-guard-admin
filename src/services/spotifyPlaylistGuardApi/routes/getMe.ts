@@ -28,11 +28,15 @@ function validateUserSchema(payload: unknown) {
 
 type GetMePayload = string;
 
-export const getMe: Fetch<User, GetMePayload> = async (authToken) => {
+export const getMe: Fetch<User, GetMePayload> = async (
+    authToken,
+    fetchType,
+) => {
     const response = await request({
         path: `/admin-users/me`,
         options: { method: 'GET' },
         authToken,
+        fetchType,
     });
     const { status } = response;
     const resBody = await response.json().catch(() => ({}));
