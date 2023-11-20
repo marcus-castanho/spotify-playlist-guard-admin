@@ -19,6 +19,7 @@ import { ChevronRightIcon } from '@/components/icons/ChevronRightIcon';
 import { TrashIcon } from '@/components/icons/TrashIcon';
 import { PencilIcon } from '@/components/icons/PencilIcon';
 import { PlusIcon } from '@/components/icons/PlusIcon';
+import { ServerWarningIcon } from '@/components/icons/ServerWarningIcon';
 
 export const icons: { title: string; component: ReactNode }[] = [
     {
@@ -100,5 +101,9 @@ export const icons: { title: string; component: ReactNode }[] = [
     {
         title: 'plus',
         component: <PlusIcon size={24} key={PlusIcon.name} />,
+    },
+    {
+        title: 'server-warning',
+        component: <ServerWarningIcon size={24} key={ServerWarningIcon.name} />,
     },
 ];
