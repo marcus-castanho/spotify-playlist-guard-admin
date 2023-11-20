@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { GitHubIcon } from './icons/GitHubIcon';
 import { useTheme } from '@/contexts/ThemeContext';
-import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
+import { ExternalLink } from './ExternalLink';
 
 export const Footer = () => {
     const { theme } = useTheme();
@@ -24,18 +24,12 @@ export const Footer = () => {
             <div className="border-l-2 border-black dark:border-white" />
             <div className="flex gap-1">
                 Developed by
-                <Link
+                <ExternalLink
                     href="https://github.com/marcus-castanho"
+                    label="github-profile-link"
                     target="_blank"
-                    className="flex hover:underline"
-                    aria-label="github-profile-link"
-                >
-                    Marcus
-                    <ExternalLinkIcon
-                        size={22}
-                        fillColor={theme === 'dark' ? 'white' : 'black'}
-                    />
-                </Link>
+                    text="Marcus"
+                />
             </div>
         </footer>
     );
