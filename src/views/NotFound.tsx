@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageContainer } from '@/components/PageContainer';
 import { Main } from '@/components/Main';
-import { ExternalLink } from '@/components/ExternalLink';
+import { Anchor } from '@/components/Anchor';
 import { GuardBotLogo } from '@/components/GuardBotLogo';
 
 export const NotFound = () => {
@@ -17,8 +17,8 @@ export const NotFound = () => {
                         <p className="pb-10 text-gray-100">
                             The resourve you are looking for could not be found
                         </p>
-                        <ExternalLink
-                            text="Return Home"
+                        <Anchor
+                            text="Go Home"
                             href="/"
                             target="_self"
                             label="home-link"
