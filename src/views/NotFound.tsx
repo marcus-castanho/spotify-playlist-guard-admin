@@ -12,10 +12,10 @@ export const NotFound = () => {
                     <div className="flex flex-col items-center">
                         <GuardBotLogo size={60} />
                         <h2 className="pb-4 pt-10 text-5xl font-bold">
-                            404 - Page not found
+                            Page not found
                         </h2>
                         <p className="pb-10 text-gray-100">
-                            The resourve you are looking for could not be found
+                            The resource you are looking for could not be found
                         </p>
                         <Anchor
                             text="Go Home"
