@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { FC, ComponentProps } from 'react';
 import { GuardIcon } from './icons/GuardIcon';
 
-export const GuardBotLogo = () => {
+type GuardBotLogoProps = {
+    size?: ComponentProps<typeof GuardIcon>['size'];
+};
+export const GuardBotLogo: FC<GuardBotLogoProps> = ({ size = 40 }) => {
     return (
         <div
             aria-label="guard-bot-logo"
             className="inline-block rounded-[2.5rem] border-2 border-black bg-white p-2 dark:border-white"
         >
-            <GuardIcon size={40} fillColor="black" />
+            <GuardIcon size={size} fillColor="black" />
         </div>
     );
 };
