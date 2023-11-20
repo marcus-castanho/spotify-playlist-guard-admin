@@ -2,7 +2,7 @@ import React, { ComponentProps, FC, ReactNode } from 'react';
 import Link from 'next/link';
 
 type AnchorProps = {
-    children: ReactNode;
+    children?: ReactNode;
     text: string;
     href: ComponentProps<typeof Link>['href'];
     target: ComponentProps<typeof Link>['target'];
