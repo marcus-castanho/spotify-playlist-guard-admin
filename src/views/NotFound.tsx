@@ -11,10 +11,10 @@ export const NotFound = () => {
                 <div className="flex w-full items-center justify-center">
                     <div className="flex flex-col items-center">
                         <GuardBotLogo size={60} />
-                        <h2 className="pb-4 pt-10 text-5xl font-bold">
+                        <h1 className="px-6 pb-4 pt-10 text-center text-5xl font-bold sm:text-left">
                             Page not found
-                        </h2>
-                        <p className="pb-10 text-gray-100">
+                        </h1>
+                        <p className="px-6 pb-10 text-center text-gray-100 sm:text-left">
                             The resource you are looking for could not be found
                         </p>
                         <Anchor
