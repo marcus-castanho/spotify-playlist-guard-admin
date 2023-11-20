@@ -1,3 +1,5 @@
+import { FetchType } from '.';
+
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
 export const PROXY_URL = `${
     process.env.NEXT_PUBLIC_APP_URL || ''
@@ -14,20 +16,17 @@ export function request({
     path: string;
     authToken?: string;
     options?: RequestInit;
-    fetchType?: {
-        type: 'SSR' | 'SSG';
-        revalidate?: number;
-    };
+    fetchType?: FetchType;
 }) {
     const apiUrl = PROXY_URL;
     const headers = options?.headers;
-    const { type, revalidate } = fetchType;
+    const { type } = fetchType;
     const fetchTypeOptions = {
         ...(type === 'SSR' ? { cache: 'no-store' } : {}),
-        ...(type === 'SSG' && revalidate
+        ...(type === 'SSG' && fetchType?.revalidate
             ? {
                   next: {
-                      revalidate,
+                      revalidate: fetchType.revalidate,
                   },
               }
             : {}),
@@ -46,5 +45,6 @@ export function request({
             Authorization: `Bearer ${authToken}`,
             ...headers,
         },
+        ...{ fetchTypeOptions },
     });
 }
