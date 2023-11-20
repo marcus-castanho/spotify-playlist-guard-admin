@@ -1,15 +1,17 @@
-'use client';
-
-import React from 'react';
+import React, { FC } from 'react';
 import { PageContainer } from '@/components/PageContainer';
-import { useTheme } from '@/contexts/ThemeContext';
 import { Main } from '@/components/Main';
 import { ServerWarningIcon } from '@/components/icons/ServerWarningIcon';
 import { Anchor } from '@/components/Anchor';
+import { Theme } from '@/contexts/ThemeContext';
 
-export const InternalServerError = () => {
-    const { theme } = useTheme();
+type InternalServerErrorProps = {
+    theme: Theme;
+};
 
+export const InternalServerError: FC<InternalServerErrorProps> = ({
+    theme = 'dark',
+}) => {
     return (
         <PageContainer>
             <Main>
