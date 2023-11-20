@@ -1,9 +1,4 @@
-import React, {
-    ReactNode,
-    ComponentType,
-    PropsWithChildren,
-    ComponentProps,
-} from 'react';
+import React, { ReactNode, ComponentType, PropsWithChildren } from 'react';
 import { AuthProvider, withDefaultUser } from './AuthContext';
 import { ModalProvider } from './ModalContext';
 import { ToastProvider } from './ToastContext';
