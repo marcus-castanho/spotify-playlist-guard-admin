@@ -64,7 +64,7 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
     }, [isFetching]);
 
     return (
-        <div className="flex w-[90vw] flex-col rounded-lg p-1 dark:bg-gradient-to-b dark:from-gray-950 dark:to-black">
+        <div className="flex w-[90vw] flex-col rounded-lg p-1 shadow-md dark:bg-gradient-to-b dark:from-gray-950 dark:to-black">
             <div className="flex p-3.5">
                 <ButtonPrimary
                     onClick={() => handleCreateExternalApp()}
