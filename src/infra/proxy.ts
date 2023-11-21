@@ -1,7 +1,3 @@
-import { createProxyMiddleware } from 'http-proxy-middleware';
+import httpProxy from 'http-proxy';
 
-export function createMiddleware(
-    params: Parameters<typeof createProxyMiddleware>[0],
-) {
-    return createProxyMiddleware(params);
-}
+export const proxyServer: httpProxy = httpProxy.createProxy();
