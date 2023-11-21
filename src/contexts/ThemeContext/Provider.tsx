@@ -74,3 +74,14 @@ export function useTheme(): ThemeContextType {
 
     return context;
 }
+
+export function withInitialTheme(
+    Component: typeof ThemeProvider,
+    { initialTheme }: { initialTheme: Theme },
+) {
+    const ComponentWrapper = ({ children }: { children?: ReactNode }) => {
+        return <Component initialTheme={initialTheme}>{children}</Component>;
+    };
+
+    return ComponentWrapper;
+}
