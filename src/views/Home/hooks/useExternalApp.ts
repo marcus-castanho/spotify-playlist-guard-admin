@@ -10,7 +10,7 @@ export function useExternalApp(id?: string) {
     const { handleGuardApiResponse } = useClientErrorHandler();
     const externalAppsQueryKey: QueryKey = 'external-app';
 
-    const externalAppsQuery = useQuery([externalAppsQueryKey, id], {
+    const externalAppsQuery = useQuery({
         queryFn: () => {
             if (!id) return null;
             return getExternalApp({ id, authToken: token })
@@ -19,6 +19,7 @@ export function useExternalApp(id?: string) {
         },
         initialData: null,
         enabled: !!id,
+        queryKey: [externalAppsQueryKey, id],
     });
 
     return {

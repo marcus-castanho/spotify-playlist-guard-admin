@@ -15,7 +15,7 @@ export function useUserMe({ signOut, defaultUser }: UseUserMeParams) {
     const userMeQueryKey: QueryKey = 'user-me';
     const pathname = usePathname();
 
-    const userMeQuery = useQuery([userMeQueryKey, defaultUser], {
+    const userMeQuery = useQuery({
         queryFn: () =>
             getMe(token)
                 .then(({ data, status, success }) => {
@@ -27,6 +27,7 @@ export function useUserMe({ signOut, defaultUser }: UseUserMeParams) {
                 .catch(() => null),
         initialData: defaultUser || null,
         enabled: isPrivatePage(pathname || ''),
+        queryKey: [userMeQueryKey, defaultUser],
     });
 
     return {

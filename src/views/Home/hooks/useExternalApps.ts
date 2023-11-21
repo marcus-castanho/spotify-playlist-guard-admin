@@ -15,12 +15,13 @@ export function useExternalApps(externalApps: ExternalApp[]) {
     const externalAppsQueryKey: QueryKey = 'external-apps';
     const { page, changePage, getPagesIndexes } = usePagination();
 
-    const externalAppsQuery = useQuery([externalAppsQueryKey, page], {
+    const externalAppsQuery = useQuery({
         queryFn: () =>
             getExternalApps({ page, authToken: token })
                 .then(handleGuardApiResponse)
                 .catch(() => []),
         initialData: externalApps,
+        queryKey: [externalAppsQueryKey, page],
     });
 
     const { indexesArr: pagesIndexes } = getPagesIndexes(1, 5);
