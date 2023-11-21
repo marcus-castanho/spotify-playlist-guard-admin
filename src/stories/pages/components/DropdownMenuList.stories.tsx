@@ -26,7 +26,7 @@ export const WithHeader: Story = {
     args: {
         header: (
             <div className="flex items-center gap-2">
-                <Avatar size={30} fillColor="white" />
+                <Avatar size={30} />
                 {'Test user'}
             </div>
         ),
