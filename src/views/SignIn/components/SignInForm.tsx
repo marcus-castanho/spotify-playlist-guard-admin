@@ -15,16 +15,22 @@ export const SignInForm = () => {
     const { toast } = useToast();
     const [isSubmiting, setIsSubmitting] = useState(false);
 
+    const handleMessages = (status: number) => {
+        if (status === 401) toast('Incorrect data. Please try again', 'error');
+    };
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setIsSubmitting(true);
         postAuth(form)
-            .then(({ success }) => {
-                if (!success) throw new Error('Failed to authenticate');
+            .then(({ success, status }) => {
+                if (!success) throw { status };
             })
             .then(() => toast('Successfully signed in.', 'success'))
             .then(() => router.push('/home'))
             .catch((error) => {
+                if (error.status) return handleMessages(error.status);
+
                 handleUncaughtClientError(error);
                 toast('Error while performing this operation', 'error');
             })
