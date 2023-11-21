@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ReactNode, ComponentType, PropsWithChildren } from 'react';
 import { AuthProvider, withDefaultUser } from './AuthContext';
 import { ModalProvider } from './ModalContext';
