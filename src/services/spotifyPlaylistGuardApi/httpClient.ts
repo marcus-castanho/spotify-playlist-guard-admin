@@ -1,9 +1,5 @@
 import { FetchType } from '.';
-
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
-export const PROXY_URL = `${
-    process.env.NEXT_PUBLIC_APP_URL || ''
-}/api/external`;
+import { PROXY_URL } from './proxy';
 
 export function request({
     path,
