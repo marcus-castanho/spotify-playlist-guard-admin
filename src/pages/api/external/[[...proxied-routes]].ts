@@ -5,11 +5,7 @@
 import { proxyMiddleware } from '@/services/spotifyPlaylistGuardApi/proxy';
 
 export default function handler(req, res) {
-    proxyMiddleware(req, res, (result: unknown) => {
-        if (result instanceof Error) {
-            throw result;
-        }
-    });
+    proxyMiddleware(req, res);
 }
 
 export const config = {
