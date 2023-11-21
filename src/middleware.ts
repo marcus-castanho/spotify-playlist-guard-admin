@@ -3,7 +3,9 @@ import { handleMiddlewareErrorResponse } from './errors/serverErrorHandlers';
 import { validateSession } from './middlewares/validateSession';
 import { isPrivatePage } from './config/pages';
 import { shouldRunMiddlewares } from './middlewares/shouldRunMiddlewares';
-import { redirectToSignIn } from './middlewares/redirectToSignIn';
+import { redirectToPath } from './middlewares/redirectToPath';
+import { getRequestCookie } from './storage/cookies/server';
+import { TOKEN_COOKIE_KEY } from './contexts/AuthContext';
 
 export const config = {
     /*
@@ -19,10 +21,13 @@ export const config = {
 export async function middleware(request: NextRequest) {
     try {
         const { pathname } = request.nextUrl;
+        const isAuthenticated = !!getRequestCookie(TOKEN_COOKIE_KEY, request);
 
         if (!shouldRunMiddlewares(request)) return NextResponse.next();
-        if (pathname === '/') return redirectToSignIn(request);
+        if (pathname === '/') return redirectToPath(request, '/signin');
         if (isPrivatePage(pathname)) validateSession(request);
+        if (isAuthenticated && pathname === '/signin')
+            return redirectToPath(request, '/home');
 
         return NextResponse.next();
     } catch (error) {
