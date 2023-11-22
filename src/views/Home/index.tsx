@@ -10,10 +10,13 @@ import { Footer } from '@/components/Footer';
 
 export const Home = async () => {
     const token = getPageCookie(TOKEN_COOKIE_KEY) || '';
-    const externalApps = await getExternalApps({
-        page: 1,
-        authToken: token,
-    }).then(({ success, data }) => {
+    const externalApps = await getExternalApps(
+        {
+            page: 1,
+            authToken: token,
+        },
+        { type: 'SSR', options: { cache: 'no-store' } },
+    ).then(({ success, data }) => {
         if (!success) return [];
 
         return data;
