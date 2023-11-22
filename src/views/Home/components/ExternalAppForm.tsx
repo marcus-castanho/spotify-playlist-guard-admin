@@ -60,9 +60,6 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
             ...form,
             authToken: token,
         })
-            .then(() => {
-                throw new Error();
-            })
             .then(handleGuardApiResponse)
             .then(() => toast('Successfully created.', 'success'))
             .then(() => onSubmit())
