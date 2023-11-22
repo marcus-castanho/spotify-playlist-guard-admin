@@ -6,11 +6,11 @@ import { Anchor } from '@/components/Anchor';
 import { Theme } from '@/contexts/ThemeContext';
 
 type InternalServerErrorProps = {
-    theme: Theme;
+    theme?: Theme;
 };
 
 export const InternalServerError: FC<InternalServerErrorProps> = ({
-    theme = 'dark',
+    theme = 'light',
 }) => {
     return (
         <PageContainer>
