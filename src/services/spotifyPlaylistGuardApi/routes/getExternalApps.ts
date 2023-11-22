@@ -3,18 +3,21 @@ import { Fetch } from '..';
 import { InvalidResponseDataError } from '@/errors';
 import { request } from '../httpClient';
 
-export type ExternalApp = z.infer<typeof externalAppsSchema>[number];
+export type ExternalApp = z.infer<typeof externalAppsSchema>['items'][number];
 
-const externalAppsSchema = z.array(
-    z.object({
-        id: z.string(),
-        name: z.string(),
-        recoverEmail: z.string(),
-        baseUrl: z.string(),
-        createdAt: z.string().datetime(),
-        updatedAt: z.string().datetime(),
-    }),
-);
+const externalAppsSchema = z.object({
+    pages: z.number(),
+    items: z.array(
+        z.object({
+            id: z.string(),
+            name: z.string(),
+            recoverEmail: z.string(),
+            baseUrl: z.string(),
+            createdAt: z.string().datetime(),
+            updatedAt: z.string().datetime(),
+        }),
+    ),
+});
 
 function validateExternalAppSchema(payload: unknown) {
     const validation = externalAppsSchema.safeParse(payload);
@@ -34,7 +37,7 @@ type GetExternalAppsPayload = {
 };
 
 export const getExternalApps: Fetch<
-    ExternalApp[],
+    { pages: number; items: ExternalApp[] },
     GetExternalAppsPayload
 > = async (payload: { page: number; authToken: string }, fetchType) => {
     const { page, authToken } = payload;

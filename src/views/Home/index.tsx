@@ -10,14 +10,14 @@ import { Footer } from '@/components/Footer';
 
 export const Home = async () => {
     const token = getPageCookie(TOKEN_COOKIE_KEY) || '';
-    const externalApps = await getExternalApps(
+    const { pages, items: externalApps } = await getExternalApps(
         {
             page: 1,
             authToken: token,
         },
         { type: 'SSR', options: { cache: 'no-store' } },
     ).then(({ success, data }) => {
-        if (!success) return [];
+        if (!success) return { pages: 1, items: [] };
 
         return data;
     });
@@ -27,7 +27,10 @@ export const Home = async () => {
             <Header />
             <Main>
                 <div className="flex w-full justify-center">
-                    <ExternalAppsList externalApps={externalApps} />
+                    <ExternalAppsList
+                        pages={pages}
+                        externalApps={externalApps}
+                    />
                 </div>
             </Main>
             <Footer />

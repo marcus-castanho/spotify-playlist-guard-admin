@@ -9,7 +9,10 @@ import {
 import { getCookie } from '@/storage/cookies/client';
 import { useQuery } from '@tanstack/react-query';
 
-export function useExternalApps(externalApps: ExternalApp[]) {
+export function useExternalApps(initialData: {
+    pages: number;
+    items: ExternalApp[];
+}) {
     const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const { handleGuardApiResponse } = useClientErrorHandler();
     const externalAppsQueryKey: QueryKey = 'external-apps';
@@ -19,15 +22,18 @@ export function useExternalApps(externalApps: ExternalApp[]) {
         queryFn: () =>
             getExternalApps({ page, authToken: token })
                 .then(handleGuardApiResponse)
-                .catch(() => []),
-        initialData: externalApps,
+                .catch(() => initialData),
+        initialData,
         queryKey: [externalAppsQueryKey, page],
     });
 
-    const { indexesArr: pagesIndexes } = getPagesIndexes(1, 5);
+    const { indexesArr: pagesIndexes } = getPagesIndexes(
+        externalAppsQuery.data?.pages || 1,
+        5,
+    );
 
     return {
-        externalApps: externalAppsQuery.data,
+        externalApps: externalAppsQuery.data?.items || [],
         isFetching: externalAppsQuery.isFetching,
         page,
         changePage,

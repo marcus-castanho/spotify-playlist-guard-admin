@@ -13,10 +13,12 @@ import { PlusIcon } from '@/components/icons/PlusIcon';
 import { Spinner } from '@/components/Spinner';
 
 export type ExternalAppsListProps = {
+    pages: number;
     externalApps: ExternalApp[];
 };
 
 export const ExternalAppsList: FC<ExternalAppsListProps> = ({
+    pages,
     externalApps: initialExternalApps,
 }) => {
     const {
@@ -26,7 +28,7 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
         changePage,
         pagesIndexes,
         externalAppsQuery,
-    } = useExternalApps(initialExternalApps);
+    } = useExternalApps({ pages, items: initialExternalApps });
     const [isUpdating, setIsUpdating] = useState(false);
     const { openModal } = useModal();
 
