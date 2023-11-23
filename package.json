@@ -17,6 +17,9 @@
         "test:e2e": "cypress run --config-file ./cypress/cypress.config.ts",
         "test:cy:open": "cypress open --config-file ./cypress/cypress.config.ts"
     },
+    "engines": {
+        "node": "18.*"
+    },
     "dependencies": {
         "@tanstack/react-query": "^5.8.4",
         "@tippyjs/react": "^4.2.6",
