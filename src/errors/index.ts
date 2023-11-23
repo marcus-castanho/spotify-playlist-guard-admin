@@ -54,7 +54,7 @@ export class NotFound extends HTTPException {
         message?: string;
         error?: Error;
     }) {
-        super(...[message, 404, 'NotFoundException', error]);
+        super(...[message, 404, 'NotFound', error]);
     }
 }
 
