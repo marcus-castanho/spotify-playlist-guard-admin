@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { postAuth } from '@/services/spotifyPlaylistGuardApi';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/contexts/ToastContext';
-import { handleUncaughtClientError } from '@/errors/clientErrorHandlers';
+import { handleClientError } from '@/errors/clientErrorHandlers';
 import { FormRow } from '@/components/FormRow';
 import { ButtonPrimary } from '@/components/ButtonPrimary';
 import { FormField } from '@/components/FormField';
@@ -31,7 +31,7 @@ export const SignInForm = () => {
             .catch((error) => {
                 if (error.status) return handleMessages(error.status);
 
-                handleUncaughtClientError(error);
+                handleClientError(error);
                 toast('Error while performing this operation', 'error');
             })
             .finally(() => setIsSubmitting(false));

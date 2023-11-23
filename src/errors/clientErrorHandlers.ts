@@ -2,7 +2,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { log } from '@/logger';
 import { ReturnValue } from '@/services/spotifyPlaylistGuardApi';
 
-export function handleUncaughtClientError(error) {
+export function handleClientError(error) {
     const { digest } = error;
     log({
         message: 'Uncaught error',

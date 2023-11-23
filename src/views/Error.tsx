@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, FC } from 'react';
-import { handleUncaughtClientError } from '@/errors/clientErrorHandlers';
+import { handleClientError } from '@/errors/clientErrorHandlers';
 import { PageContainer } from '@/components/PageContainer';
 import { Main } from '@/components/Main';
 import { ServerWarningIcon } from '@/components/icons/ServerWarningIcon';
@@ -19,7 +19,7 @@ export const Error: FC<ErrorProps> = ({ error, reset }) => {
 
     useEffect(() => {
         if (!error) return;
-        handleUncaughtClientError(error);
+        handleClientError(error);
     }, [error]);
 
     return (

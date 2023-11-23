@@ -4,7 +4,7 @@ import React, { FC, useState } from 'react';
 import { patchUser } from '@/services/spotifyPlaylistGuardApi/routes/patchUser';
 import { getCookie } from '@/storage/cookies/client';
 import {
-    handleUncaughtClientError,
+    handleClientError,
     useClientErrorHandler,
 } from '@/errors/clientErrorHandlers';
 import { useToast } from '@/contexts/ToastContext';
@@ -48,7 +48,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
             .then(() => toast('Successfully updated.', 'success'))
             .then(() => onSubmit())
             .catch((error) => {
-                handleUncaughtClientError(error);
+                handleClientError(error);
                 toast('Error while performing this operation', 'error');
             })
             .finally(() => setIsSubmitting(false));

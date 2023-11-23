@@ -3,7 +3,7 @@ import { useModal } from '@/contexts/ModalContext';
 import { deleteExternalApp } from '@/services/spotifyPlaylistGuardApi';
 import { useToast } from '@/contexts/ToastContext';
 import {
-    handleUncaughtClientError,
+    handleClientError,
     useClientErrorHandler,
 } from '@/errors/clientErrorHandlers';
 import { getCookie } from '@/storage/cookies/client';
@@ -45,7 +45,7 @@ export const DeleteExternalAppModal: FC<DeleteExternalAppModalProps> = ({
             .then(() => toast('Successfully deleted.', 'success'))
             .then(() => onSubmit())
             .catch((error) => {
-                handleUncaughtClientError(error);
+                handleClientError(error);
                 toast('Error while performing this operation', 'error');
             })
             .finally(() => setIsSubmitting(false));

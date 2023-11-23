@@ -6,7 +6,7 @@ import {
 } from '@/services/spotifyPlaylistGuardApi';
 import { getCookie } from '@/storage/cookies/client';
 import {
-    handleUncaughtClientError,
+    handleClientError,
     useClientErrorHandler,
 } from '@/errors/clientErrorHandlers';
 import { useToast } from '@/contexts/ToastContext';
@@ -48,7 +48,7 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
                 .then(() => toast('Successfully updated.', 'success'))
                 .then(() => onSubmit())
                 .catch((error) => {
-                    handleUncaughtClientError(error);
+                    handleClientError(error);
                     toast('Error while performing this operation', 'error');
                 })
                 .finally(() => setIsSubmitting(false));
@@ -64,7 +64,7 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
             .then(() => toast('Successfully created.', 'success'))
             .then(() => onSubmit())
             .catch((error) => {
-                handleUncaughtClientError(error);
+                handleClientError(error);
                 toast('Error while performing this operation', 'error');
             })
             .finally(() => setIsSubmitting(false));
