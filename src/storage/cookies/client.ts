@@ -38,7 +38,7 @@ export function getCookies() {
 export function setCookie(
     key: CookieKey,
     value: string,
-    options?: Cookies.CookieAttributes,
+    options?: CookiesOptions,
 ) {
     if (isServerSide) return;
 
