@@ -28,7 +28,7 @@ export function useUserMe({ signOut, defaultUser }: UseUserMeParams) {
                 .catch(() => null),
         initialData: defaultUser || null,
         enabled: isPrivatePage(pathname || ''),
-        queryKey: [userMeQueryKey, defaultUser],
+        queryKey: [userMeQueryKey, defaultUser, pathname],
     });
 
     return {
