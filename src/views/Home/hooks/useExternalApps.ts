@@ -6,13 +6,14 @@ import {
     getExternalApps,
     ExternalApp,
 } from '@/services/spotifyPlaylistGuardApi';
-import { getCookie } from '@/storage/cookies/client';
+import { useCookies } from '@/contexts/CookiesContext';
 import { useQuery } from '@tanstack/react-query';
 
 export function useExternalApps(initialData: {
     pages: number;
     items: ExternalApp[];
 }) {
+    const { getCookie } = useCookies();
     const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const { handleGuardApiResponse } = useClientErrorHandler();
     const externalAppsQueryKey: QueryKey = 'external-apps';

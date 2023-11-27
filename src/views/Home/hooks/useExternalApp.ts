@@ -2,10 +2,11 @@ import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 import { QueryKey } from '@/contexts/QueryContext';
 import { useClientErrorHandler } from '@/errors/clientErrorHandlers';
 import { getExternalApp } from '@/services/spotifyPlaylistGuardApi';
-import { getCookie } from '@/storage/cookies/client';
+import { useCookies } from '@/contexts/CookiesContext';
 import { useQuery } from '@tanstack/react-query';
 
 export function useExternalApp(id?: string) {
+    const { getCookie } = useCookies();
     const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const { handleGuardApiResponse } = useClientErrorHandler();
     const externalAppsQueryKey: QueryKey = 'external-app';

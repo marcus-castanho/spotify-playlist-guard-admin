@@ -6,7 +6,7 @@ import {
     handleClientError,
     useClientErrorHandler,
 } from '@/errors/clientErrorHandlers';
-import { getCookie } from '@/storage/cookies/client';
+import { useCookies } from '@/contexts/CookiesContext';
 import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 import { ButtonPrimary } from '@/components/ButtonPrimary';
 import { ButtonSecondary } from '@/components/ButtonSecondary';
@@ -23,6 +23,7 @@ export const DeleteExternalAppModal: FC<DeleteExternalAppModalProps> = ({
     onClose,
 }) => {
     const { closeModal } = useModal();
+    const { getCookie } = useCookies();
     const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const { toast } = useToast();
     const { handleGuardApiResponse } = useClientErrorHandler();

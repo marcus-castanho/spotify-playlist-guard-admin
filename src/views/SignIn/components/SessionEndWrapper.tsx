@@ -3,7 +3,7 @@
 import React, { FC, ReactNode, useEffect } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useToast } from '@/contexts/ToastContext';
-import { deleteCookie } from '@/storage/cookies/client';
+import { useCookies } from '@/contexts/CookiesContext';
 import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 
 type SessionEndWrapperProps = {
@@ -11,6 +11,7 @@ type SessionEndWrapperProps = {
 };
 
 export const SessionEndWrapper: FC<SessionEndWrapperProps> = ({ children }) => {
+    const { deleteCookie } = useCookies();
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();

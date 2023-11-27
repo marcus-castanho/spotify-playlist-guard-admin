@@ -4,7 +4,7 @@ import {
     postExternalApp,
     patchExternalApp,
 } from '@/services/spotifyPlaylistGuardApi';
-import { getCookie } from '@/storage/cookies/client';
+import { useCookies } from '@/contexts/CookiesContext';
 import {
     handleClientError,
     useClientErrorHandler,
@@ -29,6 +29,7 @@ export const ExternalAppForm: FC<ExternalAppFormProps> = ({
     onSubmit,
     onCancel,
 }) => {
+    const { getCookie } = useCookies();
     const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const { handleGuardApiResponse } = useClientErrorHandler();
     const [form, setForm] = useState(defaultForm);

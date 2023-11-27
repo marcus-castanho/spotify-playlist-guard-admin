@@ -1,8 +1,6 @@
-'use client';
-
 import React, { FC, useState } from 'react';
 import { patchUser } from '@/services/spotifyPlaylistGuardApi/routes/patchUser';
-import { getCookie } from '@/storage/cookies/client';
+import { useCookies } from '@/contexts/CookiesContext';
 import {
     handleClientError,
     useClientErrorHandler,
@@ -27,6 +25,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
     onSubmit,
     onCancel,
 }) => {
+    const { getCookie } = useCookies();
     const token = getCookie(TOKEN_COOKIE_KEY) || '';
     const [isSubmiting, setIsSubmitting] = useState(false);
     const { handleGuardApiResponse } = useClientErrorHandler();
