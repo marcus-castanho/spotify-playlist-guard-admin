@@ -1,7 +1,7 @@
 import React, { ComponentProps, ReactNode } from 'react';
 import { AppRouterContextProviderMock } from './AppRouterContextProviderMock';
 import { AppContextProvider } from '@/contexts';
-import './windoMock';
+import './windowMock';
 
 export const INITIAL_THEME: ComponentProps<
     typeof AppContextProvider

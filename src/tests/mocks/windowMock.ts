@@ -1,5 +1,5 @@
 /**
- * JSDOM does now implement window.matchMedia() so it must be mocked - https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
+ * JSDOM does not implement window.matchMedia() so it must be mocked - https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
  *
  * This file must be imported in the file in which the tests use window.matchMedia()
  */
