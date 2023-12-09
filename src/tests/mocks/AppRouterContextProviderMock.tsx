@@ -1,18 +1,18 @@
+import React, { ReactNode } from 'react';
 import {
     AppRouterContext,
     AppRouterInstance,
 } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import React from 'react';
 
 type AppRouterContextProviderMockProps = {
     router: Partial<AppRouterInstance>;
-    children: React.ReactNode;
+    children: ReactNode;
 };
 
 export const AppRouterContextProviderMock = ({
     router,
     children,
-}: AppRouterContextProviderMockProps): React.ReactNode => {
+}: AppRouterContextProviderMockProps) => {
     const mockedRouter: AppRouterInstance = {
         back: jest.fn(),
         forward: jest.fn(),
