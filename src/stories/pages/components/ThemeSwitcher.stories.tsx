@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta } from '@storybook/react';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 
 const meta = {
@@ -11,8 +12,5 @@ const meta = {
 } satisfies Meta<typeof ThemeSwitcher>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Switcher: Story = {
-    args: {},
-};
+export const Switcher = () => <ThemeSwitcher />;
