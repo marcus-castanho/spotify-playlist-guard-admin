@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta } from '@storybook/react';
 import { GuardBotLogo } from '@/components/GuardBotLogo';
 
 const meta = {
@@ -11,8 +12,5 @@ const meta = {
 } satisfies Meta<typeof GuardBotLogo>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Logo: Story = {
-    args: {},
-};
+export const Logo = () => <GuardBotLogo />;
