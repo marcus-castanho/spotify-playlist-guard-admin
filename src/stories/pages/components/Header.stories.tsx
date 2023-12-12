@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {},
-    /**For this specific story, use AppContextProvider without a defaultUser value so that the app is in an authenticated session*/
+    /**For this specific story, use AppContextProvider without a defaultUser value so that the app is not in an authenticated session*/
     decorators: [
         (Story, context) => {
             const { backgrounds } = context.globals;
@@ -32,6 +32,4 @@ export const Default: Story = {
     ],
 };
 
-export const Authenticated: Story = {
-    args: {},
-};
+export const Authenticated = () => <Header />;
