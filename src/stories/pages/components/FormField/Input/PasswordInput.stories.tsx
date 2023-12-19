@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta } from '@storybook/react';
 import { FormField } from '@/components/FormField';
 
 const meta = {
@@ -11,12 +12,11 @@ const meta = {
 } satisfies Meta<typeof FormField.PasswordInput>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-    args: {
-        inputId: 'example',
-        required: true,
-        placeHolder: 'Type the password',
-    },
-};
+export const Default = () => (
+    <FormField.PasswordInput
+        inputId="example"
+        required
+        placeHolder="Type the password"
+    />
+);
