@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta } from '@storybook/react';
 import { FormField } from '@/components/FormField';
 
 const meta = {
@@ -11,13 +12,12 @@ const meta = {
 } satisfies Meta<typeof FormField.TextInput>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-    args: {
-        inputId: 'example',
-        defaultValue: 'Example',
-        required: true,
-        placeHolder: 'Type some text',
-    },
-};
+export const Default = () => (
+    <FormField.TextInput
+        inputId="example"
+        defaultValue="Example"
+        required
+        placeHolder="Type some text"
+    />
+);
