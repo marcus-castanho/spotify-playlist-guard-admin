@@ -83,8 +83,8 @@ export const ExternalAppsList: FC<ExternalAppsListProps> = ({
                     <div
                         className={
                             externalApps.length < 5
-                                ? 'flex justify-center gap-3.5 p-3.5 max-sm:flex-col'
-                                : 'grid grid-cols-5 gap-3.5 p-3.5 max-sm:grid-cols-1'
+                                ? 'flex justify-center gap-3.5 p-3.5 max-sm:w-full max-sm:flex-col'
+                                : 'grid grid-cols-5 gap-3.5 p-3.5 max-sm:w-full max-sm:grid-cols-1'
                         }
                     >
                         {externalApps.map((externalApp) => (
