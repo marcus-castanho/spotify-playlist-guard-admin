@@ -6,7 +6,6 @@ import { TOKEN_COOKIE_KEY } from '@/contexts/AuthContext';
 import { Header } from '@/components/Header';
 import { PageContainer } from '@/components/PageContainer';
 import { Main } from '@/components/Main';
-import { Footer } from '@/components/Footer';
 
 export const Home = async () => {
     const token = getPageCookie(TOKEN_COOKIE_KEY) || '';
@@ -33,7 +32,6 @@ export const Home = async () => {
                     />
                 </div>
             </Main>
-            <Footer />
         </PageContainer>
     );
 };
