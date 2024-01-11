@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 type WarningIconProps = {
-    size: number;
+    size?: number;
     fillColor?: 'white' | 'black';
 };
 
