@@ -4,7 +4,7 @@ import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { getPageCookie } from '@/storage/cookies/server';
-import { THEME_COOKIE_KEY } from '@/contexts/ThemeContext';
+import { DEFAULT_THEME, THEME_COOKIE_KEY } from '@/contexts/ThemeContext';
 import { match } from 'ts-pattern';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -20,14 +20,18 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const initialTheme =
-        getPageCookie(THEME_COOKIE_KEY) === 'dark' ? 'dark' : 'light';
+    const initialTheme = match(getPageCookie(THEME_COOKIE_KEY))
+        .with('dark', () => 'dark' as const)
+        .with('light', () => 'light' as const)
+        .otherwise(() => DEFAULT_THEME);
+
     return (
         <html
             lang="en"
             className={match(initialTheme)
                 .with('light', () => '')
-                .otherwise(() => initialTheme)}
+                .with('dark', () => 'dark')
+                .otherwise(() => 'dark')}
         >
             <body
                 className={`${inter.className} dark:bg-black dark:text-white`}
